@@ -1,91 +1,170 @@
-// Cookie Consent Management
-class CookieConsent {
-    constructor() {
-        this.cookieName = 'dor_cookie_consent';
-        this.consentBanner = document.getElementById('cookie-consent');
-        this.acceptBtn = document.getElementById('accept-cookies');
-        this.rejectBtn = document.getElementById('reject-cookies');
+/**
+ * Cookie Consent Manager
+ * Handles GDPR-compliant cookie consent and Google Analytics initialization
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    const COOKIE_CONSENT_KEY = 'cookie_consent';
+    const COOKIE_EXPIRY_DAYS = 365;
+    const GA_MEASUREMENT_ID = 'G-ZQZ9PJ51JH';
+    
+    // DOM Elements
+    const cookieBanner = document.getElementById('cookie-consent');
+    const acceptButton = document.getElementById('accept-cookies');
+    const rejectButton = document.getElementById('reject-cookies');
+    
+    // Initialize the banner
+    function initCookieBanner() {
+        const userConsent = getCookieConsent();
         
-        this.initialize();
-    }
-
-    initialize() {
-        // Only show banner if no consent decision has been made
-        if (!this.getCookiePreference()) {
-            this.showBanner();
-        } else if (this.getCookiePreference() === 'accepted') {
-            this.loadGoogleAnalytics();
+        // Show banner if no consent choice was made yet
+        if (userConsent === null) {
+            showBanner();
+        } else if (userConsent === true) {
+            // If previously accepted, initialize GA
+            initializeGoogleAnalytics();
         }
-
-        // Add event listeners
-        if (this.acceptBtn && this.rejectBtn) {
-            this.acceptBtn.addEventListener('click', () => this.handleAccept());
-            this.rejectBtn.addEventListener('click', () => this.handleReject());
+        
+        // Add event listeners if elements exist
+        if (acceptButton) {
+            acceptButton.addEventListener('click', handleAccept);
         }
-    }
-
-    showBanner() {
-        if (this.consentBanner) {
-            // Force reflow to ensure the element is in the DOM before adding class
-            this.consentBanner.style.display = 'block';
-            this.consentBanner.offsetHeight;
-            this.consentBanner.classList.add('show');
+        
+        if (rejectButton) {
+            rejectButton.addEventListener('click', handleReject);
         }
     }
-
-    hideBanner() {
-        if (this.consentBanner) {
-            this.consentBanner.classList.remove('show');
-            // Wait for animation to complete before hiding
-            setTimeout(() => {
-                this.consentBanner.style.display = 'none';
-            }, 300);
-        }
+    
+    /**
+     * Show the cookie consent banner with animation
+     */
+    function showBanner() {
+        if (!cookieBanner) return;
+        
+        // Ensure the banner is visible before adding the visible class
+        cookieBanner.style.display = 'flex';
+        // Trigger reflow to enable animation
+        void cookieBanner.offsetWidth;
+        // Add visible class to trigger the animation
+        cookieBanner.classList.add('visible');
     }
-
-    setCookiePreference(value) {
+    
+    /**
+     * Hide the cookie consent banner with animation
+     */
+    function hideBanner() {
+        if (!cookieBanner) return;
+        
+        cookieBanner.classList.remove('visible');
+        // Wait for animation to complete before hiding
+        setTimeout(() => {
+            cookieBanner.style.display = 'none';
+        }, 400); // Match this with the CSS transition duration
+    }
+    
+    /**
+     * Handle accept button click
+     */
+    function handleAccept() {
+        setCookieConsent(true);
+        hideBanner();
+        initializeGoogleAnalytics();
+    }
+    
+    /**
+     * Handle reject button click
+     */
+    function handleReject() {
+        setCookieConsent(false);
+        hideBanner();
+    }
+    
+    /**
+     * Set cookie consent preference
+     * @param {boolean} consent - Whether to accept cookies
+     */
+    function setCookieConsent(consent) {
         try {
-            localStorage.setItem(this.cookieName, value);
-            this.hideBanner();
-            return true;
-        } catch (e) {
-            console.error('Error setting cookie preference:', e);
-            return false;
+            const expiryDate = new Date();
+            expiryDate.setDate(expiryDate.getDate() + COOKIE_EXPIRY_DAYS);
+            
+            const consentData = {
+                accepted: consent,
+                timestamp: new Date().toISOString(),
+                version: '1.0'
+            };
+            
+            // Store in localStorage
+            localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData));
+            
+            // Also set a cookie as fallback
+            document.cookie = `${COOKIE_CONSENT_KEY}=${consent}; ` +
+                            `expires=${expiryDate.toUTCString()}; ` +
+                            'path=/; ' +
+                            'SameSite=Lax; ' +
+                            'Secure';
+            
+            console.log(`Cookie consent ${consent ? 'accepted' : 'rejected'}`);
+        } catch (error) {
+            console.error('Error setting cookie consent:', error);
         }
     }
-
-    getCookiePreference() {
-        return localStorage.getItem(this.cookieName);
+    
+    /**
+     * Get user's cookie consent preference
+     * @returns {boolean|null} - true if accepted, false if rejected, null if no choice made
+     */
+    function getCookieConsent() {
+        try {
+            // Check localStorage first
+            const savedConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
+            if (savedConsent) {
+                const consentData = JSON.parse(savedConsent);
+                return consentData.accepted;
+            }
+            
+            // Fallback to cookie
+            const cookieValue = document.cookie
+                .split('; ')
+                .find(row => row.startsWith(`${COOKIE_CONSENT_KEY}=`))
+                ?.split('=')[1];
+                
+            return cookieValue === 'true' ? true : 
+                   cookieValue === 'false' ? false : 
+                   null;
+            
+        } catch (error) {
+            console.error('Error getting cookie consent:', error);
+            return null;
+        }
     }
-
-    handleAccept() {
-        this.setCookiePreference('accepted');
-        this.loadGoogleAnalytics();
+    
+    /**
+     * Initialize Google Analytics with the provided measurement ID
+     */
+    function initializeGoogleAnalytics() {
+        if (typeof gtag === 'undefined') {
+            console.warn('Google Analytics gtag.js not loaded');
+            return;
+        }
+        
+        try {
+            window.dataLayer = window.dataLayer || [];
+            
+            // Configure Google Analytics with privacy-focused settings
+            gtag('js', new Date());
+            gtag('config', GA_MEASUREMENT_ID, {
+                'anonymize_ip': true,
+                'allow_google_signals': false,
+                'allow_ad_personalization_signals': false
+            });
+            
+            console.log('Google Analytics initialized with measurement ID:', GA_MEASUREMENT_ID);
+            
+        } catch (error) {
+            console.error('Error initializing Google Analytics:', error);
+        }
     }
-
-    handleReject() {
-        this.setCookiePreference('rejected');
-    }
-
-    loadGoogleAnalytics() {
-        // Only load GA if it hasn't been loaded already
-        if (window.ga) return;
-
-        // Create Google Analytics script
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
-        document.head.appendChild(script);
-
-        // Initialize gtag function
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function() { dataLayer.push(arguments); };
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-    }
-}
-
-// Initialize cookie consent when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new CookieConsent();
+    
+    // Initialize the cookie banner
+    initCookieBanner();
 });

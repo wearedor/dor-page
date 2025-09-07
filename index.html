@@ -35,14 +35,21 @@
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     
-    <!-- Google Analytics -->
-    <!-- Replace GA_MEASUREMENT_ID with your actual Google Analytics ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <!-- Google Analytics (will be loaded only if cookies are accepted) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQZ9PJ51JH"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
+        // Initialize Google Analytics only if cookies are accepted
+        function initializeGoogleAnalytics() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZQZ9PJ51JH', {
+                'anonymize_ip': true,
+                'allow_google_signals': false,
+                'allow_ad_personalization_signals': false
+            });
+            console.log('Google Analytics initialized with measurement ID: G-ZQZ9PJ51JH');
+        }
     </script>
 </head>
 <body>
@@ -422,5 +429,27 @@
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/cookie-consent.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieConsent = document.getElementById('cookie-consent');
+            const acceptCookies = document.getElementById('accept-cookies');
+            const rejectCookies = document.getElementById('reject-cookies');
+
+            if (!localStorage.getItem('cookies-accepted')) {
+                cookieConsent.style.display = 'block';
+            }
+
+            acceptCookies.addEventListener('click', function() {
+                localStorage.setItem('cookies-accepted', true);
+                cookieConsent.style.display = 'none';
+                initializeGoogleAnalytics();
+            });
+
+            rejectCookies.addEventListener('click', function() {
+                localStorage.setItem('cookies-accepted', false);
+                cookieConsent.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
