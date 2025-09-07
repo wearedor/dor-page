@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollEffects();
     initContactForm(); // Re-enabled with safe, non-interfering version
     initScrollProgress();
-    initAnimations();
     initAnalytics();
 });
 
@@ -364,3 +363,22 @@ function showFormMessage(type, message) {
         }, 5000);
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Add 'loaded' class to body when page is fully loaded
+    document.body.classList.add('loaded');
+    
+    // Initialize animations if the function exists
+    if (typeof initAnimations === 'function') {
+        initAnimations();
+    }
+});
+
+// Add a small delay to ensure all elements are in the DOM
+setTimeout(() => {
+    // Trigger a reflow to ensure transitions work on page load
+    document.body.offsetHeight;
+    
+    // Add a class to the body to enable animations
+    document.body.classList.add('animations-ready');
+}, 100);
