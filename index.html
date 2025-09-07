@@ -35,14 +35,21 @@
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     
-    <!-- Google Analytics -->
-    <!-- Replace GA_MEASUREMENT_ID with your actual Google Analytics ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <!-- Google Analytics (will be loaded only if cookies are accepted) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQZ9PJ51JH"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
+        // Initialize Google Analytics only if cookies are accepted
+        function initializeGoogleAnalytics() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZQZ9PJ51JH', {
+                'anonymize_ip': true,
+                'allow_google_signals': false,
+                'allow_ad_personalization_signals': false
+            });
+            console.log('Google Analytics initialized with measurement ID: G-ZQZ9PJ51JH');
+        }
     </script>
 </head>
 <body>
@@ -86,9 +93,9 @@
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">WE BUILD.<br><span class="hero-title-accent">YOU GROW.</span></h1>
-                <p class="hero-subtitle details-light">Custom software development for airlines, airports, and biometric systems. We help enterprises make strategic decisions and scale their business with accessible, tailored solutions.</p>
-                <div class="hero-cta">
+                <h1 class="hero-title animate-on-scroll animate-delay-1">WE BUILD.<br><span class="hero-title-accent">YOU GROW.</span></h1>
+                <p class="hero-subtitle details-light animate-on-scroll animate-delay-2">Custom software development for airlines, airports, and biometric systems. We help enterprises make strategic decisions and scale their business with accessible, tailored solutions.</p>
+                <div class="hero-cta animate-on-scroll animate-delay-3">
                     <a href="#contact" class="btn btn-primary btn-lg">Start Your Project</a>
                     <a href="#services" class="btn btn-hero-secondary btn-lg">Learn More</a>
                 </div>
@@ -96,16 +103,16 @@
             
             <!-- Hero Stats -->
             <div class="hero-stats">
-                <div class="stat-item">
+                <div class="stat-item animate-on-scroll animate-delay-1">
                     <div class="stat-number">15+</div>
                     <div class="stat-label">Years Experience</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">100+</div>
+                <div class="stat-item animate-on-scroll animate-delay-2">
+                    <div class="stat-number">20+</div>
                     <div class="stat-label">Projects Delivered</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
+                <div class="stat-item animate-on-scroll animate-delay-3">
+                    <div class="stat-number">10+</div>
                     <div class="stat-label">Enterprise Clients</div>
                 </div>
             </div>
@@ -176,32 +183,32 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">OUR SERVICES</h2>
-                <p class="details-light">Comprehensive software solutions tailored to your industry needs</p>
+                <h2 class="section-title animate-on-scroll">OUR SERVICES</h2>
+                <p class="details-light animate-on-scroll">Comprehensive software solutions tailored to your industry needs</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <img src="assets/images/modules/full_experience.png" alt="Full Experience" class="icon-img">
                     </div>
                     <h3 class="details-bold">Full Experience</h3>
                     <p class="body-text">End-to-end software development from concept to deployment. We handle the complete development lifecycle for web and mobile applications.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <img src="assets/images/modules/software_engineering.png" alt="Software Engineering" class="icon-img">
                     </div>
                     <h3 class="details-bold">Software Engineering</h3>
                     <p class="body-text">Expert development of scalable SaaS solutions with modern technologies. Perfect for airlines and airport management systems.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <img src="assets/images/modules/outsourcing.png" alt="Outsourcing" class="icon-img">
                     </div>
                     <h3 class="details-bold">Outsourcing</h3>
                     <p class="body-text">Staff augmentation services to expand your development team with specialized talent in biometric and aviation systems.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <img src="assets/images/modules/consultancy.png" alt="Consulting" class="icon-img">
                     </div>
@@ -216,26 +223,26 @@
     <section id="features" class="key-features">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">WHY CHOOSE DØR?</h2>
-                <p class="details-light">Proven expertise that drives results</p>
+                <h2 class="section-title animate-on-scroll">WHY CHOOSE DØR?</h2>
+                <p class="details-light animate-on-scroll animate-delay-1">Proven expertise that drives results</p>
             </div>
             <div class="features-grid">
-                <div class="feature-item">
+                <div class="feature-item animate-on-scroll">
                     <div class="feature-number">01</div>
                     <h3 class="details-bold">15+ Years of Industry Experience</h3>
                     <p class="body-text">Deep expertise in software development with a proven track record in complex enterprise solutions</p>
                 </div>
-                <div class="feature-item">
+                <div class="feature-item animate-on-scroll animate-delay-1">
                     <div class="feature-number">02</div>
                     <h3 class="details-bold">Enterprise-Proven Solutions</h3>
                     <p class="body-text">Successfully delivered solutions for major companies in aviation and biometric industries</p>
                 </div>
-                <div class="feature-item">
+                <div class="feature-item animate-on-scroll animate-delay-2">
                     <div class="feature-number">03</div>
                     <h3 class="details-bold">Problem-Solving Approach</h3>
                     <p class="body-text">We don't just code - we analyze, strategize, and solve complex business challenges</p>
                 </div>
-                <div class="feature-item">
+                <div class="feature-item animate-on-scroll animate-delay-3">
                     <div class="feature-number">04</div>
                     <h3 class="details-bold">Specialized Industry Knowledge</h3>
                     <p class="body-text">Unique expertise in airlines, airports, and biometric systems that sets us apart</p>
@@ -243,31 +250,32 @@
             </div>
         </div>
     </section>
+    
 
     <!-- Integration Gallery -->
     <section class="integrations">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">INTEGRATION EXPERTISE</h2>
-                <p class="details-light">Proven experience connecting complex systems</p>
+                <h2 class="section-title animate-on-scroll">INTEGRATION EXPERTISE</h2>
+                <p class="details-light animate-on-scroll animate-delay-1">Proven experience connecting complex systems</p>
             </div>
             <div class="integration-showcase">
-                <div class="integration-card">
+                <div class="integration-card animate-on-scroll">
                     <div class="integration-icon">🛂</div>
                     <h3 class="details-bold">Border Control Systems</h3>
                     <p class="body-text">Hardware integration with immigration services for seamless border processing</p>
                 </div>
-                <div class="integration-card">
+                <div class="integration-card animate-on-scroll animate-delay-1">
                     <div class="integration-icon">✈️</div>
                     <h3 class="details-bold">Airport Management</h3>
                     <p class="body-text">Complete airport operation systems including passenger flow and security</p>
                 </div>
-                <div class="integration-card">
+                <div class="integration-card animate-on-scroll animate-delay-2">
                     <div class="integration-icon">👤</div>
                     <h3 class="details-bold">Biometric Authentication</h3>
                     <p class="body-text">Advanced biometric systems for secure identity verification</p>
                 </div>
-                <div class="integration-card">
+                <div class="integration-card animate-on-scroll animate-delay-3">
                     <div class="integration-icon">🔗</div>
                     <h3 class="details-bold">API Integrations</h3>
                     <p class="body-text">Seamless connection between existing systems and new solutions</p>
@@ -280,11 +288,11 @@
     <section id="testimonials" class="testimonials">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">TRUSTED BY INDUSTRY LEADERS</h2>
-                <p class="details-light">See what our clients say about working with dør</p>
+                <h2 class="section-title animate-on-scroll">TRUSTED BY INDUSTRY LEADERS</h2>
+                <p class="details-light animate-on-scroll animate-delay-1">See what our clients say about working with dør</p>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card">
+                <div class="testimonial-card animate-on-scroll">
                     <div class="testimonial-content">
                         <p class="body-text">"dør transformed our airport operations with their custom software solution. Their deep understanding of aviation systems made all the difference."</p>
                     </div>
@@ -295,18 +303,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card animate-on-scroll animate-delay-1">
                     <div class="testimonial-content">
                         <p class="body-text">"The biometric integration they delivered exceeded our expectations. Scalable, secure, and perfectly integrated with our existing infrastructure."</p>
                     </div>
                     <div class="testimonial-author">
                         <div class="author-info">
-                            <h4 class="details-bold">James Peterson</h4>
-                            <p class="body-text">Security Director, Border Control Services</p>
+                            <h4 class="details-bold">James Wilson</h4>
+                            <p class="body-text">Director of Technology, SecureID Solutions</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card animate-on-scroll animate-delay-2">
                     <div class="testimonial-content">
                         <p class="body-text">"Working with dør was seamless. Their agile approach and technical expertise helped us launch our new platform ahead of schedule."</p>
                     </div>
@@ -324,77 +332,29 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">READY TO BUILD SOMETHING GREAT?</h2>
-                <p class="details-light">Let's discuss your project and how we can help you grow</p>
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title animate-on-scroll">READY TO BUILD SOMETHING GREAT?</h2>
+                <p class="details-light animate-on-scroll animate-delay-1">Let's discuss your project and how we can help you grow</p>
             </div>
-            <div class="contact-grid">
-                <div class="contact-info">
+            <div class="contact-grid" style="justify-content: center; text-align: center;">
+                <div class="contact-info animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
                     <h3 class="details-bold">Get in Touch</h3>
                     <p class="body-text">Ready to transform your software challenges into growth opportunities? We'd love to hear about your project.</p>
                     
                     <div class="contact-method">
                         <h4 class="details-bold">Email</h4>
-                        <p class="body-text">hey@wearedor.com</p>
+                        <p class="body-text"><a href="mailto:hey@wearedor.com" style="color: inherit; text-decoration: none;">hey@wearedor.com</a></p>
                     </div>
                     
                     <div class="contact-method">
                         <h4 class="details-bold">Schedule a Call</h4>
                         <p class="body-text">Book a free consultation to discuss your needs</p>
-                        <!-- Calendly inline widget -->
                         <div class="calendly-container">
-                            <!-- Replace with your actual Calendly link -->
-                            <a href="https://calendly.com/fer-carbone/meet-dor" target="_blank" class="btn btn-secondary">
+                            <a href="https://calendly.com/fer-carbone/meet-dor" target="_blank" class="btn btn-primary">
                                 Schedule a Meeting
                             </a>
                         </div>
                     </div>
-                </div>
-                
-                <div class="contact-form-container">
-                    <!-- Netlify Form -->
-                    <form name="contact" method="POST" action="success.html" data-netlify="true" data-netlify-honeypot="bot-field" class="contact-form" id="contactForm">
-                        <!-- Hidden field for bot detection -->
-                        <input type="hidden" name="form-name" value="contact" />
-                        <div style="display: none;">
-                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="name" class="details-bold">Name *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="details-bold">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company" class="details-bold">Company</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="project" class="details-bold">Project Type</label>
-                            <select id="project" name="project">
-                                <option value="">Select Project Type</option>
-                                <option value="web-app">Web Application</option>
-                                <option value="mobile-app">Mobile Application</option>
-                                <option value="saas">SaaS Platform</option>
-                                <option value="integration">System Integration</option>
-                                <option value="consulting">Consulting</option>
-                                <option value="staff-aug">Staff Augmentation</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="details-bold">Project Details *</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your project, challenges, and goals..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -404,14 +364,14 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
+                <div class="footer-brand animate-on-scroll">
                     <a href="#hero" class="footer-logo-link">
                         <img src="assets/images/logos/dor-logo-white.svg" alt="dør" class="footer-logo">
                     </a>
                     <p class="body-text">We build. You grow.</p>
                 </div>
                 
-                <div class="footer-section">
+                <div class="footer-section animate-on-scroll animate-delay-1">
                     <h3 class="footer-section-title">Navigation</h3>
                     <ul class="footer-links">
                         <li><a href="#hero" class="footer-link">Home</a></li>
@@ -422,7 +382,7 @@
                     </ul>
                 </div>
                 
-                <div class="footer-section">
+                <div class="footer-section animate-on-scroll animate-delay-2">
                     <h3 class="footer-section-title">Contact</h3>
                     <ul class="footer-contact">
                         <li class="contact-item">
@@ -442,7 +402,7 @@
                 
             </div>
             
-            <div class="footer-bottom">
+            <div class="footer-bottom animate-on-scroll animate-delay-3">
                 <p class="body-text">&copy; 2025 dør. All rights reserved.</p>
             </div>
         </div>
@@ -451,7 +411,45 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-content">
+            <p class="cookie-text">
+                We use cookies to enhance your experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. 
+                <a href="/privacy-policy" class="cookie-link">Learn more</a>
+            </p>
+            <div class="cookie-buttons">
+                <button id="reject-cookies" class="btn btn-outline">Reject</button>
+                <button id="accept-cookies" class="btn btn-primary">Accept All</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/cookie-consent.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieConsent = document.getElementById('cookie-consent');
+            const acceptCookies = document.getElementById('accept-cookies');
+            const rejectCookies = document.getElementById('reject-cookies');
+
+            if (!localStorage.getItem('cookies-accepted')) {
+                cookieConsent.style.display = 'block';
+            }
+
+            acceptCookies.addEventListener('click', function() {
+                localStorage.setItem('cookies-accepted', true);
+                cookieConsent.style.display = 'none';
+                initializeGoogleAnalytics();
+            });
+
+            rejectCookies.addEventListener('click', function() {
+                localStorage.setItem('cookies-accepted', false);
+                cookieConsent.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
