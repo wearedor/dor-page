@@ -243,6 +243,7 @@
             </div>
         </div>
     </section>
+    
 
     <!-- Integration Gallery -->
     <section class="integrations">
@@ -403,8 +404,23 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-content">
+            <p class="cookie-text">
+                We use cookies to enhance your experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. 
+                <a href="/privacy-policy" class="cookie-link">Learn more</a>
+            </p>
+            <div class="cookie-buttons">
+                <button id="reject-cookies" class="btn btn-outline">Reject</button>
+                <button id="accept-cookies" class="btn btn-primary">Accept All</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="assets/js/animations.js"></script>
+    <script src="assets/js/cookie-consent.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 </body>
 </html>
