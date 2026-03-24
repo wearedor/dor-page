@@ -6,20 +6,20 @@
     
     <!-- SEO Meta Tags -->
     <title>dør - We Build. You Grow.</title>
-    <meta name="description" content="dør develops accessible, custom software solutions for airlines, airports, and biometric systems. 15+ years experience in scalable solutions and integrations.">
-    <meta name="keywords" content="software development, airlines software, airport solutions, biometric systems, custom software, SaaS development, staff augmentation">
+    <meta name="description" content="dør is a boutique software house from Uruguay offering staff augmentation with senior LATAM engineers. Trusted by enterprise clients in aviation, biometrics, and fintech." data-i18n-attr="content:meta.description">
+    <meta name="keywords" content="staff augmentation, nearshore engineers, LATAM developers, remote engineering team, hire senior developers, software development Uruguay, nearshore software development, bilingual engineers, dedicated development team, SaaS development, fintech developers, aviation software">
     <meta name="author" content="dør">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="dør - Custom Software Development for Airlines & Biometrics">
-    <meta property="og:description" content="We build accessible, custom software solutions. Specializing in airlines, airports, and biometric systems with 15+ years of industry experience.">
+    <meta property="og:title" content="dør - Senior LATAM Engineers Embedded in Your Team" data-i18n-attr="content:meta.og_title">
+    <meta property="og:description" content="Boutique software house from Uruguay. Staff augmentation with senior engineers — same timezone, fully bilingual, minimal rotation. Trusted by enterprise clients for 5+ years." data-i18n-attr="content:meta.og_description">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dor.com">
+    <meta property="og:url" content="https://wearedor.com">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="dør - We Build. You Grow.">
-    <meta name="twitter:description" content="Custom software development for airlines, airports, and biometric systems. Proven experience with enterprise solutions.">
+    <meta name="twitter:title" content="dør - Senior LATAM Engineers Embedded in Your Team" data-i18n-attr="content:meta.tw_title">
+    <meta name="twitter:description" content="Boutique software house from Uruguay. Staff augmentation with senior engineers — same timezone, fully bilingual, minimal rotation." data-i18n-attr="content:meta.tw_description">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/logos/dor-reducted-black.png">
@@ -43,12 +43,89 @@
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+
+            // Parse UTM parameters from URL
+            var params = new URLSearchParams(window.location.search);
+            var utmSource = params.get('utm_source') || '';
+            var utmMedium = params.get('utm_medium') || '';
+            var utmCampaign = params.get('utm_campaign') || '';
+            var utmContent = params.get('utm_content') || '';
+            var utmTerm = params.get('utm_term') || '';
+
             gtag('config', 'G-ZQZ9PJ51JH', {
                 'anonymize_ip': true,
                 'allow_google_signals': false,
-                'allow_ad_personalization_signals': false
+                'allow_ad_personalization_signals': false,
+                'campaign_source': utmSource,
+                'campaign_medium': utmMedium,
+                'campaign_name': utmCampaign,
+                'campaign_content': utmContent,
+                'campaign_term': utmTerm
             });
-            console.log('Google Analytics initialized with measurement ID: G-ZQZ9PJ51JH');
+
+            // Track landing with source attribution
+            gtag('event', 'page_landed', {
+                'event_category': 'acquisition',
+                'utm_source': utmSource,
+                'utm_medium': utmMedium,
+                'utm_campaign': utmCampaign,
+                'utm_content': utmContent,
+                'referrer': document.referrer || 'direct',
+                'landing_page': window.location.pathname
+            });
+
+            // Track schedule call clicks
+            document.querySelectorAll('a[href*="fantastical.app"]').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    gtag('event', 'schedule_call_click', {
+                        'event_category': 'conversion',
+                        'event_label': this.closest('section') ? this.closest('section').id : 'nav',
+                        'utm_source': utmSource,
+                        'utm_campaign': utmCampaign
+                    });
+                });
+            });
+
+            // Track email link clicks
+            document.querySelectorAll('a[href^="mailto:"]').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    gtag('event', 'email_click', {
+                        'event_category': 'conversion',
+                        'event_label': this.href.replace('mailto:', ''),
+                        'utm_source': utmSource
+                    });
+                });
+            });
+
+            // Track service card expand interactions
+            document.querySelectorAll('.how-it-works-toggle').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var serviceName = this.closest('.service-card').querySelector('h3').textContent;
+                    gtag('event', 'service_expand', {
+                        'event_category': 'engagement',
+                        'event_label': serviceName
+                    });
+                });
+            });
+
+            // Track section visibility (which sections do visitors actually see)
+            if ('IntersectionObserver' in window) {
+                var sectionObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            gtag('event', 'section_viewed', {
+                                'event_category': 'engagement',
+                                'event_label': entry.target.id || entry.target.className
+                            });
+                            sectionObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                document.querySelectorAll('section[id]').forEach(function(section) {
+                    sectionObserver.observe(section);
+                });
+            }
         }
     </script>
 </head>
@@ -62,11 +139,12 @@
                 </a>
             </div>
             <div class="nav-links">
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#our-contributions" class="nav-link">Our contributions</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="https://fantastical.app/felipestanham/30-min-with-felipe-dor" target="_blank" class="btn btn-primary btn-sm">Schedule Call</a>
+                <a href="#services" class="nav-link" data-i18n="nav.services">Services</a>
+                <a href="#our-contributions" class="nav-link" data-i18n="nav.contributions">Our Contributions</a>
+                <a href="#team" class="nav-link" data-i18n="nav.team">Team</a>
+                <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+                <button class="lang-toggle" onclick="setLang(getLang() === 'en' ? 'es' : 'en')">ES</button>
+                <a href="https://fantastical.app/felipestanham/30-min-with-felipe-dor" target="_blank" class="btn btn-primary btn-sm" data-i18n="nav.schedule">Schedule Call</a>
             </div>
             
             <!-- Mobile Menu Toggle -->
@@ -80,11 +158,12 @@
         <!-- Mobile Menu -->
         <div class="mobile-menu">
             <div class="mobile-menu-content">
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#our-contributions" class="nav-link">Our contributions</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="https://fantastical.app/felipestanham/30-min-with-felipe-dor" target="_blank" class="btn btn-primary">Schedule Call</a>
+                <a href="#services" class="nav-link" data-i18n="nav.services">Services</a>
+                <a href="#our-contributions" class="nav-link" data-i18n="nav.contributions">Our Contributions</a>
+                <a href="#team" class="nav-link" data-i18n="nav.team">Team</a>
+                <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+                <button class="lang-toggle" onclick="setLang(getLang() === 'en' ? 'es' : 'en')">ES</button>
+                <a href="https://fantastical.app/felipestanham/30-min-with-felipe-dor" target="_blank" class="btn btn-primary" data-i18n="nav.schedule">Schedule Call</a>
             </div>
         </div>
     </nav>
@@ -93,27 +172,32 @@
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title animate-on-scroll animate-delay-1">WE BUILD.<br><span class="hero-title-accent">YOU GROW.</span></h1>
-                <p class="hero-subtitle details-light animate-on-scroll animate-delay-2">Transform your business with custom software solutions designed to drive growth and efficiency. We help organizations of all sizes make strategic technology decisions and scale their operations with tailored, accessible solutions.</p>
+                <p class="hero-tagline animate-on-scroll" data-i18n="hero.tagline">We Build. You Grow.</p>
+                <h1 class="hero-title animate-on-scroll animate-delay-1"><span data-i18n="hero.title">SCALE YOUR ENGINEERING TEAM</span><br><span class="hero-title-accent" data-i18n="hero.title_accent">IN UNDER 3 WEEKS</span></h1>
+                <p class="hero-subtitle details-light animate-on-scroll animate-delay-2" data-i18n="hero.subtitle">Skip the 3-month hiring cycle. Our senior LATAM engineers integrate into your team from day one — same timezone, fully bilingual, minimal rotation. Trusted by enterprise clients for 5+ years.</p>
                 <div class="hero-cta animate-on-scroll animate-delay-3">
-                    <a href="#contact" class="btn btn-primary btn-lg">Start Your Project</a>
-                    <a href="#services" class="btn btn-hero-secondary btn-lg">Learn More</a>
+                    <a href="#contact" class="btn btn-primary btn-lg" data-i18n="hero.cta_primary">Scale Your Team</a>
+                    <a href="#services" class="btn btn-hero-secondary btn-lg" data-i18n="hero.cta_secondary">Learn More</a>
                 </div>
             </div>
             
             <!-- Hero Stats -->
             <div class="hero-stats">
                 <div class="stat-item animate-on-scroll animate-delay-1">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-number" data-i18n="hero.stat1_number">&lt; 3 Weeks</div>
+                    <div class="stat-label" data-i18n="hero.stat1_label">To Start</div>
                 </div>
                 <div class="stat-item animate-on-scroll animate-delay-2">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">Projects Delivered</div>
+                    <div class="stat-number" data-i18n="hero.stat2_number">5+ Years</div>
+                    <div class="stat-label" data-i18n="hero.stat2_label">Client Retention</div>
                 </div>
                 <div class="stat-item animate-on-scroll animate-delay-3">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Enterprise Clients</div>
+                    <div class="stat-number" data-i18n="hero.stat3_number">100%</div>
+                    <div class="stat-label" data-i18n="hero.stat3_label">Bilingual Team</div>
+                </div>
+                <div class="stat-item animate-on-scroll animate-delay-3">
+                    <div class="stat-number" data-i18n="hero.stat4_number">10+</div>
+                    <div class="stat-label" data-i18n="hero.stat4_label">Enterprise Clients</div>
                 </div>
             </div>
         </div>
@@ -123,59 +207,57 @@
     <section class="problem-solution">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">WE SOLVE COMPLEX CHALLENGES</h2>
-                <p class="details-light">From legacy system integration to cutting-edge biometric solutions, we turn your technical challenges into competitive advantages.</p>
+                <h2 class="section-title" data-i18n="ctos.title">WHY CTOs CHOOSE D&Oslash;R</h2>
+                <p class="details-light" data-i18n="ctos.subtitle">The hiring problems CTOs face — and how we solve them.</p>
             </div>
-            
+
             <div class="problem-solution-grid">
-                <!-- Modern System Integration -->
-                <div class="problem-card">
-                    <div class="card-icon">
-                        <img src="assets/images/icons/orange/Recurso 73@4x.png" alt="System Integration" class="icon-img">
-                    </div>
-                    <h3 class="details-bold">Seamless System Integration</h3>
-                    <p class="body-text">Connect your existing systems with modern applications, ensuring data flows smoothly across your entire organization.</p>
-                </div>
-                
-                <!-- Business Process Automation -->
                 <div class="solution-card">
                     <div class="card-icon">
-                        <img src="assets/images/icons/orange/Recurso 170@4x.png" alt="Business Process Automation" class="icon-img">
+                        <i class="fas fa-stopwatch"></i>
                     </div>
-                    <h3 class="details-bold">Intelligent Automation</h3>
-                    <p class="body-text">Transform manual processes into efficient workflows with smart automation that reduces costs and minimizes errors.</p>
-                </div>
-
-                <div class="problem-card">
-                    <div class="card-icon">
-                        <img src="assets/images/icons/orange/Recurso 272@4x.png" alt="Security & Compliance" class="icon-img">
-                    </div>
-                    <h3 class="details-bold">Security & Compliance</h3>
-                    <p class="body-text">Built-in security measures and compliance frameworks that meet industry standards and regulatory requirements.</p>
+                    <h3 class="details-bold" data-i18n="ctos.card1_title">Hiring Takes 3-4 Months</h3>
+                    <p class="body-text" data-i18n="ctos.card1_text">Not with us. We match you with senior engineers in 48 hours and have them embedded in your team in under 3 weeks.</p>
                 </div>
 
                 <div class="solution-card">
                     <div class="card-icon">
-                        <img src="assets/images/icons/orange/Recurso 29@4x.png" alt="Scalable Architecture" class="icon-img">
+                        <i class="fas fa-user-shield"></i>
                     </div>
-                    <h3 class="details-bold">Scalable Architecture</h3>
-                    <p class="body-text">Cloud-native solutions designed to grow with your business, handling increased load without performance degradation.</p>
-                </div>
-
-                <div class="problem-card">
-                    <div class="card-icon">
-                        <img src="assets/images/icons/orange/Recurso 121@4x.png" alt="Custom Development" class="icon-img">
-                    </div>
-                    <h3 class="details-bold">Custom Development</h3>
-                    <p class="body-text">Tailored software solutions that address your specific business needs and integrate perfectly with existing workflows.</p>
+                    <h3 class="details-bold" data-i18n="ctos.card2_title">Engineer Churn Destroys Projects</h3>
+                    <p class="body-text" data-i18n="ctos.card2_text">Continuity is core to how we work. The engineer who starts your project is the one who delivers it. Our boutique model means minimal rotation — by design, not by luck.</p>
                 </div>
 
                 <div class="solution-card">
                     <div class="card-icon">
-                        <img src="assets/images/icons/orange/Recurso 86@4x.png" alt="Expert Support" class="icon-img">
+                        <i class="fas fa-earth-americas"></i>
                     </div>
-                    <h3 class="details-bold">Expert Support</h3>
-                    <p class="body-text">Ongoing maintenance, updates, and technical support to ensure your systems continue performing at their best.</p>
+                    <h3 class="details-bold" data-i18n="ctos.card3_title">Timezone Gaps Kill Collaboration</h3>
+                    <p class="body-text" data-i18n="ctos.card3_text">Based in UTC-3, our engineers have full overlap with US East Coast hours. Real-time standups, same-day code reviews, no async delays.</p>
+                </div>
+
+                <div class="solution-card">
+                    <div class="card-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="details-bold" data-i18n="ctos.card4_title">Agencies Send Juniors After Selling Seniors</h3>
+                    <p class="body-text" data-i18n="ctos.card4_text">Every engineer we place is rigorously vetted for senior-level expertise. No bait-and-switch — you interview and choose who joins your team.</p>
+                </div>
+
+                <div class="solution-card">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="details-bold" data-i18n="ctos.card5_title">Too Many Layers Between You and the Work</h3>
+                    <p class="body-text" data-i18n="ctos.card5_text">You work directly with our founders. No account managers, no project coordinators filtering communication.</p>
+                </div>
+
+                <div class="solution-card">
+                    <div class="card-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="details-bold" data-i18n="ctos.card6_title">Scaling Means Losing Quality</h3>
+                    <p class="body-text" data-i18n="ctos.card6_text">We're a boutique team by design. Handpicked engineers, enterprise-grade delivery, and the focus that comes from staying small.</p>
                 </div>
             </div>
         </div>
@@ -185,113 +267,200 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title animate-on-scroll">OUR SERVICES</h2>
-                <p class="details-light animate-on-scroll">End-to-end technology solutions that drive business growth and innovation</p>
+                <h2 class="section-title animate-on-scroll" data-i18n="services.title">OUR SERVICES</h2>
+                <p class="details-light animate-on-scroll" data-i18n="services.subtitle">End-to-end technology solutions that drive business growth and innovation</p>
             </div>
             <div class="services-grid">
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">
+                        <img src="assets/images/modules/outsourcing.png" alt="Staff Augmentation" class="icon-img">
+                    </div>
+                    <h3 class="details-bold" data-i18n="services.staffaug_title">Staff Augmentation</h3>
+                    <p class="body-text" data-i18n="services.staffaug_text">Senior engineers embedded in your team, not outsourced to a black box. Same timezone (UTC-3), fully bilingual, minimal rotation. Scale your engineering capacity without the overhead of US hiring.</p>
+                    <button class="how-it-works-toggle" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'); this.closest('.service-card').querySelector('.how-it-works-expandable').classList.toggle('expanded');">
+                        <span data-i18n="services.staffaug_how">How it works</span> <span class="toggle-icon">+</span>
+                    </button>
+                    <div class="how-it-works-expandable">
+                        <div class="expandable-steps">
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">1</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.staffaug_step1_title">Tell us what you need</h4>
+                                    <p class="body-text" data-i18n="services.staffaug_step1_text">Share your stack, team size, and timeline. We match you with the right engineers in 48 hours.</p>
+                                </div>
+                            </div>
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">2</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.staffaug_step2_title">Meet your engineers</h4>
+                                    <p class="body-text" data-i18n="services.staffaug_step2_text">Interview candidates directly. No middlemen, no account managers. You choose who joins your team.</p>
+                                </div>
+                            </div>
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">3</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.staffaug_step3_title">Ship from week one</h4>
+                                    <p class="body-text" data-i18n="services.staffaug_step3_text">Your engineer integrates into your workflows, tools, and standups from day one. Full overlap with US timezones.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
                         <img src="assets/images/modules/full_experience.png" alt="Full Experience" class="icon-img">
                     </div>
-                    <h3 class="details-bold">Full Experience</h3>
-                    <p class="body-text">End-to-end software development from concept to deployment. We handle the complete development lifecycle for web and mobile applications.</p>
+                    <h3 class="details-bold" data-i18n="services.fullexp_title">Full Experience</h3>
+                    <p class="body-text" data-i18n="services.fullexp_text">End-to-end software development from concept to deployment. We handle the complete development lifecycle for web and mobile applications.</p>
+                    <button class="how-it-works-toggle" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'); this.closest('.service-card').querySelector('.how-it-works-expandable').classList.toggle('expanded');">
+                        <span data-i18n="services.fullexp_how">How it works</span> <span class="toggle-icon">+</span>
+                    </button>
+                    <div class="how-it-works-expandable">
+                        <div class="expandable-steps">
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">1</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.fullexp_step1_title">Discovery & Planning</h4>
+                                    <p class="body-text" data-i18n="services.fullexp_step1_text">We map your requirements, define scope, and build a development roadmap aligned with your business goals.</p>
+                                </div>
+                            </div>
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">2</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.fullexp_step2_title">Design & Development</h4>
+                                    <p class="body-text" data-i18n="services.fullexp_step2_text">Our team designs, builds, and iterates on your product using agile sprints with full transparency.</p>
+                                </div>
+                            </div>
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">3</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.fullexp_step3_title">Launch & Support</h4>
+                                    <p class="body-text" data-i18n="services.fullexp_step3_text">We handle deployment, QA, and post-launch support to ensure a smooth go-live and ongoing stability.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <img src="assets/images/modules/software_engineering.png" alt="Software Engineering" class="icon-img">
                     </div>
-                    <h3 class="details-bold">Software Engineering</h3>
-                    <p class="body-text">Expert development of scalable SaaS solutions with modern technologies. Perfect for airlines and airport management systems.</p>
-                </div>
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <img src="assets/images/modules/outsourcing.png" alt="Outsourcing" class="icon-img">
+                    <h3 class="details-bold" data-i18n="services.sweng_title">Software Engineering</h3>
+                    <p class="body-text" data-i18n="services.sweng_text">Expert development of scalable SaaS solutions with modern technologies. Perfect for airlines and airport management systems.</p>
+                    <button class="how-it-works-toggle" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'); this.closest('.service-card').querySelector('.how-it-works-expandable').classList.toggle('expanded');">
+                        <span data-i18n="services.sweng_how">How it works</span> <span class="toggle-icon">+</span>
+                    </button>
+                    <div class="how-it-works-expandable">
+                        <div class="expandable-steps">
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">1</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.sweng_step1_title">Architecture Review</h4>
+                                    <p class="body-text" data-i18n="services.sweng_step1_text">We assess your current stack and design a scalable architecture tailored to your growth trajectory.</p>
+                                </div>
+                            </div>
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">2</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.sweng_step2_title">Development & Integration</h4>
+                                    <p class="body-text" data-i18n="services.sweng_step2_text">Senior engineers build and integrate modules into your existing systems with minimal disruption.</p>
+                                </div>
+                            </div>
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">3</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.sweng_step3_title">Testing & Optimization</h4>
+                                    <p class="body-text" data-i18n="services.sweng_step3_text">Rigorous QA, performance testing, and optimization to ensure production-grade reliability.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="details-bold">Outsourcing</h3>
-                    <p class="body-text">Staff augmentation services to expand your development team with specialized talent in biometric and aviation systems.</p>
                 </div>
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <img src="assets/images/modules/consultancy.png" alt="Consulting" class="icon-img">
                     </div>
-                    <h3 class="details-bold">Consulting</h3>
-                    <p class="body-text">Strategic technology consulting to help you make informed decisions about your software architecture and development roadmap.</p>
+                    <h3 class="details-bold" data-i18n="services.consulting_title">Consulting</h3>
+                    <p class="body-text" data-i18n="services.consulting_text">Strategic technology consulting to help you make informed decisions about your software architecture and development roadmap.</p>
+                    <button class="how-it-works-toggle" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'); this.closest('.service-card').querySelector('.how-it-works-expandable').classList.toggle('expanded');">
+                        <span data-i18n="services.consulting_how">How it works</span> <span class="toggle-icon">+</span>
+                    </button>
+                    <div class="how-it-works-expandable">
+                        <div class="expandable-steps">
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">1</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.consulting_step1_title">Technical Assessment</h4>
+                                    <p class="body-text" data-i18n="services.consulting_step1_text">We audit your current technology landscape and identify bottlenecks, risks, and opportunities.</p>
+                                </div>
+                            </div>
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">2</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.consulting_step2_title">Strategic Roadmap</h4>
+                                    <p class="body-text" data-i18n="services.consulting_step2_text">A clear, prioritized plan for technology investments aligned with your business objectives.</p>
+                                </div>
+                            </div>
+                            <div class="expandable-step">
+                                <div class="expandable-step-number">3</div>
+                                <div>
+                                    <h4 class="details-bold" data-i18n="services.consulting_step3_title">Ongoing Advisory</h4>
+                                    <p class="body-text" data-i18n="services.consulting_step3_text">Fractional CTO-level guidance on architecture decisions, vendor selection, and team scaling.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Key Features Section -->
-    <section id="features" class="key-features">
+    <!-- Why Nearshore Section -->
+    <section id="nearshore" class="nearshore">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title animate-on-scroll">WHY CHOOSE DØR?</h2>
-                <p class="details-light animate-on-scroll animate-delay-1">Proven expertise that drives results</p>
+                <h2 class="section-title animate-on-scroll" data-i18n="nearshore.title">WHY NEARSHORE WITH D&Oslash;R</h2>
+                <p class="details-light animate-on-scroll animate-delay-1" data-i18n="nearshore.subtitle">The advantages of working with a boutique LATAM team</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-item animate-on-scroll">
-                    <div class="feature-number">01</div>
-                    <h3 class="details-bold">15+ Years of Industry Experience</h3>
-                    <p class="body-text">Deep expertise in software development with a proven track record in complex enterprise solutions</p>
+            <div class="nearshore-grid">
+                <div class="nearshore-card animate-on-scroll">
+                    <div class="nearshore-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="details-bold" data-i18n="nearshore.tz_title">UTC-3 Timezone</h3>
+                    <p class="body-text" data-i18n="nearshore.tz_text">Full overlap with EST, partial with PST. Real-time collaboration, no async delays.</p>
                 </div>
-                <div class="feature-item animate-on-scroll animate-delay-1">
-                    <div class="feature-number">02</div>
-                    <h3 class="details-bold">Enterprise-Proven Solutions</h3>
-                    <p class="body-text">Successfully delivered solutions for major companies in aviation and biometric industries</p>
+                <div class="nearshore-card animate-on-scroll animate-delay-1">
+                    <div class="nearshore-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="details-bold" data-i18n="nearshore.rotation_title">Minimal Rotation</h3>
+                    <p class="body-text" data-i18n="nearshore.rotation_text">The engineer who starts on your team is built to stay. Our boutique model ensures continuity — no revolving doors, no knowledge loss.</p>
                 </div>
-                <div class="feature-item animate-on-scroll animate-delay-2">
-                    <div class="feature-number">03</div>
-                    <h3 class="details-bold">Problem-Solving Approach</h3>
-                    <p class="body-text">We don't just code - we analyze, strategize, and solve complex business challenges</p>
+                <div class="nearshore-card animate-on-scroll animate-delay-2">
+                    <div class="nearshore-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="details-bold" data-i18n="nearshore.senior_title">Senior Only</h3>
+                    <p class="body-text" data-i18n="nearshore.senior_text">No juniors, no bait-and-switch. Every engineer we place is rigorously vetted for senior-level expertise.</p>
                 </div>
-                <div class="feature-item animate-on-scroll animate-delay-3">
-                    <div class="feature-number">04</div>
-                    <h3 class="details-bold">Specialized Industry Knowledge</h3>
-                    <p class="body-text">Unique expertise in airlines, airports, and biometric systems that sets us apart</p>
+                <div class="nearshore-card animate-on-scroll animate-delay-3">
+                    <div class="nearshore-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="details-bold" data-i18n="nearshore.speed_title">Under 3 Weeks</h3>
+                    <p class="body-text" data-i18n="nearshore.speed_text">From first call to engineer embedded in your team in under 3 weeks. Not 3 months.</p>
                 </div>
             </div>
         </div>
     </section>
-    
-
-    <!-- Integration Gallery -->
-    <!-- <section class="integrations">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title animate-on-scroll">INTEGRATION EXPERTISE</h2>
-                <p class="details-light animate-on-scroll animate-delay-1">Proven experience connecting complex systems</p>
-            </div>
-            <div class="integration-showcase">
-                <div class="integration-card animate-on-scroll">
-                    <div class="integration-icon">🛂</div>
-                    <h3 class="details-bold">Border Control Systems</h3>
-                    <p class="body-text">Hardware integration with immigration services for seamless border processing</p>
-                </div>
-                <div class="integration-card animate-on-scroll animate-delay-1">
-                    <div class="integration-icon">✈️</div>
-                    <h3 class="details-bold">Airport Management</h3>
-                    <p class="body-text">Complete airport operation systems including passenger flow and security</p>
-                </div>
-                <div class="integration-card animate-on-scroll animate-delay-2">
-                    <div class="integration-icon">👤</div>
-                    <h3 class="details-bold">Biometric Authentication</h3>
-                    <p class="body-text">Advanced biometric systems for secure identity verification</p>
-                </div>
-                <div class="integration-card animate-on-scroll animate-delay-3">
-                    <div class="integration-icon">🔗</div>
-                    <h3 class="details-bold">API Integrations</h3>
-                    <p class="body-text">Seamless connection between existing systems and new solutions</p>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <!-- Our Contributions Section -->
     <section id="our-contributions" class="customer-success">
         <div class="carousel-container">
             <div class="section-header">
-                <h2 class="section-title animate-on-scroll">OUR CONTRIBUTIONS</h2>
-                <p class="details-light animate-on-scroll animate-delay-1">Innovative solutions making an impact</p>
+                <h2 class="section-title animate-on-scroll" data-i18n="contributions.title">OUR CONTRIBUTIONS</h2>
+                <p class="details-light animate-on-scroll animate-delay-1" data-i18n="contributions.subtitle">Our engineers contributed to these projects, delivering innovative solutions that made a measurable impact.</p>
             </div>
             
             <button class="carousel-arrow carousel-prev" aria-label="Previous slide">
@@ -300,42 +469,62 @@
             
             <div class="carousel-track">
                 <div class="success-card">
-                    <div class="card-bg" style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), url('assets/images/success_cases/twarz.png') center/cover;">
-                        <span class="card-category">Mobile Innovation</span>
-                        <h3 class="card-title">TWARZ</h3>
-                        <a href="https://www.twarz.com.uy/" target="_blank" rel="noopener noreferrer" class="card-cta">Read More</a>
-                    </div>
-                </div>
-                
-                <div class="success-card">
                     <div class="card-bg" style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), url('assets/images/success_cases/aic.jpg') center/cover;">
-                        <span class="card-category">Airport Technology</span>
-                        <h3 class="card-title">Aeropuerto Internacional de Carrasco</h3>
-                        <a href="https://www.gub.uy/presidencia/comunicacion/fotos/aeropuerto-carrasco-es-primero-america-latina-sistema-biometria-facial-proceso#:~:text=Proceso%20de%20Embarque-,Aeropuerto%20de%20Carrasco%20es%20el%20primero%20en%20Am%C3%A9rica%20Latina%20con,facial%20en%20proceso%20de%20embarque&text=%E2%80%9CUruguay%2C%20en%20las%20innovaciones%20tecnol%C3%B3gicas,el%20quinto%20en%20el%20mundo." target="_blank" rel="noopener noreferrer" class="card-cta">Read More</a>
+                        <span class="card-category" data-i18n="contributions.cat_airport">Contribution: Airport Technology</span>
+                        <h3 class="card-title" data-i18n="contributions.carrasco_title">Aeropuerto Internacional de Carrasco</h3>
+                        <p class="card-result" data-i18n="contributions.carrasco_result">40% reduction in pre-security and migration times</p>
+                        <a href="https://www.gub.uy/presidencia/comunicacion/fotos/aeropuerto-carrasco-es-primero-america-latina-sistema-biometria-facial-proceso#:~:text=Proceso%20de%20Embarque-,Aeropuerto%20de%20Carrasco%20es%20el%20primero%20en%20Am%C3%A9rica%20Latina%20con,facial%20en%20proceso%20de%20embarque&text=%E2%80%9CUruguay%2C%20en%20las%20innovaciones%20tecnol%C3%B3gicas,el%20quinto%20en%20el%20mundo." target="_blank" rel="noopener noreferrer" class="card-cta" data-i18n="contributions.read_more">Read More</a>
                     </div>
                 </div>
-                
+
                 <div class="success-card">
                     <div class="card-bg" style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), url('assets/images/success_cases/msc.jpg') center/cover;">
-                        <span class="card-category">Cruise Industry</span>
-                        <h3 class="card-title">MSC Cruises: Fully Biometric Embarkation Journey</h3>
-                        <a href="https://blog.swblack.com.au/msc-miami-cruise-terminal-redefines-seamless-embarkation-experience#:~:text=Checking%20in%20has%20never%20been,than%20navigating%20a%20crowded%20dock." target="_blank" rel="noopener noreferrer" class="card-cta">Read More</a>
+                        <span class="card-category" data-i18n="contributions.cat_cruise">Contribution: Cruise Industry</span>
+                        <h3 class="card-title" data-i18n="contributions.msc_title">MSC Cruises: Fully Biometric Embarkation Journey</h3>
+                        <p class="card-result" data-i18n="contributions.msc_result">50% reduction in boarding and disembarkation times</p>
+                        <a href="https://blog.swblack.com.au/msc-miami-cruise-terminal-redefines-seamless-embarkation-experience#:~:text=Checking%20in%20has%20never%20been,than%20navigating%20a%20crowded%20dock." target="_blank" rel="noopener noreferrer" class="card-cta" data-i18n="contributions.read_more">Read More</a>
                     </div>
                 </div>
 
                 <div class="success-card">
                     <div class="card-bg" style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), url('assets/images/success_cases/aifa.jpg') center/cover;">
-                        <span class="card-category">Biometric Technology</span>
-                        <h3 class="card-title">AIFA implementación de tecnología biométrica</h3>
-                        <a href="https://esemanal.mx/2022/04/proyectan-para-el-aifa-la-implementacion-de-tecnologia-biometrica/" target="_blank" rel="noopener noreferrer" class="card-cta">Read More</a>
+                        <span class="card-category" data-i18n="contributions.cat_biometric">Contribution: Biometric Technology</span>
+                        <h3 class="card-title" data-i18n="contributions.aifa_title">AIFA: Biometric Technology Implementation</h3>
+                        <p class="card-result" data-i18n="contributions.aifa_result">40% average reduction in boarding times</p>
+                        <a href="https://esemanal.mx/2022/04/proyectan-para-el-aifa-la-implementacion-de-tecnologia-biometrica/" target="_blank" rel="noopener noreferrer" class="card-cta" data-i18n="contributions.read_more">Read More</a>
                     </div>
                 </div>
 
                 <div class="success-card">
                     <div class="card-bg" style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), url('assets/images/success_cases/cep.jpeg') center/cover;">
-                        <span class="card-category">Travel Technology</span>
-                        <h3 class="card-title">Curaçao Express Pass</h3>
-                        <a href="https://amadeus.com/en/newsroom/press-releases/curacao-express-pass-goes-live-landmark-biometric-travel-technology" target="_blank" rel="noopener noreferrer" class="card-cta">Read More</a>
+                        <span class="card-category" data-i18n="contributions.cat_travel">Contribution: Travel Technology</span>
+                        <h3 class="card-title" data-i18n="contributions.curacao_title">Cura&ccedil;ao Express Pass</h3>
+                        <p class="card-result" data-i18n="contributions.curacao_result">Automated migration processing in 10 seconds</p>
+                        <a href="https://amadeus.com/en/newsroom/press-releases/curacao-express-pass-goes-live-landmark-biometric-travel-technology" target="_blank" rel="noopener noreferrer" class="card-cta" data-i18n="contributions.read_more">Read More</a>
+                    </div>
+                </div>
+
+                <div class="success-card">
+                    <div class="card-bg" style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), url('assets/images/success_cases/aic.jpg') center/cover;">
+                        <span class="card-category" data-i18n="contributions.cat_airport">Contribution: Airport Technology</span>
+                        <h3 class="card-title" data-i18n="contributions.sintmaarten_title">Sint Maarten Princess Juliana International Airport</h3>
+                        <p class="card-result" data-i18n="contributions.sintmaarten_result">30% reduction in passenger wait times</p>
+                    </div>
+                </div>
+
+                <div class="success-card">
+                    <div class="card-bg" style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), url('assets/images/success_cases/aic.jpg') center/cover;">
+                        <span class="card-category" data-i18n="contributions.cat_airport">Contribution: Airport Technology</span>
+                        <h3 class="card-title" data-i18n="contributions.puntadeleste_title">Aeropuerto Internacional de Punta del Este</h3>
+                        <p class="card-result" data-i18n="contributions.puntadeleste_result">50% reduction in required personnel</p>
+                    </div>
+                </div>
+
+                <div class="success-card">
+                    <div class="card-bg" style="background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%), url('assets/images/success_cases/twarz.png') center/cover;">
+                        <span class="card-category" data-i18n="contributions.cat_product">Our Product</span>
+                        <h3 class="card-title" data-i18n="contributions.twarz_title">TWARZ</h3>
+                        <a href="https://www.twarz.com.uy/" target="_blank" rel="noopener noreferrer" class="card-cta" data-i18n="contributions.read_more">Read More</a>
                     </div>
                 </div>
             </div>
@@ -348,29 +537,65 @@
         </div>
     </section>
 
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-on-scroll" data-i18n="team.title">FOUNDERS & LEADERSHIP</h2>
+                <p class="details-light animate-on-scroll animate-delay-1" data-i18n="team.subtitle">You work directly with our founders — no account managers, no layers.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card animate-on-scroll">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="details-bold">Felipe Stanham</h3>
+                    <p class="team-role" data-i18n="team.felipe_role">Director of Solutions</p>
+                    <a href="mailto:felipe.stanham@wearedor.com" class="team-contact">felipe.stanham@wearedor.com</a>
+                </div>
+                <div class="team-card animate-on-scroll animate-delay-1">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="details-bold">Leonardo Moreno</h3>
+                    <p class="team-role" data-i18n="team.leonardo_role">Technical Director</p>
+                    <a href="mailto:leonardo.moreno@wearedor.com" class="team-contact">leonardo.moreno@wearedor.com</a>
+                </div>
+                <div class="team-card animate-on-scroll animate-delay-2">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="details-bold">Fernando Carbone</h3>
+                    <p class="team-role" data-i18n="team.fernando_role">Director of Operations</p>
+                    <a href="mailto:fernando.carbone@wearedor.com" class="team-contact">fernando.carbone@wearedor.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header" style="text-align: center;">
-                <h2 class="section-title animate-on-scroll">READY TO BUILD SOMETHING GREAT?</h2>
-                <p class="details-light animate-on-scroll animate-delay-1">Let's discuss your project and how we can help you grow</p>
+                <h2 class="section-title animate-on-scroll" data-i18n="contact.title">READY TO SCALE YOUR TEAM?</h2>
+                <p class="details-light animate-on-scroll animate-delay-1" data-i18n="contact.subtitle">Tell us what you need. Your first engineer could be embedded in under 3 weeks.</p>
             </div>
             <div class="contact-grid" style="justify-content: center; text-align: center;">
                 <div class="contact-info animate-on-scroll" style="max-width: 800px; margin: 0 auto;">
-                    <h3 class="details-bold">Get in Touch</h3>
-                    <p class="body-text">Ready to transform your software challenges into growth opportunities? We'd love to hear about your project.</p>
+                    <h3 class="details-bold" data-i18n="contact.get_in_touch">Get in Touch</h3>
+                    <p class="body-text" data-i18n="contact.description">Ready to transform your software challenges into growth opportunities? We'd love to hear about your project.</p>
                     
                     <div class="contact-method">
-                        <h4 class="details-bold">Email</h4>
+                        <h4 class="details-bold" data-i18n="contact.email_label">Email</h4>
                         <p class="body-text"><a href="mailto:hey@wearedor.com" style="color: inherit; text-decoration: none;">hey@wearedor.com</a></p>
                     </div>
                     
                     <div class="contact-method">
-                        <h4 class="details-bold">Schedule a Call</h4>
-                        <p class="body-text">Book a free consultation to discuss your needs</p>
+                        <h4 class="details-bold" data-i18n="contact.schedule_label">Schedule a Call</h4>
+                        <p class="body-text" data-i18n="contact.schedule_text">Book a free consultation to discuss your needs</p>
                         <div class="calendly-container">
                             <a href="https://fantastical.app/felipestanham/30-min-with-felipe-dor" target="_blank" class="btn btn-primary">
-                                Schedule a Meeting
+                                <span data-i18n="contact.schedule_btn">Schedule a Meeting</span>
                             </a>
                         </div>
                     </div>
@@ -387,22 +612,22 @@
                     <a href="#hero" class="footer-logo-link">
                         <img src="assets/images/logos/dor-logo-white.svg" alt="dør" class="footer-logo">
                     </a>
-                    <p class="body-text">We build. You grow.</p>
+                    <p class="body-text" data-i18n="footer.tagline">We build. You grow.</p>
                 </div>
                 
                 <div class="footer-section animate-on-scroll animate-delay-1">
-                    <h3 class="footer-section-title">Navigation</h3>
+                    <h3 class="footer-section-title" data-i18n="footer.nav_title">Navigation</h3>
                     <ul class="footer-links">
-                        <li><a href="#hero" class="footer-link">Home</a></li>
-                        <li><a href="#services" class="footer-link">Services</a></li>
-                        <li><a href="#features" class="footer-link">Features</a></li>
-                        <li><a href="#our-contributions" class="footer-link">Our contributions</a></li>
-                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                        <li><a href="#hero" class="footer-link" data-i18n="footer.nav_home">Home</a></li>
+                        <li><a href="#services" class="footer-link" data-i18n="footer.nav_services">Services</a></li>
+                        <li><a href="#our-contributions" class="footer-link" data-i18n="footer.nav_contributions">Our Contributions</a></li>
+                        <li><a href="#team" class="footer-link" data-i18n="footer.nav_team">Team</a></li>
+                        <li><a href="#contact" class="footer-link" data-i18n="footer.nav_contact">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section animate-on-scroll animate-delay-2">
-                    <h3 class="footer-section-title">Contact</h3>
+                    <h3 class="footer-section-title" data-i18n="footer.contact_title">Contact</h3>
                     <ul class="footer-contact">
                         <li class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -410,11 +635,11 @@
                         </li>
                         <li class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Montevideo, Uruguay</span>
+                            <span data-i18n="footer.location">Montevideo, Uruguay</span>
                         </li>
                         <li class="contact-item">
                             <i class="fab fa-linkedin"></i>
-                            <a href="#" target="_blank">Connect with us</a>
+                            <a href="https://www.linkedin.com/company/wearedor" target="_blank" data-i18n="footer.linkedin">Connect with us</a>
                         </li>
                     </ul>
                 </div>
@@ -422,7 +647,7 @@
             </div>
             
             <div class="footer-bottom animate-on-scroll animate-delay-3">
-                <p class="body-text">&copy; 2025 dør. All rights reserved.</p>
+                <p class="body-text">&copy; <span class="current-year"></span> dør. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -435,11 +660,11 @@
         <div class="cookie-content">
             <p class="cookie-text">
                 We use cookies to enhance your experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. 
-                <a href="/privacy-policy" class="cookie-link">Learn more</a>
+                <a href="/privacy-policy" class="cookie-link" data-i18n="cookie.learn_more">Learn more</a>
             </p>
             <div class="cookie-buttons">
-                <button id="reject-cookies" class="btn btn-outline">Reject</button>
-                <button id="accept-cookies" class="btn btn-primary">Accept All</button>
+                <button id="reject-cookies" class="btn btn-outline" data-i18n="cookie.reject">Reject</button>
+                <button id="accept-cookies" class="btn btn-primary" data-i18n="cookie.accept">Accept All</button>
             </div>
         </div>
     </div>
@@ -449,6 +674,7 @@
     <script src="assets/js/carousel.js" defer></script>
     <script src="assets/js/cookie-consent.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/i18n.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const cookieConsent = document.getElementById('cookie-consent');
@@ -468,6 +694,11 @@
             rejectCookies.addEventListener('click', function() {
                 localStorage.setItem('cookies-accepted', false);
                 cookieConsent.style.display = 'none';
+            });
+
+            // Dynamic copyright year
+            document.querySelectorAll('.current-year').forEach(function(el) {
+                el.textContent = new Date().getFullYear();
             });
         });
     </script>

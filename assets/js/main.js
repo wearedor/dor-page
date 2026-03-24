@@ -122,12 +122,13 @@ function initContactForm() {
             
             if (!isValid) {
                 e.preventDefault();
-                showFormMessage('error', 'Please fill in all required fields.');
+                var msg = (typeof translations !== 'undefined' && typeof getLang === 'function') ? translations[getLang()]['js.form_validation'] : 'Please fill in all required fields.';
+                showFormMessage('error', msg);
                 return;
             }
             
             // Show loading state
-            submitButton.textContent = 'Sending...';
+            submitButton.textContent = (typeof translations !== 'undefined' && typeof getLang === 'function') ? translations[getLang()]['js.sending'] : 'Sending...';
             submitButton.disabled = true;
             this.classList.add('loading');
             
@@ -325,19 +326,6 @@ window.addEventListener('error', function(e) {
         error_lineno: e.lineno
     });
 });
-
-// Service Worker registration (for future PWA capabilities)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-                console.log('ServiceWorker registration successful');
-            })
-            .catch(function(err) {
-                console.log('ServiceWorker registration failed');
-            });
-    });
-}
 
 // Export functions for testing or external use
 window.DorLanding = {
