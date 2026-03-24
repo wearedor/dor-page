@@ -26,6 +26,7 @@ Then open http://localhost:8080. No compilation, bundling, or dependency install
 - `assets/js/carousel.js` — Scroll-based carousel for "Our Contributions" section with auto-scroll, touch/swipe, keyboard nav, and dot/arrow navigation
 - `assets/js/cookie-consent.js` — Cookie consent banner logic
 - `assets/js/main.js` — Mobile menu, smooth scrolling, scroll progress, GA4 event tracking (CTA clicks, scroll depth, outbound links)
+- `assets/js/i18n.js` — Client-side EN/ES translation system. Contains all ~130 translation strings and the `setLang()`/`getLang()` functions.
 
 **External dependencies (CDN, no local copies):**
 - Font Awesome 6.0.0 — icons throughout the page
@@ -49,6 +50,17 @@ Key marketing constraints:
 - Use "minimal rotation" not "zero rotation" — no absolute guarantees on engineer retention.
 - Use "rigorously vetted senior-level" not "5+ years of experience" — senior level is guaranteed, specific year count is not.
 - The "Our Contributions" carousel projects (airports, MSC Cruises) are contributions by dor engineers, NOT dor-owned projects. Exception: TWARZ is dor's own product.
+
+## Internationalization (i18n)
+
+The site supports English and Spanish via client-side translation. All translatable elements have `data-i18n` attributes. The system is in `assets/js/i18n.js`.
+
+- **Language detection priority:** URL param (`?lang=es`) → localStorage (`dor-lang`) → browser language → English default
+- **Adding new strings:** Add the key to both `en` and `es` objects in `i18n.js`, then add `data-i18n="key"` to the HTML element
+- **Attribute translation:** Use `data-i18n-attr="content:meta.description"` for meta tags and similar
+- **Toggle button:** `.lang-toggle` in both desktop and mobile nav
+- **LATAM campaign links** should use `?lang=es` to force Spanish: `https://wearedor.com?lang=es&utm_source=...`
+- **Key convention:** Spanish translations keep "Staff Augmentation", "CTOs", "SaaS", "UTC-3" and brand name "dør" in English
 
 ## Analytics
 
