@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
             dot.type = 'button';
             dot.classList.add('carousel-dot');
             if (index === 0) dot.classList.add('active');
-            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            var slideLabel = (typeof translations !== 'undefined' && typeof getLang === 'function') ? translations[getLang()]['js.carousel_slide'] : 'Go to slide';
+            dot.setAttribute('aria-label', slideLabel + ' ' + (index + 1));
             dot.addEventListener('click', () => goToSlide(index));
             dotsContainer.appendChild(dot);
         });
@@ -84,35 +85,53 @@ document.addEventListener('DOMContentLoaded', function() {
     function goToSlide(index, animate = true) {
         // Prevent multiple rapid clicks
         if (isAnimating) return;
-        
+
         // Update current index with bounds checking
         const totalSlides = cards.length;
         currentIndex = ((index % totalSlides) + totalSlides) % totalSlides;
-        
-        // Get the actual scroll position
-        const scrollPosition = getScrollPosition(currentIndex);
-        
+
+        // Get the actual scroll position, clamped to max scrollable distance
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        const scrollPosition = Math.min(getScrollPosition(currentIndex), maxScroll);
+
+        // Check if we're already at (or very close to) the target position
+        const currentScroll = Math.round(carousel.scrollLeft);
+        const alreadyAtTarget = Math.abs(currentScroll - scrollPosition) < 2;
+
         // Start animation
         isAnimating = true;
-        
+
         // Clear any pending timeouts
         if (scrollTimeout) clearTimeout(scrollTimeout);
-        
+
+        // Update navigation immediately for better UX
+        updateNavigation();
+
+        if (alreadyAtTarget) {
+            // No actual scrolling will happen, so reset immediately
+            handleScrollEnd();
+            return;
+        }
+
         // Scroll to the new position
         carousel.scrollTo({
             left: scrollPosition,
             behavior: animate ? 'smooth' : 'auto'
         });
-        
-        // Update navigation immediately for better UX
-        updateNavigation();
-        
+
         // Set a timeout to handle the end of the scroll
+        // Use a safety margin to ensure isAnimating always resets
         scrollTimeout = setTimeout(() => {
-            // Snap to the exact position in case of sub-pixel rendering issues
             carousel.scrollLeft = scrollPosition;
             handleScrollEnd();
-        }, animate ? animationDuration + 50 : 0);
+        }, animate ? animationDuration + 100 : 0);
+
+        // Safety fallback: always reset isAnimating after max wait
+        setTimeout(() => {
+            if (isAnimating) {
+                isAnimating = false;
+            }
+        }, 600);
     }
     
     // Next slide with infinite loop

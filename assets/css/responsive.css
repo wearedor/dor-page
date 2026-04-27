@@ -41,8 +41,9 @@
     }
     
     .hero-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-md);
+        max-width: 400px;
     }
     
     /* Section spacing */
@@ -190,9 +191,10 @@
     }
     
     .hero-stats {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 700px;
     }
-    
+
     /* Grid adjustments */
     .problem-solution-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -242,8 +244,8 @@
     }
     
     .hero-stats {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 600px;
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 800px;
     }
     
     /* Grid layouts */
@@ -362,7 +364,7 @@
     }
     
     .hero-stats {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: var(--spacing-sm);
     }
     
