@@ -26,13 +26,22 @@
     en:{text:'We use cookies to measure traffic and improve your experience. By accepting, you consent to their use. ',
         more:'Learn more',accept:'Accept',reject:'Reject'}
   };
+  // Initial guess before the app boots. Defaults to 'es' (the Umbral's own
+  // default) rather than navigator language, so it matches what the app shows.
   function lang(){
     try{ var p=new URLSearchParams(location.search).get('lang');
       if(p==='en'||p==='es')return p;
       if(/(^|-)en\b/.test(location.hash||''))return 'en'; }catch(e){}
     var h=(document.documentElement.lang||'').toLowerCase();
+    if(h.indexOf('en')===0)return 'en';
+    return 'es';
+  }
+  // Current language once the app is live: <html lang> is the authority the
+  // Umbral toggle updates (the ?lang= query can go stale after toggling).
+  function curLang(){
+    var h=(document.documentElement.lang||'').toLowerCase();
     if(h.indexOf('en')===0)return 'en'; if(h.indexOf('es')===0)return 'es';
-    return (navigator.language||'es').toLowerCase().indexOf('en')===0?'en':'es';
+    return lang();
   }
   function utm(){ var p=new URLSearchParams(location.search);
     return {source:p.get('utm_source')||'',medium:p.get('utm_medium')||'',
@@ -82,12 +91,26 @@
     'transition:background .2s ease,color .2s ease,border-color .2s ease'+(mobile?';flex:1':'');
   var rejStyle=btnBase+';background:transparent;color:#fff;border-color:rgba(255,255,255,.3)';
   var accStyle=btnBase+';background:'+ORANGE+';color:#fff';
-  el.innerHTML='<div style="'+inStyle+'"><p style="'+pStyle+'">'+COPY[lang()].text+
-    '<a href="mailto:hey@wearedor.com" style="'+aStyle+'">'+COPY[lang()].more+'</a></p>'+
+  el.innerHTML='<div style="'+inStyle+'"><p data-cc-text style="'+pStyle+'"></p>'+
     '<div style="'+btnsStyle+'">'+
-    '<button type="button" data-cc="reject" style="'+rejStyle+'">'+COPY[lang()].reject+'</button>'+
-    '<button type="button" data-cc="accept" style="'+accStyle+'">'+COPY[lang()].accept+'</button></div></div>';
+    '<button type="button" data-cc="reject" style="'+rejStyle+'"></button>'+
+    '<button type="button" data-cc="accept" style="'+accStyle+'"></button></div></div>';
+  var pEl=el.querySelector('[data-cc-text]');
   var acc=el.querySelector('[data-cc="accept"]'), rej=el.querySelector('[data-cc="reject"]');
+  // Reactive copy: re-render when the Umbral toggle flips <html lang>.
+  var shownLang=null;
+  function applyCopy(l){
+    if(l===shownLang)return; shownLang=l; var c=COPY[l]||COPY.es;
+    pEl.innerHTML=c.text+'<a href="mailto:hey@wearedor.com" style="'+aStyle+'">'+c.more+'</a>';
+    acc.textContent=c.accept; rej.textContent=c.reject;
+  }
+  function sync(){ applyCopy(curLang()); }
+  sync();
+  // Keep the banner's language in step with the app. The Umbral toggle flips
+  // <html lang> via replaceState (no hashchange event fires), so a light
+  // poll while the banner is on screen is the reliable, simple way to track
+  // it. Cleared in hide().
+  var syncTimer=setInterval(sync,400);
   acc.addEventListener('mouseenter',function(){acc.style.background=ORANGE_D;});
   acc.addEventListener('mouseleave',function(){acc.style.background=ORANGE;});
   rej.addEventListener('mouseenter',function(){rej.style.background='rgba(255,255,255,.1)';rej.style.borderColor='rgba(255,255,255,.5)';});
@@ -97,7 +120,7 @@
 
   var shown=false;
   function reveal(){ if(shown)return; shown=true; void el.offsetWidth; el.style.transform='translateY(0)'; }
-  function hide(){ el.style.transform='translateY(110%)';
+  function hide(){ el.style.transform='translateY(110%)'; clearInterval(syncTimer);
     setTimeout(function(){ if(el.parentNode)el.parentNode.removeChild(el); if(obs)obs.disconnect(); },400); }
   function attach(){ if(!document.body)return;
     if(!el.isConnected){ document.body.appendChild(el); requestAnimationFrame(reveal); } }
