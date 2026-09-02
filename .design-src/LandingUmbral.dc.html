@@ -6,6 +6,7 @@
 <script src="./support.js"></script>
 </head>
 <body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0d0d0d"/><rect x="30" y="30" width="40" height="40" rx="2" fill="none" stroke="#F26C3B" stroke-width="3"/><text x="50" y="58" font-family="Arial" font-size="20" font-weight="700" fill="#F26C3B" text-anchor="middle">d</text></svg></template>
 <x-dc>
 <!-- @template name="Landing · Umbral" description="Landing horizontal: puertas en vez de scroll, bifurcación Talent/Studio, agenda embebida, bilingüe ES/EN." -->
 <helmet>
@@ -30,15 +31,24 @@
 <meta name="twitter:image" content="https://wearedor.com/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20fill='%23F26C3B'/%3E%3Ctext%20x='50'%20y='75'%20font-size='78'%20text-anchor='middle'%20fill='%23ffffff'%20font-family='Helvetica,Arial,sans-serif'%3E%C3%B8%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"dør","url":"https://wearedor.com/","slogan":"We build, you grow","areaServed":["US","UY","AR"],"address":{"@type":"PostalAddress","addressLocality":"Montevideo","addressCountry":"UY"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"dør Talent","alternateName":"Staff augmentation","description":"Senior developers added to your team from Uruguay and Argentina."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"dør Studio","alternateName":"Software factory","description":"Nearshore software development teams that build your product end to end."}}]}</script>
-<style>html,body{margin:0;padding:0;background:#000;overflow:hidden;font-variant-numeric:oldstyle-nums}*{box-sizing:border-box}::selection{background:#F26C3B;color:#fff}a{color:#F26C3B;text-decoration:none}a:hover{color:#fff}@keyframes dorPulse{0%,100%{opacity:.3}50%{opacity:.9}}@keyframes dorSweepFwd{0%{transform:translateX(100vw) skewX(-18deg);opacity:0}6%{opacity:1}90%{opacity:1}100%{transform:translateX(-52vw) skewX(-18deg);opacity:0}}@keyframes dorSweepBack{0%{transform:translateX(-52vw) skewX(-18deg);opacity:0}6%{opacity:1}90%{opacity:1}100%{transform:translateX(100vw) skewX(-18deg);opacity:0}}@keyframes dorShutTop{0%{transform:translateY(-101%)}40%{transform:translateY(0)}62%{transform:translateY(0)}100%{transform:translateY(-101%)}}@keyframes dorShutBot{0%{transform:translateY(101%)}40%{transform:translateY(0)}62%{transform:translateY(0)}100%{transform:translateY(101%)}}@keyframes dorGateL{0%{transform:translateX(-62vw) skewX(-14deg)}38%{transform:translateX(0) skewX(-14deg)}70%{transform:translateX(0) skewX(-14deg)}100%{transform:translateX(-62vw) skewX(-14deg)}}@keyframes dorGateR{0%{transform:translateX(62vw) skewX(-14deg)}38%{transform:translateX(0) skewX(-14deg)}70%{transform:translateX(0) skewX(-14deg)}100%{transform:translateX(62vw) skewX(-14deg)}}@keyframes dorIris{0%{transform:scale(0)}38%{transform:scale(1)}60%{transform:scale(1)}100%{transform:scale(0)}}@keyframes dorHingeFwd{0%{opacity:0;transform-origin:right center;transform:rotateY(-88deg)}8%{opacity:1}48%{transform-origin:right center;transform:rotateY(0deg)}62%{transform-origin:left center;transform:rotateY(0deg)}92%{opacity:1}100%{opacity:0;transform-origin:left center;transform:rotateY(88deg)}}@keyframes dorHingeBack{0%{opacity:0;transform-origin:left center;transform:rotateY(88deg)}8%{opacity:1}48%{transform-origin:left center;transform:rotateY(0deg)}62%{transform-origin:right center;transform:rotateY(0deg)}92%{opacity:1}100%{opacity:0;transform-origin:right center;transform:rotateY(-88deg)}}@keyframes dorHingeShade{0%{opacity:.9}48%{opacity:0}62%{opacity:0}100%{opacity:.9}}</style>
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden;font-variant-numeric:oldstyle-nums}*{box-sizing:border-box}::selection{background:#F26C3B;color:#fff}a{color:#F26C3B;text-decoration:none}a:hover{color:#fff}@keyframes dorDiagAct{0%,100%{opacity:.42}50%{opacity:1}}.dorDiagAct{animation:dorDiagAct 2.8s ease-in-out infinite}@keyframes dorPulse{0%,100%{opacity:.3}50%{opacity:.9}}@keyframes dorSweepFwd{0%{transform:translateX(100vw) skewX(-18deg);opacity:0}6%{opacity:1}90%{opacity:1}100%{transform:translateX(-52vw) skewX(-18deg);opacity:0}}@keyframes dorSweepBack{0%{transform:translateX(-52vw) skewX(-18deg);opacity:0}6%{opacity:1}90%{opacity:1}100%{transform:translateX(100vw) skewX(-18deg);opacity:0}}@keyframes dorShutTop{0%{transform:translateY(-101%)}40%{transform:translateY(0)}62%{transform:translateY(0)}100%{transform:translateY(-101%)}}@keyframes dorShutBot{0%{transform:translateY(101%)}40%{transform:translateY(0)}62%{transform:translateY(0)}100%{transform:translateY(101%)}}@keyframes dorGateL{0%{transform:translateX(-62vw) skewX(-14deg)}38%{transform:translateX(0) skewX(-14deg)}70%{transform:translateX(0) skewX(-14deg)}100%{transform:translateX(-62vw) skewX(-14deg)}}@keyframes dorGateR{0%{transform:translateX(62vw) skewX(-14deg)}38%{transform:translateX(0) skewX(-14deg)}70%{transform:translateX(0) skewX(-14deg)}100%{transform:translateX(62vw) skewX(-14deg)}}@keyframes dorIris{0%{transform:scale(0)}38%{transform:scale(1)}60%{transform:scale(1)}100%{transform:scale(0)}}@keyframes dorHingeFwd{0%{opacity:0;transform-origin:right center;transform:rotateY(-88deg)}8%{opacity:1}48%{transform-origin:right center;transform:rotateY(0deg)}62%{transform-origin:left center;transform:rotateY(0deg)}92%{opacity:1}100%{opacity:0;transform-origin:left center;transform:rotateY(88deg)}}@keyframes dorHingeBack{0%{opacity:0;transform-origin:left center;transform:rotateY(88deg)}8%{opacity:1}48%{transform-origin:left center;transform:rotateY(0deg)}62%{transform-origin:right center;transform:rotateY(0deg)}92%{opacity:1}100%{opacity:0;transform-origin:right center;transform:rotateY(-88deg)}}@keyframes dorHingeShade{0%{opacity:.9}48%{opacity:0}62%{opacity:0}100%{opacity:.9}}</style>
 </helmet>
 <div ref="{{ rootRef }}" onClick="{{ rootClick }}" style="position:fixed;inset:0;background:var(--dor-color-negro);color:var(--dor-color-blanco);font-family:var(--dor-font-aeonik);overflow:hidden">
 <div ref="{{ trackRef }}" style="position:absolute;inset:0;display:flex;transform:translateX(0)">
 <section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
+<div data-doorseal aria-hidden="true" style="position:absolute;right:5vw;top:50%;transform:translateY(-50%);width:min(20vw,260px);opacity:.85;pointer-events:none;z-index:-1">{{ introSeal }}</div>
 <div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="240px,18px">uruguay · argentina · gmt-<span style="font-size:.78em">3</span></x-import></div>
 <h1 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(40px,7.6vw,140px);line-height:.92;letter-spacing:-.035em;margin:20px 0 0;max-width:15ch">{{ t.h0 }}</h1>
 <div style="max-width:640px;margin-top:30px"><x-import component-from-global-scope="DorDesignSystem.Divider" color="naranja" hint-size="640px,2px"></x-import></div>
 <p style="font-size:var(--dor-text-lg);max-width:52ch;margin:30px 0 0;opacity:.74;line-height:1.55;text-wrap:pretty">{{ t.p0 }}</p>
+<div data-introstats style="margin-top:34px;display:flex;gap:clamp(28px,4vw,52px);flex-wrap:wrap">
+<sc-for list="{{ introStats }}" as="st" hint-placeholder-count="2">
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;font-size:clamp(28px,3.2vw,44px);line-height:1;letter-spacing:-.02em;color:var(--dor-color-naranja)">{{ st.n }}</span>
+<span style="font-size:var(--dor-text-sm);opacity:.66;letter-spacing:.04em;text-transform:uppercase">{{ st.k }}</span>
+</div>
+</sc-for>
+</div>
 <div style="margin-top:44px;display:flex;align-items:center;gap:14px;animation:dorPulse 2.6s ease-in-out infinite">
 <x-import component-from-global-scope="DorDesignSystem.Icon" name="{{ hintIcon }}" color="naranja" size="{{ n20 }}" hint-size="20px,20px"></x-import>
 <span style="font-variant-numeric:lining-nums;font-size:var(--dor-text-sm);letter-spacing:.1em;text-transform:uppercase;opacity:.8">{{ hint }}</span>
@@ -67,8 +77,9 @@
 <sc-for list="{{ compareList }}" as="cp" hint-placeholder-count="0">
 <section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
 <div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="240px,18px">{{ cp.eb }}</x-import></div>
-<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(24px,3.2vw,50px);line-height:1;letter-spacing:-.03em;margin:12px 0 0;max-width:20ch">{{ cp.h }}</h2>
-<div data-cols="0.9fr 1fr 1fr" style="display:grid;grid-template-columns:0.9fr 1fr 1fr;gap:0 32px;margin-top:24px;max-width:1240px;width:100%;border-top:1px solid rgba(255,255,255,.16)">
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(22px,2.6vw,40px);line-height:1;letter-spacing:-.03em;margin:8px 0 0;max-width:20ch">{{ cp.h }}</h2>
+<div style="margin-top:6px;width:100%;max-width:460px">{{ compareDiagram }}</div>
+<div data-cols="0.9fr 1fr 1fr" style="display:grid;grid-template-columns:0.9fr 1fr 1fr;gap:0 32px;margin-top:4px;max-width:1240px;width:100%;border-top:1px solid rgba(255,255,255,.16)">
 <sc-for list="{{ compareCells }}" as="cell" hint-placeholder-count="12">
 <div data-ccell style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;gap:6px">
 <span style="font-variant-numeric:lining-nums;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dor-color-naranja);font-family:var(--dor-font-neue-machina);font-weight:700">{{ cell.tag }}</span>
@@ -76,7 +87,7 @@
 </div>
 </sc-for>
 </div>
-<div style="display:flex;gap:14px;margin-top:24px;flex-wrap:wrap">
+<div style="display:flex;gap:14px;margin-top:10px;flex-wrap:wrap">
 <div onClick="{{ pickTalent }}" onKeyDown="{{ keyTalent }}" role="button" tabindex="0" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" data-noadvance style="cursor:pointer;border:1px solid rgba(255,255,255,.28);padding:14px 26px;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.06em;transition:background .2s ease" style-hover="background:var(--dor-color-naranja);border-color:var(--dor-color-naranja)">{{ cp.pickA }}</div>
 <div onClick="{{ pickStudio }}" onKeyDown="{{ keyStudio }}" role="button" tabindex="0" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" data-noadvance style="cursor:pointer;border:1px solid rgba(255,255,255,.28);padding:14px 26px;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.06em;transition:background .2s ease" style-hover="background:var(--dor-color-naranja);border-color:var(--dor-color-naranja)">{{ cp.pickB }}</div>
 </div>
@@ -84,19 +95,25 @@
 </sc-for>
 <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
 <section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja);overflow:hidden">
-<div data-num aria-hidden="true" style="font-variant-numeric:lining-nums;position:absolute;right:6.5vw;top:50%;transform:translateY(-50%);font-family:var(--dor-font-neue-machina);font-weight:700;font-size:38vw;line-height:.7;letter-spacing:-.05em;color:rgba(255,255,255,.055);pointer-events:none;user-select:none">{{ s.n }}</div>
-<div data-narrow="60%" style="position:relative;max-width:60%">
+<div data-cols="1.05fr .95fr" style="display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:center;max-width:1240px;width:100%">
+<div>
 <div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="240px,18px">{{ s.eyebrow }} <span style="font-size:.78em">{{ s.num }}</span></x-import></div>
-<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(26px,3.9vw,62px);line-height:1;letter-spacing:-.03em;margin:16px 0 0;max-width:22ch;text-wrap:pretty">{{ s.title }}</h2>
-<div style="max-width:420px;margin-top:28px"><x-import component-from-global-scope="DorDesignSystem.Divider" color="naranja" hint-size="420px,2px"></x-import></div>
-<p style="font-size:var(--dor-text-lg);max-width:44ch;margin:26px 0 0;opacity:.7;line-height:1.55;text-wrap:pretty">{{ s.note }}</p>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(26px,3.6vw,58px);line-height:1;letter-spacing:-.03em;margin:16px 0 0;max-width:20ch;text-wrap:pretty">{{ s.title }}</h2>
+<div style="max-width:420px;margin-top:26px"><x-import component-from-global-scope="DorDesignSystem.Divider" color="naranja" hint-size="420px,2px"></x-import></div>
+<p style="font-size:var(--dor-text-lg);max-width:44ch;margin:24px 0 0;opacity:.72;line-height:1.55;text-wrap:pretty">{{ s.note }}</p>
+</div>
+<div data-diagram style="position:relative;border:1px solid rgba(255,255,255,.14);border-top:2px solid var(--dor-color-naranja);border-radius:var(--dor-radius-md);padding:clamp(24px,3.2vw,44px);min-height:clamp(220px,34vh,330px);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02)">
+<span aria-hidden="true" style="font-variant-numeric:lining-nums;position:absolute;top:14px;right:18px;font-family:var(--dor-font-neue-machina);font-weight:700;font-size:12px;letter-spacing:.16em;color:rgba(255,255,255,.3)">{{ s.num }}</span>
+{{ s.diagram }}
+</div>
 </div>
 </section>
 </sc-for>
 <section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
 <div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="240px,18px">{{ t.after.eb }}</x-import></div>
 <h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(26px,3.9vw,62px);line-height:1;letter-spacing:-.03em;margin:16px 0 0;max-width:20ch;text-wrap:pretty">{{ t.after.h }}</h2>
-<div data-narrow="70%" style="margin-top:38px;max-width:70%;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.16)">
+<div data-cols="1fr .8fr" style="display:grid;grid-template-columns:1fr .8fr;gap:clamp(28px,4vw,60px);align-items:center;margin-top:34px;max-width:1120px;width:100%">
+<div style="display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.16)">
 <sc-for list="{{ afterItems }}" as="a" hint-placeholder-count="3">
 <div style="display:flex;align-items:baseline;gap:22px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.16)">
 <span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--dor-color-naranja);min-width:26px">{{ a.n }}</span>
@@ -104,16 +121,41 @@
 </div>
 </sc-for>
 </div>
+<div data-diagram style="position:relative;border:1px solid rgba(255,255,255,.14);border-top:2px solid var(--dor-color-naranja);border-radius:var(--dor-radius-md);padding:clamp(22px,3vw,40px);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02)">{{ afterDiagram }}</div>
+</div>
 </section>
 <section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
 <div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="260px,18px">{{ t.team.eb }}</x-import></div>
-<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(26px,3.9vw,62px);line-height:1;letter-spacing:-.03em;margin:16px 0 0;max-width:20ch;text-wrap:pretty">{{ t.team.h }}</h2>
-<div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:44px;max-width:1180px;width:100%">
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(24px,3vw,46px);line-height:1;letter-spacing:-.03em;margin:12px 0 0;max-width:20ch;text-wrap:pretty">{{ t.team.h }}</h2>
+<div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:16px;max-width:1180px;width:100%">
 <sc-for list="{{ teamCols }}" as="c" hint-placeholder-count="3">
 <div style="display:flex;flex-direction:column;gap:14px;border-top:2px solid var(--dor-color-naranja);padding-top:18px">
 <span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--dor-color-naranja)">{{ c.n }}</span>
 <span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:clamp(17px,1.7vw,25px);line-height:1.1;letter-spacing:-.015em;text-wrap:pretty">{{ c.t }}</span>
 <span style="font-size:var(--dor-text-md);opacity:.72;line-height:1.5;text-wrap:pretty">{{ c.b }}</span>
+</div>
+</sc-for>
+</div>
+<div data-diagram style="margin-top:12px;border:1px solid rgba(255,255,255,.14);border-top:2px solid var(--dor-color-naranja);border-radius:var(--dor-radius-md);padding:clamp(14px,1.8vw,22px);max-width:1180px;width:100%">
+<div style="font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.14em;color:var(--dor-color-naranja);margin-bottom:12px">{{ t.team.tzTitle }}</div>
+{{ teamDiagram }}
+</div>
+</section>
+<section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
+<div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="200px,18px">{{ t.stack.eb }}</x-import></div>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(24px,3vw,46px);line-height:1;letter-spacing:-.03em;margin:12px 0 0;max-width:20ch;text-wrap:pretty">{{ t.stack.h }}</h2>
+<div data-cols="4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,2.6vw,40px);margin-top:22px;max-width:1200px;width:100%">
+<sc-for list="{{ stackGroups }}" as="g" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:16px;border-top:2px solid var(--dor-color-naranja);padding-top:16px">
+<span style="font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.1em;color:var(--dor-color-naranja)">{{ g.title }}</span>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ g.items }}" as="it" hint-placeholder-count="6">
+<div style="display:flex;align-items:center;gap:11px;border:1px solid rgba(255,255,255,.16);border-radius:var(--dor-radius-md);padding:6px 12px;transition:border-color .2s ease,background .2s ease" style-hover="border-color:var(--dor-color-naranja);background:rgba(255,255,255,.04)">
+<span style="width:24px;height:24px;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(242,108,59,.5);border-radius:var(--dor-radius-sm);font-family:var(--dor-font-neue-machina);font-weight:700;font-size:11px;color:var(--dor-color-naranja)">{{ it.mono }}</span>
+<span style="font-size:var(--dor-text-sm);white-space:nowrap">{{ it.name }}</span>
+</div>
+</sc-for>
+</div>
 </div>
 </sc-for>
 </div>
@@ -126,7 +168,7 @@
 <div style="margin-top:26px;display:flex;flex-direction:column;gap:14px">
 <sc-for list="{{ rulesNo }}" as="r" hint-placeholder-count="3">
 <div style="display:flex;align-items:baseline;gap:16px">
-<span style="color:var(--dor-color-naranja);font-family:var(--dor-font-neue-machina);font-weight:700;font-size:15px">—</span>
+<span style="flex:0 0 auto;display:inline-flex;color:var(--dor-color-naranja);transform:translateY(3px)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"></line><line x1="15.5" y1="8.5" x2="8.5" y2="15.5"></line></svg></span>
 <span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:clamp(15px,1.5vw,22px);line-height:1.2;letter-spacing:-.01em;text-wrap:pretty">{{ r.text }}</span>
 </div>
 </sc-for>
@@ -247,25 +289,25 @@
 </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;transicion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;porton&quot;,&quot;barrido&quot;,&quot;persiana&quot;,&quot;iris&quot;,&quot;bisagra&quot;],&quot;default&quot;:&quot;porton&quot;,&quot;tsType&quot;:&quot;'porton'|'barrido'|'persiana'|'iris'|'bisagra'&quot;,&quot;section&quot;:&quot;Transición&quot;},&quot;agenda&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;enlace&quot;,&quot;embebido&quot;],&quot;default&quot;:&quot;enlace&quot;,&quot;tsType&quot;:&quot;'enlace'|'embebido'&quot;,&quot;section&quot;:&quot;Agenda&quot;},&quot;startLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;es&quot;,&quot;en&quot;],&quot;default&quot;:&quot;es&quot;,&quot;tsType&quot;:&quot;'es'|'en'&quot;,&quot;section&quot;:&quot;Idioma&quot;},&quot;railMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;numeros&quot;,&quot;nombres&quot;],&quot;default&quot;:&quot;numeros&quot;,&quot;tsType&quot;:&quot;'numeros'|'nombres'&quot;,&quot;section&quot;:&quot;Navegación&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;transicion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;porton&quot;,&quot;barrido&quot;,&quot;persiana&quot;,&quot;iris&quot;,&quot;bisagra&quot;],&quot;default&quot;:&quot;porton&quot;,&quot;tsType&quot;:&quot;'porton'|'barrido'|'persiana'|'iris'|'bisagra'&quot;,&quot;section&quot;:&quot;Transición&quot;},&quot;agenda&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;enlace&quot;,&quot;embebido&quot;],&quot;default&quot;:&quot;enlace&quot;,&quot;tsType&quot;:&quot;'enlace'|'embebido'&quot;,&quot;section&quot;:&quot;Agenda&quot;},&quot;startLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;es&quot;,&quot;en&quot;],&quot;default&quot;:&quot;es&quot;,&quot;tsType&quot;:&quot;'es'|'en'&quot;,&quot;section&quot;:&quot;Idioma&quot;},&quot;railMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;numeros&quot;,&quot;nombres&quot;],&quot;default&quot;:&quot;numeros&quot;,&quot;tsType&quot;:&quot;'numeros'|'nombres'&quot;,&quot;section&quot;:&quot;Navegación&quot;},&quot;animarLineas&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Diagramas&quot;}}">
 const CAL='https://fantastical.app/felipestanham/30-min-with-felipe-dor';
 const T={es:{lang:'es',title:'dør | Equipos de software nearshore en Uruguay y Argentina',desc:'Sumá desarrolladores senior a tu equipo con dør Talent, o construí tu producto con dør Studio. Nearshore desde Uruguay y Argentina, en tu huso horario y en inglés.',
-h0:'dør significa puerta',p0:'En danés. La nuestra da a Sudamérica: equipos de software que trabajan en tu huso horario, en tu idioma, dentro de tu empresa. No somos una agencia más de outsourcing.',hint0:'usá las flechas o hacé clic',hint0m:'deslizá hacia abajo para cruzar',skip:'Ir a agendar una llamada',aPrev:'Puerta anterior',aNext:'Puerta siguiente',eb1:'elegí tu puerta',h1:'¿Qué necesitás?',pick:'Elegí una puerta para seguir',next:'seguir',ebEnd:'última puerta',hEnd:'Una llamada de 30 minutos',pEnd:'Sin propuesta de cuarenta páginas. Contanos el problema y te decimos si podemos resolverlo.',cta:'Agendar llamada',ctaShort:'Agendar',calFallback:'¿No carga el calendario? Abrilo en una pestaña nueva',calCard:{title:'Reservá con Felipe',cta:'Ver horarios disponibles',facts:[{k:'duración',v:'30 minutos'},{k:'idioma',v:'Español o inglés'},{k:'formato',v:'Videollamada'}]},foot:'Compañía uruguaya · Montevideo · GMT-3',call:'llamada',railAfter:'después',railTeam:'equipo',railRules:'reglas',railCompare:'comparar',
+h0:'dør significa puerta',p0:'En danés. La nuestra da a Sudamérica: equipos de software que trabajan en tu huso horario, en tu idioma, dentro de tu empresa. No somos una agencia más de outsourcing.',hint0:'usá las flechas o hacé clic',hint0m:'deslizá hacia abajo para cruzar',skip:'Ir a agendar una llamada',aPrev:'Puerta anterior',aNext:'Puerta siguiente',eb1:'elegí tu puerta',h1:'¿Qué necesitás?',pick:'Elegí una puerta para seguir',next:'seguir',ebEnd:'última puerta',hEnd:'Una llamada de 30 minutos',pEnd:'Sin propuesta de cuarenta páginas. Contanos el problema y te decimos si podemos resolverlo.',cta:'Agendar llamada',ctaShort:'Agendar',calFallback:'¿No carga el calendario? Abrilo en una pestaña nueva',calCard:{title:'Reservá con Felipe',cta:'Ver horarios disponibles',facts:[{k:'duración',v:'30 minutos'},{k:'idioma',v:'Español o inglés'},{k:'formato',v:'Videollamada'}]},foot:'Compañía uruguaya · Montevideo · GMT-3',stats:[{n:'5 años',k:'operando'},{n:'+90%',k:'retención de equipo'}],stack:{eb:'con qué construimos',h:'Nuestro stack',groups:[{title:'Frontend & Mobile',items:['React','Next.js','TypeScript','Vue','Angular','React Native','Flutter']},{title:'Backend',items:['Node.js','.NET','Python','Go','Java','Ruby on Rails','GraphQL']},{title:'Cloud & DevOps',items:['AWS','Azure','Google Cloud','Docker','Kubernetes','Terraform']},{title:'Datos & AI',items:['PostgreSQL','MongoDB','Redis','AI / LLMs','OpenAI / Anthropic','Data / ML']}]},call:'llamada',railAfter:'después',railTeam:'equipo',railRules:'reglas',railCompare:'comparar',railStack:'stack',
 doors:[{k:'equipo',title:'dør Talent',sub:'Necesito sumar gente que ya sepa.',mark:'outsourcing'},{k:'producto',title:'dør Studio',sub:'Necesito que alguien lo construya.',mark:'software-engineering'},{k:'hablar',title:'Aún no sé',sub:'Necesito hablar con alguien primero.',mark:null}],
 names:{equipo:'dør talent',producto:'dør studio',hablar:'hablemos'},step:'paso',
-compare:{eb:'talent o studio',h:'¿Cuál te sirve?',pickA:'Seguir por Talent',pickB:'Seguir por Studio',rows:[{axis:'Cuándo conviene',a:'Ya sabés qué construir y te falta gente.',b:'Sabés el problema, no tenés equipo para resolverlo.'},{axis:'Velocidad de arranque',a:'Perfiles propuestos en menos de 3 semanas.',b:'Discovery primero: el equipo llega con el plan.'},{axis:'Si crece el alcance',a:'Sumás personas al mismo equipo.',b:'Ajustamos plan y equipo con vos.'},{axis:'Quién elige a las personas',a:'Vos. Entrevistás y decidís.',b:'Armamos el equipo y te lo presentamos.'}]},
+compare:{eb:'talent o studio',h:'¿Cuál te sirve?',pickA:'Seguir por Talent',pickB:'Seguir por Studio',problem:'tu problema',flowA:'sumás gente a tu equipo',flowB:'construimos el producto',rows:[{axis:'Cuándo conviene',a:'Ya sabés qué construir y te falta gente.',b:'Sabés el problema, no tenés equipo para resolverlo.'},{axis:'Velocidad de arranque',a:'Perfiles propuestos en menos de 3 semanas.',b:'Discovery primero: el equipo llega con el plan.'},{axis:'Si crece el alcance',a:'Sumás personas al mismo equipo.',b:'Ajustamos plan y equipo con vos.'},{axis:'Quién elige a las personas',a:'Vos. Entrevistás y decidís.',b:'Armamos el equipo y te lo presentamos.'}]},
 steps:{equipo:[{title:'Contacto de discovery y requirement gathering',note:'Una llamada. Qué necesitás, cuándo y con quién.'},{title:'Candidatos internos, o buscamos el fit ideal en menos de 3 semanas',note:'Primero miramos adentro. Si no está, lo salimos a buscar.'},{title:'El cliente elige las personas',note:'Entrevistás vos. Nosotros no imponemos perfiles.'},{title:'Tu equipo escalado en menos de un mes',note:'Trabajando con tu gente, con tus procesos, en tu huso horario.'}],producto:[{title:'Discovery',note:'Entendemos el problema antes de escribir código.'},{title:'Presentamos el equipo',note:'Nombres y caras. Sabés quién construye.'},{title:'Plan claro y preciso',note:'Alcance, tiempos y responsables por escrito.'},{title:'Ponemos en marcha tu proyecto',note:'Arrancamos, y seguimos con vos mientras crece.'}],hablar:[]},
-after:{eb:'después del arranque',h:'No desaparecemos después del arranque',items:['Un referente de dør sigue el proyecto. No un ticket.','El equipo escala cuando lo necesitás, con la misma vara de selección.','Si algo no funciona, lo decimos antes de que sea un problema.']},
-team:{eb:'quiénes están del otro lado',h:'Gente senior, cuidada',cols:[{t:'Equipos senior',b:'Beneficios, bonos y crecimiento profesional. La gente se queda, y eso lo nota tu proyecto.'},{t:'Por qué Uruguay y Argentina',b:'Dos mercados con formación técnica fuerte y una cultura de trabajo cercana a la de tu equipo.'},{t:'Inglés y horario',b:'Todo el equipo trabaja en inglés. El solapamiento horario lo definimos con vos, no al revés.'}]},
+after:{eb:'después del arranque',h:'No desaparecemos después del arranque',flow:['kick-off','un referente','escala'],items:['Un referente de dør sigue el proyecto. No un ticket.','El equipo escala cuando lo necesitás, con la misma vara de selección.','Si algo no funciona, lo decimos antes de que sea un problema.']},
+team:{eb:'quiénes están del otro lado',h:'Gente senior, cuidada',tzTitle:'Solapamiento horario con tu equipo',tz:[{city:'Montevideo',base:true,ov:18,tag:'base'},{city:'New York',ov:16,tag:'+7h'},{city:'Chicago',ov:15,tag:'+6h'},{city:'San Francisco',ov:13,tag:'+4h'}],cols:[{t:'Equipos senior',b:'Beneficios, bonos y crecimiento profesional. La gente se queda, y eso lo nota tu proyecto.'},{t:'Por qué Uruguay y Argentina',b:'Dos mercados con formación técnica fuerte y una cultura de trabajo cercana a la de tu equipo.'},{t:'Inglés y horario',b:'Todo el equipo trabaja en inglés. El solapamiento horario lo definimos con vos, no al revés.'}]},
 rules:{eb:'las reglas del juego',hNo:'Qué no hacemos',no:['No hacemos body shopping.','No vendemos horas sueltas.','No rotamos sin avisar.'],hYou:'Qué necesitamos de tu lado',you:['Un decisor con presupuesto.','Feedback en 48 horas.','Acceso a repos y entornos.','Prioridades claras y por escrito.']}},
 en:{lang:'en',title:'dør | Nearshore software teams in Uruguay and Argentina',desc:'Add senior developers to your team with dør Talent, or have dør Studio build your product. Nearshore from Uruguay and Argentina, in your time zone, in English.',
-h0:'dør means door',p0:'In Danish. Ours opens onto South America: software teams working in your time zone, in your language, inside your company. Not one more outsourcing agency.',hint0:'use the arrows or click',hint0m:'scroll down to cross',skip:'Skip to booking',aPrev:'Previous door',aNext:'Next door',eb1:'choose your door',h1:'What do you need?',pick:'Choose a door to continue',next:'next',ebEnd:'last door',hEnd:'A 30-minute call',pEnd:'No forty-page proposal. Tell us the problem and we tell you whether we can solve it.',cta:'Book a call',ctaShort:'Book',calFallback:'Calendar not loading? Open it in a new tab',calCard:{title:'Book with Felipe',cta:'See available times',facts:[{k:'length',v:'30 minutes'},{k:'language',v:'English or Spanish'},{k:'format',v:'Video call'}]},foot:'Uruguayan company · Montevideo · GMT-3',call:'call',railAfter:'after',railTeam:'team',railRules:'rules',railCompare:'compare',
+h0:'dør means door',p0:'In Danish. Ours opens onto South America: software teams working in your time zone, in your language, inside your company. Not one more outsourcing agency.',hint0:'use the arrows or click',hint0m:'scroll down to cross',skip:'Skip to booking',aPrev:'Previous door',aNext:'Next door',eb1:'choose your door',h1:'What do you need?',pick:'Choose a door to continue',next:'next',ebEnd:'last door',hEnd:'A 30-minute call',pEnd:'No forty-page proposal. Tell us the problem and we tell you whether we can solve it.',cta:'Book a call',ctaShort:'Book',calFallback:'Calendar not loading? Open it in a new tab',calCard:{title:'Book with Felipe',cta:'See available times',facts:[{k:'length',v:'30 minutes'},{k:'language',v:'English or Spanish'},{k:'format',v:'Video call'}]},foot:'Uruguayan company · Montevideo · GMT-3',stats:[{n:'5 years',k:'operating'},{n:'+90%',k:'team retention'}],stack:{eb:'what we build with',h:'Our stack',groups:[{title:'Frontend & Mobile',items:['React','Next.js','TypeScript','Vue','Angular','React Native','Flutter']},{title:'Backend',items:['Node.js','.NET','Python','Go','Java','Ruby on Rails','GraphQL']},{title:'Cloud & DevOps',items:['AWS','Azure','Google Cloud','Docker','Kubernetes','Terraform']},{title:'Data & AI',items:['PostgreSQL','MongoDB','Redis','AI / LLMs','OpenAI / Anthropic','Data / ML']}]},call:'call',railAfter:'after',railTeam:'team',railRules:'rules',railCompare:'compare',railStack:'stack',
 doors:[{k:'equipo',title:'dør Talent',sub:'I need to add people who already know.',mark:'outsourcing'},{k:'producto',title:'dør Studio',sub:'I need someone to build it.',mark:'software-engineering'},{k:'hablar',title:'Not sure yet',sub:'I need to talk to someone first.',mark:null}],
 names:{equipo:'dør talent',producto:'dør studio',hablar:'let us talk'},step:'step',
-compare:{eb:'talent or studio',h:'Which one fits?',pickA:'Continue with Talent',pickB:'Continue with Studio',rows:[{axis:'When it fits',a:'You know what to build and you are short on people.',b:'You know the problem, you have no team to solve it.'},{axis:'Time to start',a:'Profiles proposed in under 3 weeks.',b:'Discovery first: the team arrives with the plan.'},{axis:'If scope grows',a:'You add people to the same team.',b:'We adjust plan and team with you.'},{axis:'Who picks the people',a:'You do. You interview and decide.',b:'We build the team and introduce it.'}]},
+compare:{eb:'talent or studio',h:'Which one fits?',pickA:'Continue with Talent',pickB:'Continue with Studio',problem:'your problem',flowA:'add people to your team',flowB:'we build the product',rows:[{axis:'When it fits',a:'You know what to build and you are short on people.',b:'You know the problem, you have no team to solve it.'},{axis:'Time to start',a:'Profiles proposed in under 3 weeks.',b:'Discovery first: the team arrives with the plan.'},{axis:'If scope grows',a:'You add people to the same team.',b:'We adjust plan and team with you.'},{axis:'Who picks the people',a:'You do. You interview and decide.',b:'We build the team and introduce it.'}]},
 steps:{equipo:[{title:'Discovery call and requirement gathering',note:'One call. What you need, when, and with whom.'},{title:'Internal candidates, or we find the ideal fit in under 3 weeks',note:'We look inside first. If it is not there, we go find it.'},{title:'You choose the people',note:'You run the interviews. We never impose profiles.'},{title:'Your team scaled in under a month',note:'Working with your people, your process, your time zone.'}],producto:[{title:'Discovery',note:'We understand the problem before writing code.'},{title:'We introduce the team',note:'Names and faces. You know who builds.'},{title:'A clear, precise plan',note:'Scope, timing and owners, in writing.'},{title:'We put your project in motion',note:'We start, and stay with you as it grows.'}],hablar:[]},
-after:{eb:'after kickoff',h:'We do not disappear after kickoff',items:['A dør lead follows the project. Not a ticket.','The team scales when you need it, held to the same selection bar.','If something is not working, we say so before it becomes a problem.']},
-team:{eb:'who is on the other side',h:'Senior people, looked after',cols:[{t:'Senior teams',b:'Benefits, bonuses and career growth. People stay, and your project feels it.'},{t:'Why Uruguay and Argentina',b:'Two markets with strong technical training and a work culture close to your own team.'},{t:'English and hours',b:'The whole team works in English. We set the overlap with you, not the other way around.'}]},
+after:{eb:'after kickoff',h:'We do not disappear after kickoff',flow:['kick-off','a lead','scale'],items:['A dør lead follows the project. Not a ticket.','The team scales when you need it, held to the same selection bar.','If something is not working, we say so before it becomes a problem.']},
+team:{eb:'who is on the other side',h:'Senior people, looked after',tzTitle:'Working-hours overlap with your team',tz:[{city:'Montevideo',base:true,ov:18,tag:'base'},{city:'New York',ov:16,tag:'+7h'},{city:'Chicago',ov:15,tag:'+6h'},{city:'San Francisco',ov:13,tag:'+4h'}],cols:[{t:'Senior teams',b:'Benefits, bonuses and career growth. People stay, and your project feels it.'},{t:'Why Uruguay and Argentina',b:'Two markets with strong technical training and a work culture close to your own team.'},{t:'English and hours',b:'The whole team works in English. We set the overlap with you, not the other way around.'}]},
 rules:{eb:'the rules of the game',hNo:'What we do not do',no:['No body shopping.','No selling loose hours.','No rotating people without notice.'],hYou:'What we need from your side',you:['A decision-maker with budget.','Feedback within 48 hours.','Access to repos and environments.','Clear priorities, in writing.']}}};
 class Component extends DCLogic{
 state={lang:null,i:0,path:null};
@@ -283,12 +325,12 @@ get lang(){return this.state.lang||this.props.startLang||'es'}
 get t(){return T[this.lang]}
 get stepList(){return this.state.path?this.t.steps[this.state.path]:[]}
 get hasCompare(){return this.state.path==='hablar'}
-get total(){return 2+this.stepList.length+(this.hasCompare?1:0)+4}
+get total(){return 2+this.stepList.length+(this.hasCompare?1:0)+5}
 keyAt(i){const n=this.stepList.length,c=this.hasCompare?1:0,base=2+n+c;
 if(i===0)return'inicio';if(i===1)return'puertas';
 if(c&&i===2)return'comparar';
 if(n&&i>=2&&i<2+n)return(this.state.path==='equipo'?'talent':'studio')+'-0'+(i-1);
-if(i===base)return'despues';if(i===base+1)return'equipo';if(i===base+2)return'reglas';return'llamada'}
+if(i===base)return'despues';if(i===base+1)return'equipo';if(i===base+2)return'stack';if(i===base+3)return'reglas';return'llamada'}
 fromUrl(){let lang=null,key='';try{const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='es')lang=q;key=(location.hash||'').replace('#','')}catch(e){}
 if(key.slice(-3)==='-en'){lang='en';key=key.slice(0,-3)}else if(key.slice(-3)==='-es'){lang='es';key=key.slice(0,-3)}
 const st={};if(lang)st.lang=lang;
@@ -296,7 +338,7 @@ const m=key.match(/^(talent|studio)-0(\d)$/);
 if(m){st.path=m[1]==='talent'?'equipo':'producto';st.i=1+Number(m[2])}
 else if(key==='comparar'){st.path='hablar';st.i=2}
 else if(key==='puertas')st.i=1;
-else if(key==='despues'||key==='equipo'||key==='reglas'||key==='llamada'){st.path=st.path||this.state.path||'equipo';const n=T[lang||this.lang].steps[st.path].length,base=2+n;st.i=key==='despues'?base:key==='equipo'?base+1:key==='reglas'?base+2:base+3}
+else if(key==='despues'||key==='equipo'||key==='stack'||key==='reglas'||key==='llamada'){st.path=st.path||this.state.path||'equipo';const n=T[lang||this.lang].steps[st.path].length,base=2+n;st.i=key==='despues'?base:key==='equipo'?base+1:key==='stack'?base+2:key==='reglas'?base+3:base+4}
 if(Object.keys(st).length)this.setState(st)}
 toUrl(){try{const h='#'+this.keyAt(this.state.i)+(this.lang==='en'?'-en':'');if(location.hash!==h)history.replaceState(null,'',h)}catch(e){}}
 meta(){try{document.title=this.t.title;document.documentElement.lang=this.lang;const d=document.querySelector('meta[name="description"]');if(d)d.setAttribute('content',this.t.desc)}catch(e){}}
@@ -309,7 +351,7 @@ document.documentElement.style.scrollSnapType=m?'y mandatory':'';document.docume
 Array.prototype.forEach.call(root.querySelectorAll('[data-door]'),el=>{el.style.minHeight=m?'0':'250px';el.style.padding=m?'16px 18px 20px':'26px 26px 30px'});
 Array.prototype.forEach.call(root.querySelectorAll('[data-markbox]'),el=>{el.style.height=m?'34px':'60px'});
 const mn=root.querySelector('[data-mnav]');if(mn)mn.style.display=m?'flex':'none';
-Array.prototype.forEach.call(root.querySelectorAll('[data-ccell]'),el=>{el.style.padding=m?'8px 0':'12px 0';el.style.gap=m?'3px':'6px';const t=el.children[1];if(t)t.style.fontSize=m?'var(--dor-text-sm)':'var(--dor-text-md)'});
+Array.prototype.forEach.call(root.querySelectorAll('[data-ccell]'),el=>{el.style.padding=m?'8px 0':'8px 0';el.style.gap=m?'3px':'6px';const t=el.children[1];if(t)t.style.fontSize=m?'var(--dor-text-sm)':'var(--dor-text-md)'});
 Array.prototype.forEach.call(root.querySelectorAll('[data-lang]'),el=>{el.style.minWidth=m?'44px':'';el.style.minHeight=m?'44px':'';el.style.display=m?'inline-flex':'';el.style.alignItems=m?'center':'';el.style.justifyContent=m?'center':'';el.style.paddingBottom=m?'0':'4px';el.style.fontSize=m?'13px':'11px'});
 const ct=root.querySelector('[data-cta]');if(ct){ct.style.display='flex';ct.style.alignItems='center';const bt=ct.querySelector('button');if(bt){bt.style.minHeight=m?'44px':'';bt.style.padding=m?'0 18px':''}}
 const sk=root.querySelector('[data-skip]');if(sk){sk.style.minHeight=m?'44px':'';sk.style.display=m?'flex':'block';sk.style.alignItems='center'}
@@ -322,6 +364,7 @@ this.observe(m,tr);
 Array.prototype.forEach.call(root.querySelectorAll('[data-cols]'),el=>{const v=el.getAttribute('data-cols');el.style.gridTemplateColumns=m?'minmax(0,1fr)':(v.indexOf('fr')>=0?v:'repeat('+v+',minmax(0,1fr))')});
 Array.prototype.forEach.call(root.querySelectorAll('[data-narrow]'),el=>{el.style.maxWidth=m?'100%':(el.getAttribute('data-narrow')||'60%')});
 Array.prototype.forEach.call(root.querySelectorAll('[data-num]'),el=>{el.style.fontSize=m?'62vw':'38vw';el.style.opacity=m?'.5':'1'});
+Array.prototype.forEach.call(root.querySelectorAll('[data-doorseal]'),el=>{el.style.display=m?'none':'block'});
 if(flip){if(!m)this.place(this.state.i,null);this._lastI=this.state.i;setTimeout(()=>this.forceUpdate(),0)}}
 observe(m,tr){if(this._io){this._io.disconnect();this._io=null}if(!m)return;try{this._io=new IntersectionObserver(es=>{let best=null;es.forEach(e=>{if(e.isIntersecting&&(!best||e.intersectionRatio>best.intersectionRatio))best=e});if(!best)return;const i=Array.prototype.indexOf.call(tr.children,best.target);if(i>=0&&i!==this.state.i){this._fromScroll=true;this.setState({i:i})}},{threshold:[.55]});Array.prototype.forEach.call(tr.children,c=>this._io.observe(c))}catch(e){}}
 prog(){const r=this.rootRef.current;if(!r)return;const el=r.querySelector('[data-prog]');if(el)el.style.width=(this.total<2?100:(this.state.i/(this.total-1))*100)+'%'}
@@ -345,14 +388,70 @@ const el=this.sweepRef.current;if(el){el.style.background=c;el.style.display='bl
 rootClick(e){if(this.mobile)return;if(e.target.closest('button,input,a,iframe,img,[data-noadvance]'))return;this.go(this.state.i+1)}
 go(n){const m=Math.max(0,Math.min(this.total-1,n));if(m>1&&!this.state.path)return;this.setState({i:m})}
 pick(k){this.setState({path:k,i:2})}
+diagKind(k){const m=this.state.path==='equipo'?['discoveryCall','match','choose','scale']:['understand','teamIntro','plan','launch'];return m[k]||'match'}
+dg(){
+const e=React.createElement,O='#F26C3B',W='#fff',L='rgba(255,255,255,.24)',L2='rgba(255,255,255,.55)';
+const anim=(this.props.animarLineas!==false)&&!this.reduced;let ai=0;
+const A=(props,isO)=>{if(anim&&isO){props.className='dorDiagAct';props.style=Object.assign({animationDelay:(ai++*0.3).toFixed(2)+'s'},props.style||{})}return props};
+const ln=(x1,y1,x2,y2,c,w,o)=>e('line',A(Object.assign({x1:x1,y1:y1,x2:x2,y2:y2,stroke:c||L,strokeWidth:w||1.6,strokeLinecap:'round'},o||{}),c===O));
+const rc=(x,y,w,h,c,sw,o)=>e('rect',A(Object.assign({x:x,y:y,width:w,height:h,fill:'none',stroke:c||L,strokeWidth:sw||1.6,rx:5},o||{}),c===O));
+const ci=(cx,cy,r,c,sw,f)=>e('circle',A({cx:cx,cy:cy,r:r,fill:f||'none',stroke:c||L,strokeWidth:sw||1.6},c===O));
+const dt=(cx,cy,r,c)=>e('circle',A({cx:cx,cy:cy,r:r,fill:c||O},(c||O)===O));
+const p=(d,c,w,o)=>e('path',A(Object.assign({d:d,fill:'none',stroke:c||L,strokeWidth:w||1.6,strokeLinecap:'round',strokeLinejoin:'round'},o||{}),c===O));
+const tx=(x,y,s,col,sz,anchor)=>e('text',{x:x,y:y,fill:col||L2,fontSize:sz||11,fontFamily:'var(--dor-font-neue-machina)',fontWeight:700,letterSpacing:'.1em',textAnchor:anchor||'middle',style:{textTransform:'uppercase'}},s);
+const wrap=(ch,vb,mw)=>{ch=ch.map((x,i)=>React.cloneElement(x,{key:i}));return e('svg',{viewBox:vb||'0 0 400 300',width:'100%',style:{display:'block',maxWidth:mw||'460px',overflow:'visible'}},ch)};
+return {e:e,O:O,W:W,L:L,L2:L2,ln:ln,rc:rc,ci:ci,dt:dt,p:p,tx:tx,wrap:wrap};
+}
+diagram(kind){
+const {O,W,L,L2,ln,rc,ci,dt,p,wrap}=this.dg();
+let c=[];
+if(kind==='discoveryCall'){c=[rc(52,108,96,84,L2),ln(70,134,132,134),ln(70,150,120,150),ln(70,166,126,166),rc(252,108,96,84,O,2),ln(270,134,332,134,O),ln(270,150,320,150,O),ln(270,166,326,166,O),p('M150 126 C 190 106, 210 106, 250 126',L2),p('M250 174 C 210 194, 190 194, 150 174',L2),dt(200,116,5,O),dt(200,184,5,W)];}
+else if(kind==='match'){const g=[];[100,135,170].forEach(function(y){[60,90,120].forEach(function(x){g.push((x===90&&y===135)?dt(x,y,6,O):ci(x,y,6,L))})});c=g.concat([ln(140,100,232,142,L2),ln(140,170,232,158,L2),ci(270,150,23,O,2),dt(270,150,5,O)]);}
+else if(kind==='choose'){c=[rc(60,96,74,112,L),rc(158,88,84,120,O,2),rc(266,96,74,112,L),ln(76,150,120,150,L),ln(76,168,110,168,L),ln(282,150,326,150,L),ln(282,168,316,168,L),dt(200,78,5,O),p('M176 148 l14 17 l28 -36',O,3)];}
+else if(kind==='scale'){c=[ln(118,120,118,180,L2),ln(118,120,166,150,L2),ln(118,180,166,150,L2),ci(118,120,15,W,2),ci(118,180,15,W,2),ci(166,150,15,W,2),ln(166,150,244,118,O,1.6,{strokeDasharray:'4 5'}),ln(166,150,250,182,O,1.6,{strokeDasharray:'4 5'}),ci(250,116,15,O,2),ci(256,184,15,O,2)];}
+else if(kind==='understand'){c=[p('M58 150 C 76 108, 118 112, 108 150 C 100 186, 138 188, 130 150 C 124 118, 150 130, 152 150',L2,2),ln(172,150,230,150,L2),p('M230 150 l-12 -7 M230 150 l-12 7',L2),ln(252,122,346,122,L),ln(252,150,346,150,O,2),ln(252,178,346,178,L)];}
+else if(kind==='teamIntro'){const av=function(x,col){return [ci(x,148,16,col,2),p('M'+(x-26)+' 198 C '+(x-26)+' 170, '+(x+26)+' 170, '+(x+26)+' 198',col,2)]};c=[ln(50,198,350,198,L)].concat(av(96,W),av(170,O),av(244,W),av(318,W));}
+else if(kind==='plan'){c=[ln(70,86,70,216,L),rc(82,96,118,16,L),rc(138,124,152,16,O,2),rc(106,152,182,16,L),rc(196,180,96,16,L),ln(300,78,300,216,O,1.4,{strokeDasharray:'4 6'}),dt(300,78,4,O)];}
+else if(kind==='launch'){c=[ln(62,168,338,168,L2),ln(62,159,62,177,L),ln(200,159,200,177,L),ln(338,159,338,177,L),ln(62,168,236,168,O,4),dt(236,168,7,O),p('M120 168 C 120 108, 300 108, 300 168',O,1.6),p('M300 168 l-8 -11 M300 168 l8 -11',O,1.6)];}
+return wrap(c);
+}
+bifurcacion(t){const {O,W,L,L2,ln,rc,ci,dt,p,tx,wrap}=this.dg();const c=[];
+c.push(rc(16,70,140,42,L2,1.6));c.push(tx(86,96,t.compare.problem,W,12));
+c.push(p('M156 91 C 196 91, 206 50, 248 50',L2));c.push(p('M156 91 C 196 91, 206 132, 248 132',L2));
+c.push(ci(270,50,9,W,1.6));c.push(ci(296,50,9,W,1.6));c.push(dt(324,50,9,O));c.push(ln(318,50,330,50,W,2));c.push(ln(324,44,324,56,W,2));
+c.push(tx(250,26,t.names.equipo,O,12,'start'));c.push(tx(250,74,t.compare.flowA,L2,9.5,'start'));
+c.push(rc(250,122,12,12,W,1.6));c.push(rc(268,116,20,20,L2,1.6));c.push(rc(296,108,32,32,O,2));
+c.push(tx(340,120,t.names.producto,O,12,'start'));c.push(tx(340,150,t.compare.flowB,L2,9.5,'start'));
+return wrap(c,'0 0 460 172','260px');}
+timelineAfter(t){const {O,W,L,L2,ln,rc,ci,dt,p,tx,wrap}=this.dg();const c=[];const y=96;const xs=[64,210,356];
+c.push(ln(64,y,356,y,L2));c.push(p('M356 '+y+' l-13 -7 M356 '+y+' l-13 7',L2));
+xs.forEach(function(x,k){c.push(k===0?dt(x,y,8,O):ci(x,y,8,W,2));c.push(ln(x,y+16,x,y+30,L));});
+t.after.flow.forEach(function(s,k){c.push(tx(xs[k],y-22,s,k===0?O:L2,11));});
+return wrap(c,'0 0 420 150','440px');}
+teamHuso(t){const {O,W,L,L2,ln,rc,ci,dt,p,tx,wrap}=this.dg();const c=[];
+c.push(p('M118 24 C 150 26 176 42 178 72 C 180 98 166 110 170 132 C 174 160 150 204 132 236 C 126 246 118 246 114 236 C 106 210 98 194 94 172 C 78 168 64 152 70 130 C 60 110 70 90 88 86 C 92 58 98 32 118 24 Z',L2,1.6));
+c.push(dt(112,182,6,O));c.push(tx(112,202,'AR',O,11));c.push(dt(142,176,6,O));c.push(tx(154,166,'UY',O,11));c.push(tx(120,248,'GMT-3',W,12));
+var bx=300,bw=420,u=bw/24,rowY=[44,100,156,212];
+t.team.tz.forEach(function(r,k){var y=rowY[k];
+c.push(tx(bx,y-16,r.city,r.base?O:W,11,'start'));
+c.push(ln(bx,y,bx+bw,y,L));
+c.push(rc(bx+9*u,y-9,9*u,18,r.base?O:L,r.base?2:1.6,{rx:4}));
+if(!r.base)c.push(rc(bx+9*u,y-9,(r.ov-9)*u,18,O,2,{rx:4}));
+c.push(tx(bx+bw,y-16,r.tag,O,11,'end'));});
+return wrap(c,'0 0 740 256','510px');}
+puertaSeal(){const {O,W,L,L2,ln,rc,ci,dt,p,tx,wrap}=this.dg();const c=[];
+c.push(p('M40 250 L40 92 C 40 44 160 44 160 92 L160 250',L2,2));c.push(ln(28,250,172,250,L2,2));
+c.push(p('M100 102 L66 248 L134 248 Z',O,0,{fill:'rgba(242,108,59,.14)'}));
+c.push(rc(86,98,30,150,O,2,{rx:2}));c.push(dt(122,176,4,O));
+return wrap(c,'0 0 200 268','200px');}
 renderVals(){
 const t=this.t,i=this.state.i,n=this.stepList.length,c=this.hasCompare?1:0,last=this.total-1,base=2+n+c;
-const steps=this.stepList.map((s,k)=>({n:'0'+(k+1),num:'0'+(k+1),eyebrow:t.names[this.state.path]+' / '+t.step,title:s.title,note:s.note}));
+const steps=this.stepList.map((s,k)=>({n:'0'+(k+1),num:'0'+(k+1),eyebrow:t.names[this.state.path]+' / '+t.step,title:s.title,note:s.note,diagram:this.diagram(this.diagKind(k))}));
 const railMode=this.props.railMode||'numeros';
 let rail=[{idx:0,label:'00'},{idx:1,label:'01'}];
 if(c)rail.push({idx:2,label:t.railCompare});
 rail=rail.concat(steps.map((s,k)=>({idx:2+k,label:railMode==='nombres'?s.n+' '+s.title.split(' ').slice(0,2).join(' '):'0'+(k+2)})));
-rail=rail.concat([{idx:base,label:t.railAfter},{idx:base+1,label:t.railTeam},{idx:base+2,label:t.railRules},{idx:base+3,label:t.call}]);
+rail=rail.concat([{idx:base,label:t.railAfter},{idx:base+1,label:t.railTeam},{idx:base+2,label:t.railStack},{idx:base+3,label:t.railRules},{idx:base+4,label:t.call}]);
 const cells=[];t.compare.rows.forEach(r=>{cells.push({tag:'',text:r.axis});cells.push({tag:'dør Talent',text:r.a});cells.push({tag:'dør Studio',text:r.b})});
 return{
 t:t,steps:steps,
@@ -370,6 +469,7 @@ pickTalent:()=>this.pick('equipo'),pickStudio:()=>this.pick('producto'),
 keyTalent:this.kb(()=>this.pick('equipo')),keyStudio:this.kb(()=>this.pick('producto')),
 keyHome:this.kb(()=>this.go(0)),keyPrev:this.kb(()=>this.go(i-1)),keyNext:this.kb(()=>this.go(i+1)),keySkip:this.kb(()=>this.go(last)),
 keyEs:this.kb(()=>this.setState({lang:'es'})),keyEn:this.kb(()=>this.setState({lang:'en'})),
+compareDiagram:this.bifurcacion(t),afterDiagram:this.timelineAfter(t),teamDiagram:this.teamHuso(t),introSeal:this.puertaSeal(),introStats:t.stats.map(s=>({n:s.n,k:s.k})),stackGroups:t.stack.groups.map(g=>({title:g.title,items:g.items.map(name=>({name:name,mono:(name.replace(/[^A-Za-z0-9]/g,'')[0]||'·').toUpperCase()}))})),
 afterItems:t.after.items.map((x,k)=>({n:'0'+(k+1),text:x})),
 teamCols:t.team.cols.map((x,k)=>({n:'0'+(k+1),t:x.t,b:x.b})),
 rulesNo:t.rules.no.map(x=>({text:x})),
