@@ -1,0 +1,131 @@
+<!-- ============================================================
+     dør · Analytics + cookie consent (GA4 G-ZQZ9PJ51JH)
+     Self-contained layer injected on top of the compiled Landing
+     Umbral export. Independent of the page's React runtime:
+     - GA4 is loaded ONLY after the visitor accepts (true gating).
+     - UTM params are captured and forwarded to GA4.
+     - schedule_call_click / email_click via event delegation, so
+       they work even though the CTA links render after boot.
+     - Bilingual ES/EN, brand-styled (Neue Machina, naranja).
+     Maintained here in the repo; NOT part of the Claude Design
+     source. Preserve this block when replacing index.html with a
+     new export.
+     ============================================================ -->
+<style>
+  #dor-cc{position:fixed;left:0;right:0;bottom:0;z-index:100000;display:none;
+    background:rgba(0,0,0,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    color:#fff;padding:20px 6vw;box-shadow:0 -4px 24px rgba(0,0,0,.4);
+    border-top:1px solid rgba(255,255,255,.16);
+    transform:translateY(110%);transition:transform .4s ease;
+    font-family:"Aeonik",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;box-sizing:border-box}
+  #dor-cc.dor-cc-show{transform:translateY(0)}
+  #dor-cc .dor-cc-in{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;
+    align-items:center;justify-content:space-between;gap:18px}
+  #dor-cc p{margin:0;flex:1;min-width:260px;font-size:14px;line-height:1.55;color:rgba(255,255,255,.9)}
+  #dor-cc a{color:#F26C3B;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+  #dor-cc .dor-cc-btns{display:flex;gap:12px;flex-shrink:0}
+  #dor-cc button{cursor:pointer;font-family:"Neue Machina","Aeonik",sans-serif;font-weight:700;
+    text-transform:uppercase;font-size:12px;letter-spacing:.06em;padding:12px 22px;border-radius:8px;
+    border:2px solid transparent;transition:background .2s ease,color .2s ease,border-color .2s ease}
+  #dor-cc .dor-cc-accept{background:#F26C3B;color:#fff}
+  #dor-cc .dor-cc-accept:hover{background:#DD5A2A}
+  #dor-cc .dor-cc-reject{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+  #dor-cc .dor-cc-reject:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
+  @media(max-width:760px){
+    #dor-cc{padding:18px 20px}
+    #dor-cc .dor-cc-in{flex-direction:column;align-items:flex-start;gap:14px}
+    #dor-cc .dor-cc-btns{width:100%}
+    #dor-cc button{flex:1}
+  }
+</style>
+<div id="dor-cc" role="dialog" aria-live="polite" aria-label="Cookies">
+  <div class="dor-cc-in">
+    <p data-cc-text></p>
+    <div class="dor-cc-btns">
+      <button type="button" class="dor-cc-reject" data-cc-reject></button>
+      <button type="button" class="dor-cc-accept" data-cc-accept></button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var GA_ID='G-ZQZ9PJ51JH';
+  var KEY='dor-cookie-consent';
+  var COPY={
+    es:{text:'Usamos cookies para medir el tráfico y mejorar la experiencia. Al aceptar, consentís su uso. ',
+        more:'Más info',accept:'Aceptar',reject:'Rechazar'},
+    en:{text:'We use cookies to measure traffic and improve your experience. By accepting, you consent to their use. ',
+        more:'Learn more',accept:'Accept',reject:'Reject'}
+  };
+  function lang(){
+    try{
+      var p=new URLSearchParams(location.search).get('lang');
+      if(p==='en'||p==='es')return p;
+      if(/(^|-)en\b/.test((location.hash||'')))return 'en';
+    }catch(e){}
+    var h=(document.documentElement.lang||'').toLowerCase();
+    if(h.indexOf('en')===0)return 'en';
+    if(h.indexOf('es')===0)return 'es';
+    return (navigator.language||'es').toLowerCase().indexOf('en')===0?'en':'es';
+  }
+  function utm(){
+    var p=new URLSearchParams(location.search);
+    return {source:p.get('utm_source')||'',medium:p.get('utm_medium')||'',
+      campaign:p.get('utm_campaign')||'',content:p.get('utm_content')||'',term:p.get('utm_term')||''};
+  }
+  function loadGA(){
+    if(window.__dorGA)return; window.__dorGA=true;
+    var u=utm();
+    var s=document.createElement('script');
+    s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);} window.gtag=gtag;
+    gtag('js',new Date());
+    gtag('config',GA_ID,{anonymize_ip:true,allow_google_signals:false,
+      allow_ad_personalization_signals:false,
+      campaign_source:u.source,campaign_medium:u.medium,campaign_name:u.campaign,
+      campaign_content:u.content,campaign_term:u.term});
+    gtag('event','page_landed',{event_category:'acquisition',utm_source:u.source,
+      utm_medium:u.medium,utm_campaign:u.campaign,utm_content:u.content,
+      referrer:document.referrer||'direct',landing_page:location.pathname});
+    // Conversion events via delegation (links render after the React boot).
+    document.addEventListener('click',function(e){
+      var a=e.target.closest&&e.target.closest('a');if(!a)return;
+      var href=a.getAttribute('href')||'';
+      if(href.indexOf('fantastical.app')>-1){
+        gtag('event','schedule_call_click',{event_category:'conversion',
+          event_label:(location.hash||'inicio').replace('#',''),
+          utm_source:u.source,utm_campaign:u.campaign});
+      } else if(href.indexOf('mailto:')===0){
+        gtag('event','email_click',{event_category:'conversion',
+          event_label:href.replace('mailto:',''),utm_source:u.source});
+      }
+    },true);
+  }
+  function render(){
+    var el=document.getElementById('dor-cc');if(!el)return;
+    var c=COPY[lang()];
+    el.querySelector('[data-cc-text]').innerHTML=c.text+'<a href="mailto:hey@wearedor.com">'+c.more+'</a>';
+    el.querySelector('[data-cc-accept]').textContent=c.accept;
+    el.querySelector('[data-cc-reject]').textContent=c.reject;
+  }
+  function hide(){var el=document.getElementById('dor-cc');if(el){el.classList.remove('dor-cc-show');
+    setTimeout(function(){el.style.display='none';},400);}}
+  function show(){var el=document.getElementById('dor-cc');if(!el)return;render();
+    el.style.display='block';void el.offsetWidth;el.classList.add('dor-cc-show');}
+  function init(){
+    var choice=null;try{choice=localStorage.getItem(KEY);}catch(e){}
+    if(choice==='accepted'){loadGA();return;}
+    if(choice==='rejected'){return;}
+    show();
+    var el=document.getElementById('dor-cc');
+    el.querySelector('[data-cc-accept]').addEventListener('click',function(){
+      try{localStorage.setItem(KEY,'accepted');}catch(e){} hide();loadGA();});
+    el.querySelector('[data-cc-reject]').addEventListener('click',function(){
+      try{localStorage.setItem(KEY,'rejected');}catch(e){} hide();});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- ============================================================ -->

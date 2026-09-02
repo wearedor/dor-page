@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Landing · Umbral" description="Landing horizontal: puertas en vez de scroll, bifurcación Talent/Studio, agenda embebida, bilingüe ES/EN." -->
+<helmet>
+<script src="./ds-base.js"></script>
+<title>dør | Equipos de software nearshore en Uruguay y Argentina</title>
+<meta name="description" content="Sumá desarrolladores senior a tu equipo con dør Talent, o construí tu producto con dør Studio. Nearshore desde Uruguay y Argentina, en tu huso horario y en inglés.">
+<link rel="canonical" href="https://wearedor.com/">
+<link rel="alternate" hreflang="es" href="https://wearedor.com/?lang=es">
+<link rel="alternate" hreflang="en" href="https://wearedor.com/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://wearedor.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wearedor.com/">
+<meta property="og:site_name" content="dør">
+<meta property="og:title" content="dør | Equipos de software nearshore en Uruguay y Argentina">
+<meta property="og:description" content="Sumá desarrolladores senior a tu equipo con dør Talent, o construí tu producto con dør Studio. En tu huso horario y en inglés.">
+<meta property="og:image" content="https://wearedor.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="dør | Nearshore software teams in Uruguay and Argentina">
+<meta name="twitter:description" content="Add senior developers to your team with dør Talent, or have dør Studio build your product.">
+<meta name="twitter:image" content="https://wearedor.com/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20fill='%23F26C3B'/%3E%3Ctext%20x='50'%20y='75'%20font-size='78'%20text-anchor='middle'%20fill='%23ffffff'%20font-family='Helvetica,Arial,sans-serif'%3E%C3%B8%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"dør","url":"https://wearedor.com/","slogan":"We build, you grow","areaServed":["US","UY","AR"],"address":{"@type":"PostalAddress","addressLocality":"Montevideo","addressCountry":"UY"},"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"dør Talent","alternateName":"Staff augmentation","description":"Senior developers added to your team from Uruguay and Argentina."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"dør Studio","alternateName":"Software factory","description":"Nearshore software development teams that build your product end to end."}}]}</script>
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden;font-variant-numeric:oldstyle-nums}*{box-sizing:border-box}::selection{background:#F26C3B;color:#fff}a{color:#F26C3B;text-decoration:none}a:hover{color:#fff}@keyframes dorPulse{0%,100%{opacity:.3}50%{opacity:.9}}@keyframes dorSweepFwd{0%{transform:translateX(100vw) skewX(-18deg);opacity:0}6%{opacity:1}90%{opacity:1}100%{transform:translateX(-52vw) skewX(-18deg);opacity:0}}@keyframes dorSweepBack{0%{transform:translateX(-52vw) skewX(-18deg);opacity:0}6%{opacity:1}90%{opacity:1}100%{transform:translateX(100vw) skewX(-18deg);opacity:0}}@keyframes dorShutTop{0%{transform:translateY(-101%)}40%{transform:translateY(0)}62%{transform:translateY(0)}100%{transform:translateY(-101%)}}@keyframes dorShutBot{0%{transform:translateY(101%)}40%{transform:translateY(0)}62%{transform:translateY(0)}100%{transform:translateY(101%)}}@keyframes dorGateL{0%{transform:translateX(-62vw) skewX(-14deg)}38%{transform:translateX(0) skewX(-14deg)}70%{transform:translateX(0) skewX(-14deg)}100%{transform:translateX(-62vw) skewX(-14deg)}}@keyframes dorGateR{0%{transform:translateX(62vw) skewX(-14deg)}38%{transform:translateX(0) skewX(-14deg)}70%{transform:translateX(0) skewX(-14deg)}100%{transform:translateX(62vw) skewX(-14deg)}}@keyframes dorIris{0%{transform:scale(0)}38%{transform:scale(1)}60%{transform:scale(1)}100%{transform:scale(0)}}@keyframes dorHingeFwd{0%{opacity:0;transform-origin:right center;transform:rotateY(-88deg)}8%{opacity:1}48%{transform-origin:right center;transform:rotateY(0deg)}62%{transform-origin:left center;transform:rotateY(0deg)}92%{opacity:1}100%{opacity:0;transform-origin:left center;transform:rotateY(88deg)}}@keyframes dorHingeBack{0%{opacity:0;transform-origin:left center;transform:rotateY(88deg)}8%{opacity:1}48%{transform-origin:left center;transform:rotateY(0deg)}62%{transform-origin:right center;transform:rotateY(0deg)}92%{opacity:1}100%{opacity:0;transform-origin:right center;transform:rotateY(-88deg)}}@keyframes dorHingeShade{0%{opacity:.9}48%{opacity:0}62%{opacity:0}100%{opacity:.9}}</style>
+</helmet>
+<div ref="{{ rootRef }}" onClick="{{ rootClick }}" style="position:fixed;inset:0;background:var(--dor-color-negro);color:var(--dor-color-blanco);font-family:var(--dor-font-aeonik);overflow:hidden">
+<div ref="{{ trackRef }}" style="position:absolute;inset:0;display:flex;transform:translateX(0)">
+<section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
+<div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="240px,18px">uruguay · argentina · gmt-<span style="font-size:.78em">3</span></x-import></div>
+<h1 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(40px,7.6vw,140px);line-height:.92;letter-spacing:-.035em;margin:20px 0 0;max-width:15ch">{{ t.h0 }}</h1>
+<div style="max-width:640px;margin-top:30px"><x-import component-from-global-scope="DorDesignSystem.Divider" color="naranja" hint-size="640px,2px"></x-import></div>
+<p style="font-size:var(--dor-text-lg);max-width:52ch;margin:30px 0 0;opacity:.74;line-height:1.55;text-wrap:pretty">{{ t.p0 }}</p>
+<div style="margin-top:44px;display:flex;align-items:center;gap:14px;animation:dorPulse 2.6s ease-in-out infinite">
+<x-import component-from-global-scope="DorDesignSystem.Icon" name="{{ hintIcon }}" color="naranja" size="{{ n20 }}" hint-size="20px,20px"></x-import>
+<span style="font-variant-numeric:lining-nums;font-size:var(--dor-text-sm);letter-spacing:.1em;text-transform:uppercase;opacity:.8">{{ hint }}</span>
+</div>
+</section>
+<section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
+<div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="200px,18px">{{ t.eb1 }}</x-import></div>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(28px,4.4vw,70px);line-height:.96;letter-spacing:-.03em;margin:14px 0 0">{{ t.h1 }}</h2>
+<div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;margin-top:46px;max-width:1180px;width:100%">
+<sc-for list="{{ doors }}" as="d" hint-placeholder-count="3">
+<div onClick="{{ d.go }}" onKeyDown="{{ d.key }}" data-door role="button" tabindex="0" aria-label="{{ d.title }}" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" data-noadvance style="cursor:pointer;border:1px solid rgba(255,255,255,.18);background:transparent;color:var(--dor-color-blanco);padding:26px 26px 30px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;transition:background .25s ease,border-color .25s ease" style-hover="background:var(--dor-color-naranja);border-color:var(--dor-color-naranja)">
+<div data-markbox style="height:60px;display:flex;align-items:flex-start">
+<sc-if value="{{ d.mark }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="DorDesignSystem.ServiceMark" variant="{{ d.mark }}" color="{{ d.markColor }}" size="{{ n52 }}" hint-size="52px,52px"></x-import></sc-if>
+</div>
+<div>
+<div style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(20px,2vw,30px);letter-spacing:-.015em">{{ d.title }}</div>
+<div style="margin-top:12px;font-size:var(--dor-text-md);opacity:.72;line-height:1.45;max-width:26ch">{{ d.sub }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ needPick }}" hint-placeholder-val="{{ true }}">
+<div style="font-variant-numeric:lining-nums;margin-top:26px;font-size:var(--dor-text-sm);letter-spacing:.1em;text-transform:uppercase;color:var(--dor-color-naranja)">{{ t.pick }}</div>
+</sc-if>
+</section>
+<sc-for list="{{ compareList }}" as="cp" hint-placeholder-count="0">
+<section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
+<div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="240px,18px">{{ cp.eb }}</x-import></div>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(24px,3.2vw,50px);line-height:1;letter-spacing:-.03em;margin:12px 0 0;max-width:20ch">{{ cp.h }}</h2>
+<div data-cols="0.9fr 1fr 1fr" style="display:grid;grid-template-columns:0.9fr 1fr 1fr;gap:0 32px;margin-top:24px;max-width:1240px;width:100%;border-top:1px solid rgba(255,255,255,.16)">
+<sc-for list="{{ compareCells }}" as="cell" hint-placeholder-count="12">
+<div data-ccell style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;gap:6px">
+<span style="font-variant-numeric:lining-nums;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dor-color-naranja);font-family:var(--dor-font-neue-machina);font-weight:700">{{ cell.tag }}</span>
+<span style="font-size:var(--dor-text-md);line-height:1.45;text-wrap:pretty">{{ cell.text }}</span>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;gap:14px;margin-top:24px;flex-wrap:wrap">
+<div onClick="{{ pickTalent }}" onKeyDown="{{ keyTalent }}" role="button" tabindex="0" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" data-noadvance style="cursor:pointer;border:1px solid rgba(255,255,255,.28);padding:14px 26px;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.06em;transition:background .2s ease" style-hover="background:var(--dor-color-naranja);border-color:var(--dor-color-naranja)">{{ cp.pickA }}</div>
+<div onClick="{{ pickStudio }}" onKeyDown="{{ keyStudio }}" role="button" tabindex="0" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" data-noadvance style="cursor:pointer;border:1px solid rgba(255,255,255,.28);padding:14px 26px;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.06em;transition:background .2s ease" style-hover="background:var(--dor-color-naranja);border-color:var(--dor-color-naranja)">{{ cp.pickB }}</div>
+</div>
+</section>
+</sc-for>
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+<section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja);overflow:hidden">
+<div data-num aria-hidden="true" style="font-variant-numeric:lining-nums;position:absolute;right:6.5vw;top:50%;transform:translateY(-50%);font-family:var(--dor-font-neue-machina);font-weight:700;font-size:38vw;line-height:.7;letter-spacing:-.05em;color:rgba(255,255,255,.055);pointer-events:none;user-select:none">{{ s.n }}</div>
+<div data-narrow="60%" style="position:relative;max-width:60%">
+<div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="240px,18px">{{ s.eyebrow }} <span style="font-size:.78em">{{ s.num }}</span></x-import></div>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(26px,3.9vw,62px);line-height:1;letter-spacing:-.03em;margin:16px 0 0;max-width:22ch;text-wrap:pretty">{{ s.title }}</h2>
+<div style="max-width:420px;margin-top:28px"><x-import component-from-global-scope="DorDesignSystem.Divider" color="naranja" hint-size="420px,2px"></x-import></div>
+<p style="font-size:var(--dor-text-lg);max-width:44ch;margin:26px 0 0;opacity:.7;line-height:1.55;text-wrap:pretty">{{ s.note }}</p>
+</div>
+</section>
+</sc-for>
+<section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
+<div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="240px,18px">{{ t.after.eb }}</x-import></div>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(26px,3.9vw,62px);line-height:1;letter-spacing:-.03em;margin:16px 0 0;max-width:20ch;text-wrap:pretty">{{ t.after.h }}</h2>
+<div data-narrow="70%" style="margin-top:38px;max-width:70%;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.16)">
+<sc-for list="{{ afterItems }}" as="a" hint-placeholder-count="3">
+<div style="display:flex;align-items:baseline;gap:22px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.16)">
+<span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--dor-color-naranja);min-width:26px">{{ a.n }}</span>
+<span style="font-size:var(--dor-text-lg);line-height:1.4;max-width:48ch;text-wrap:pretty">{{ a.text }}</span>
+</div>
+</sc-for>
+</div>
+</section>
+<section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
+<div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="260px,18px">{{ t.team.eb }}</x-import></div>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(26px,3.9vw,62px);line-height:1;letter-spacing:-.03em;margin:16px 0 0;max-width:20ch;text-wrap:pretty">{{ t.team.h }}</h2>
+<div data-cols="3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:44px;max-width:1180px;width:100%">
+<sc-for list="{{ teamCols }}" as="c" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:14px;border-top:2px solid var(--dor-color-naranja);padding-top:18px">
+<span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--dor-color-naranja)">{{ c.n }}</span>
+<span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:clamp(17px,1.7vw,25px);line-height:1.1;letter-spacing:-.015em;text-wrap:pretty">{{ c.t }}</span>
+<span style="font-size:var(--dor-text-md);opacity:.72;line-height:1.5;text-wrap:pretty">{{ c.b }}</span>
+</div>
+</sc-for>
+</div>
+</section>
+<section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;border-left:2px solid var(--dor-color-naranja)">
+<div style="color:var(--dor-color-naranja)"><x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="240px,18px">{{ t.rules.eb }}</x-import></div>
+<div data-cols="2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;margin-top:26px;max-width:1180px;width:100%">
+<div>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(24px,3.2vw,50px);line-height:1;letter-spacing:-.03em;margin:0;text-wrap:pretty">{{ t.rules.hNo }}</h2>
+<div style="margin-top:26px;display:flex;flex-direction:column;gap:14px">
+<sc-for list="{{ rulesNo }}" as="r" hint-placeholder-count="3">
+<div style="display:flex;align-items:baseline;gap:16px">
+<span style="color:var(--dor-color-naranja);font-family:var(--dor-font-neue-machina);font-weight:700;font-size:15px">—</span>
+<span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:clamp(15px,1.5vw,22px);line-height:1.2;letter-spacing:-.01em;text-wrap:pretty">{{ r.text }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(24px,3.2vw,50px);line-height:1;letter-spacing:-.03em;margin:0;opacity:.55;text-wrap:pretty">{{ t.rules.hYou }}</h2>
+<div style="margin-top:26px;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.16)">
+<sc-for list="{{ rulesYou }}" as="r" hint-placeholder-count="4">
+<div style="display:flex;align-items:baseline;gap:18px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16)">
+<span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;font-size:11px;letter-spacing:.14em;color:var(--dor-color-naranja);min-width:22px">{{ r.n }}</span>
+<span style="font-size:var(--dor-text-md);line-height:1.45;opacity:.85;text-wrap:pretty">{{ r.text }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+<section style="flex:0 0 100vw;height:100%;position:relative;padding:clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px);display:flex;flex-direction:column;justify-content:center;background:var(--dor-color-naranja);color:var(--dor-color-blanco)">
+<div data-cols="2" data-callgrid style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:52px;align-items:center;max-width:1280px;width:100%">
+<div>
+<x-import component-from-global-scope="DorDesignSystem.Eyebrow" hint-size="200px,18px">{{ t.ebEnd }}</x-import>
+<h2 style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);text-transform:uppercase;font-weight:700;font-size:clamp(30px,4.4vw,74px);line-height:.94;letter-spacing:-.035em;margin:14px 0 0;max-width:16ch">{{ t.hEnd }}</h2>
+<p style="font-size:var(--dor-text-lg);max-width:44ch;margin:22px 0 0;line-height:1.55;opacity:.92;text-wrap:pretty">{{ t.pEnd }}</p>
+<div style="font-variant-numeric:lining-nums;margin-top:26px;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:clamp(18px,2.1vw,32px);letter-spacing:-.02em;color:var(--dor-color-negro)">We build, you grow</div>
+<div style="margin-top:28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+<img src="felipe.jpg" alt="Felipe Stanham, Solutions Architect en dør" width="66" height="66" style="width:66px;height:66px;border-radius:var(--dor-radius-pill);object-fit:cover;border:2px solid var(--dor-color-blanco)" />
+<div style="display:flex;flex-direction:column;gap:3px">
+<span style="font-size:var(--dor-text-md);font-weight:500">Felipe Stanham</span>
+<span style="font-size:var(--dor-text-sm);opacity:.85">Solutions Architect</span>
+</div>
+</div>
+<span style="font-variant-numeric:lining-nums;display:block;margin-top:22px;font-size:var(--dor-text-sm);letter-spacing:.08em;text-transform:uppercase;opacity:.85">{{ t.foot }}</span>
+</div>
+<div data-noadvance style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ embedList }}" as="e" hint-placeholder-count="0">
+<iframe src="https://fantastical.app/felipestanham/30-min-with-felipe-dor" title="Agenda dør" loading="lazy" style="width:100%;height:min(58vh,540px);border:none;border-radius:var(--dor-radius-md);background:var(--dor-color-blanco)"></iframe>
+<a href="https://fantastical.app/felipestanham/30-min-with-felipe-dor" target="_blank" rel="noopener" style="font-size:var(--dor-text-sm);color:var(--dor-color-negro);text-decoration:underline;text-underline-offset:3px">{{ t.calFallback }}</a>
+</sc-for>
+<sc-for list="{{ linkList }}" as="l" hint-placeholder-count="1">
+<div data-callcard style="background:var(--dor-color-blanco);color:var(--dor-color-negro);border-radius:var(--dor-radius-md);padding:34px 34px 30px;display:flex;flex-direction:column;gap:20px">
+<span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:clamp(20px,2.2vw,32px);line-height:1;letter-spacing:-.02em">{{ l.title }}</span>
+<div style="display:flex;flex-direction:column;border-top:1px solid rgba(0,0,0,.14)">
+<sc-for list="{{ callFacts }}" as="f" hint-placeholder-count="3">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.14)">
+<span style="font-variant-numeric:lining-nums;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.55">{{ f.k }}</span>
+<span style="font-size:var(--dor-text-md);text-align:right;text-wrap:pretty">{{ f.v }}</span>
+</div>
+</sc-for>
+</div>
+<a href="https://fantastical.app/felipestanham/30-min-with-felipe-dor" target="_blank" rel="noopener" style="font-variant-numeric:lining-nums;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--dor-color-negro);color:var(--dor-color-blanco);font-family:var(--dor-font-neue-machina);font-weight:700;text-transform:uppercase;font-size:14px;letter-spacing:.06em;padding:18px 26px;border-radius:var(--dor-radius-md);text-decoration:none" style-hover="background:var(--dor-color-naranja)">{{ l.cta }}</a>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</div>
+<div ref="{{ sweepRef }}" aria-hidden="true" style="position:fixed;top:-15%;left:0;height:130%;width:50vw;background:var(--dor-color-naranja);opacity:0;pointer-events:none;z-index:30;transform:translateX(100vw) skewX(-18deg)">
+<span style="position:absolute;right:-3px;top:0;bottom:0;width:3px;background:var(--dor-color-blanco)"></span>
+</div>
+<div ref="{{ shutterRef }}" aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:30;display:none">
+<span data-half="t" style="position:absolute;left:0;right:0;top:0;height:51%;background:var(--dor-color-naranja);border-bottom:2px solid var(--dor-color-blanco);transform:translateY(-101%)"></span>
+<span data-half="b" style="position:absolute;left:0;right:0;bottom:0;height:51%;background:var(--dor-color-naranja);border-top:2px solid var(--dor-color-blanco);transform:translateY(101%)"></span>
+</div>
+<div ref="{{ gateRef }}" aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:30;display:none;overflow:hidden">
+<span data-leaf="l" style="position:absolute;left:0;top:-15%;width:57vw;height:130%;background:var(--dor-color-naranja);transform:translateX(-62vw) skewX(-14deg)"></span>
+<span data-leaf="r" style="position:absolute;right:0;top:-15%;width:57vw;height:130%;background:var(--dor-color-naranja);border-left:3px solid var(--dor-color-blanco);transform:translateX(62vw) skewX(-14deg)"></span>
+</div>
+<div ref="{{ irisRef }}" aria-hidden="true" style="position:fixed;left:50%;top:50%;width:170vmax;height:170vmax;margin-left:-85vmax;margin-top:-85vmax;border-radius:50%;background:var(--dor-color-naranja);pointer-events:none;z-index:30;display:none;transform:scale(0)"></div>
+<div ref="{{ hingeRef }}" aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:30;display:none;perspective:760px;perspective-origin:50% 50%">
+<span data-door style="position:absolute;inset:0;background:var(--dor-color-naranja);transform-origin:left center;transform:rotateY(88deg);backface-visibility:hidden;opacity:0;display:block">
+<span data-shade style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.12));opacity:0"></span>
+<span style="position:absolute;right:0;top:0;bottom:0;width:18px;background:var(--dor-color-negro);border-left:2px solid rgba(255,255,255,.55)"></span>
+<span style="position:absolute;left:0;top:0;bottom:0;width:18px;background:var(--dor-color-negro);border-right:2px solid rgba(255,255,255,.55)"></span>
+</span>
+</div>
+<div ref="{{ barRef }}" style="position:absolute;top:0;left:0;right:0;height:80px;display:flex;align-items:center;gap:24px;padding:0 4vw;z-index:40">
+<sc-if value="{{ onOrange }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;top:0;height:80px;background:var(--dor-color-negro);z-index:-1"></span></sc-if>
+<div data-skip onClick="{{ goCall }}" onKeyDown="{{ keySkip }}" role="button" tabindex="0" style="position:absolute;top:10px;left:-9999px;z-index:60;background:var(--dor-color-blanco);color:var(--dor-color-negro);padding:10px 16px;border-radius:var(--dor-radius-md);font-size:13px;font-weight:500" style-focus="left:12px">{{ t.skip }}</div>
+<div onClick="{{ home }}" onKeyDown="{{ keyHome }}" role="button" tabindex="0" aria-label="dør — inicio" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" data-noadvance style="cursor:pointer;display:flex;align-items:center">
+<x-import component-from-global-scope="DorDesignSystem.Logo" color="blanco" variant="principal" height="{{ nLogo }}" hint-size="68px,68px"></x-import>
+</div>
+<div data-rail data-noadvance style="flex:1;display:flex;align-items:flex-start;justify-content:center;gap:6px;overflow:hidden">
+<sc-for list="{{ rail }}" as="r" hint-placeholder-count="3">
+<div onClick="{{ r.go }}" onKeyDown="{{ r.key }}" role="button" tabindex="0" aria-current="{{ r.aria }}" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" style="font-variant-numeric:lining-nums;position:relative;cursor:pointer;font-family:var(--dor-font-neue-machina);font-weight:700;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);padding:9px 7px 0;border-top:2px solid rgba(255,255,255,.2);min-width:34px;text-align:center;white-space:nowrap" style-hover="color:var(--dor-color-blanco)">{{ r.label }}
+<sc-if value="{{ r.active }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;top:-2px;height:2px;background:var(--dor-color-blanco)"></span></sc-if>
+</div>
+</sc-for>
+</div>
+<div data-mnav data-noadvance style="display:none;flex:1;align-items:center;gap:10px">
+<span style="font-variant-numeric:lining-nums;font-family:var(--dor-font-neue-machina);font-weight:700;font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.8);white-space:nowrap">{{ counter }}</span>
+<span style="flex:1;height:2px;background:rgba(255,255,255,.22);position:relative;display:block"><span data-prog style="position:absolute;left:0;top:0;bottom:0;width:0;background:var(--dor-color-naranja)"></span></span>
+</div>
+<div data-noadvance style="display:flex;align-items:center;gap:18px">
+<div style="display:flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.12em;font-weight:500">
+<span data-lang onClick="{{ setEs }}" onKeyDown="{{ keyEs }}" role="button" tabindex="0" aria-label="Español" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" style="position:relative;cursor:pointer;color:rgba(255,255,255,.6);padding-bottom:4px" style-hover="color:var(--dor-color-blanco)">ES
+<sc-if value="{{ isEs }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--dor-color-blanco)"></span></sc-if>
+</span>
+<span style="opacity:.3">/</span>
+<span data-lang onClick="{{ setEn }}" onKeyDown="{{ keyEn }}" role="button" tabindex="0" aria-label="English" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" style="position:relative;cursor:pointer;color:rgba(255,255,255,.6);padding-bottom:4px" style-hover="color:var(--dor-color-blanco)">EN
+<sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--dor-color-blanco)"></span></sc-if>
+</span>
+</div>
+<div data-cta onClick="{{ goCall }}"><x-import component-from-global-scope="DorDesignSystem.Button" variant="primary" size="sm" hint-size="150px,36px">{{ ctaLabel }}</x-import></div>
+</div>
+</div>
+<div ref="{{ navRef }}" data-noadvance>
+<sc-if value="{{ showPrev }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ prev }}" onKeyDown="{{ keyPrev }}" role="button" tabindex="0" aria-label="{{ t.aPrev }}" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" style="position:absolute;left:1vw;top:50%;transform:translateY(-50%);z-index:40;cursor:pointer;width:42px;height:42px;border:1px solid rgba(255,255,255,.28);border-radius:var(--dor-radius-pill);display:flex;align-items:center;justify-content:center;transition:background .2s ease" style-hover="background:rgba(255,255,255,.12)">
+<x-import component-from-global-scope="DorDesignSystem.Icon" name="arrow-left" color="blanco" size="{{ n18 }}" hint-size="18px,18px"></x-import>
+</div>
+</sc-if>
+<sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}">
+<div onClick="{{ next }}" onKeyDown="{{ keyNext }}" role="button" tabindex="0" aria-label="{{ t.aNext }}" style-focus="outline:2px solid var(--dor-color-blanco);outline-offset:3px" style="position:absolute;right:1vw;top:50%;transform:translateY(-50%);z-index:40;cursor:pointer;width:42px;height:42px;border:1px solid rgba(255,255,255,.28);border-radius:var(--dor-radius-pill);display:flex;align-items:center;justify-content:center;transition:background .2s ease" style-hover="background:rgba(255,255,255,.12)">
+<x-import component-from-global-scope="DorDesignSystem.Icon" name="arrow-right" color="blanco" size="{{ n18 }}" hint-size="18px,18px"></x-import>
+</div>
+</sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;transicion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;porton&quot;,&quot;barrido&quot;,&quot;persiana&quot;,&quot;iris&quot;,&quot;bisagra&quot;],&quot;default&quot;:&quot;porton&quot;,&quot;tsType&quot;:&quot;'porton'|'barrido'|'persiana'|'iris'|'bisagra'&quot;,&quot;section&quot;:&quot;Transición&quot;},&quot;agenda&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;enlace&quot;,&quot;embebido&quot;],&quot;default&quot;:&quot;enlace&quot;,&quot;tsType&quot;:&quot;'enlace'|'embebido'&quot;,&quot;section&quot;:&quot;Agenda&quot;},&quot;startLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;es&quot;,&quot;en&quot;],&quot;default&quot;:&quot;es&quot;,&quot;tsType&quot;:&quot;'es'|'en'&quot;,&quot;section&quot;:&quot;Idioma&quot;},&quot;railMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;numeros&quot;,&quot;nombres&quot;],&quot;default&quot;:&quot;numeros&quot;,&quot;tsType&quot;:&quot;'numeros'|'nombres'&quot;,&quot;section&quot;:&quot;Navegación&quot;}}">
+const CAL='https://fantastical.app/felipestanham/30-min-with-felipe-dor';
+const T={es:{lang:'es',title:'dør | Equipos de software nearshore en Uruguay y Argentina',desc:'Sumá desarrolladores senior a tu equipo con dør Talent, o construí tu producto con dør Studio. Nearshore desde Uruguay y Argentina, en tu huso horario y en inglés.',
+h0:'dør significa puerta',p0:'En danés. La nuestra da a Sudamérica: equipos de software que trabajan en tu huso horario, en tu idioma, dentro de tu empresa. No somos una agencia más de outsourcing.',hint0:'usá las flechas o hacé clic',hint0m:'deslizá hacia abajo para cruzar',skip:'Ir a agendar una llamada',aPrev:'Puerta anterior',aNext:'Puerta siguiente',eb1:'elegí tu puerta',h1:'¿Qué necesitás?',pick:'Elegí una puerta para seguir',next:'seguir',ebEnd:'última puerta',hEnd:'Una llamada de 30 minutos',pEnd:'Sin propuesta de cuarenta páginas. Contanos el problema y te decimos si podemos resolverlo.',cta:'Agendar llamada',ctaShort:'Agendar',calFallback:'¿No carga el calendario? Abrilo en una pestaña nueva',calCard:{title:'Reservá con Felipe',cta:'Ver horarios disponibles',facts:[{k:'duración',v:'30 minutos'},{k:'idioma',v:'Español o inglés'},{k:'formato',v:'Videollamada'}]},foot:'Compañía uruguaya · Montevideo · GMT-3',call:'llamada',railAfter:'después',railTeam:'equipo',railRules:'reglas',railCompare:'comparar',
+doors:[{k:'equipo',title:'dør Talent',sub:'Necesito sumar gente que ya sepa.',mark:'outsourcing'},{k:'producto',title:'dør Studio',sub:'Necesito que alguien lo construya.',mark:'software-engineering'},{k:'hablar',title:'Aún no sé',sub:'Necesito hablar con alguien primero.',mark:null}],
+names:{equipo:'dør talent',producto:'dør studio',hablar:'hablemos'},step:'paso',
+compare:{eb:'talent o studio',h:'¿Cuál te sirve?',pickA:'Seguir por Talent',pickB:'Seguir por Studio',rows:[{axis:'Cuándo conviene',a:'Ya sabés qué construir y te falta gente.',b:'Sabés el problema, no tenés equipo para resolverlo.'},{axis:'Velocidad de arranque',a:'Perfiles propuestos en menos de 3 semanas.',b:'Discovery primero: el equipo llega con el plan.'},{axis:'Si crece el alcance',a:'Sumás personas al mismo equipo.',b:'Ajustamos plan y equipo con vos.'},{axis:'Quién elige a las personas',a:'Vos. Entrevistás y decidís.',b:'Armamos el equipo y te lo presentamos.'}]},
+steps:{equipo:[{title:'Contacto de discovery y requirement gathering',note:'Una llamada. Qué necesitás, cuándo y con quién.'},{title:'Candidatos internos, o buscamos el fit ideal en menos de 3 semanas',note:'Primero miramos adentro. Si no está, lo salimos a buscar.'},{title:'El cliente elige las personas',note:'Entrevistás vos. Nosotros no imponemos perfiles.'},{title:'Tu equipo escalado en menos de un mes',note:'Trabajando con tu gente, con tus procesos, en tu huso horario.'}],producto:[{title:'Discovery',note:'Entendemos el problema antes de escribir código.'},{title:'Presentamos el equipo',note:'Nombres y caras. Sabés quién construye.'},{title:'Plan claro y preciso',note:'Alcance, tiempos y responsables por escrito.'},{title:'Ponemos en marcha tu proyecto',note:'Arrancamos, y seguimos con vos mientras crece.'}],hablar:[]},
+after:{eb:'después del arranque',h:'No desaparecemos después del arranque',items:['Un referente de dør sigue el proyecto. No un ticket.','El equipo escala cuando lo necesitás, con la misma vara de selección.','Si algo no funciona, lo decimos antes de que sea un problema.']},
+team:{eb:'quiénes están del otro lado',h:'Gente senior, cuidada',cols:[{t:'Equipos senior',b:'Beneficios, bonos y crecimiento profesional. La gente se queda, y eso lo nota tu proyecto.'},{t:'Por qué Uruguay y Argentina',b:'Dos mercados con formación técnica fuerte y una cultura de trabajo cercana a la de tu equipo.'},{t:'Inglés y horario',b:'Todo el equipo trabaja en inglés. El solapamiento horario lo definimos con vos, no al revés.'}]},
+rules:{eb:'las reglas del juego',hNo:'Qué no hacemos',no:['No hacemos body shopping.','No vendemos horas sueltas.','No rotamos sin avisar.'],hYou:'Qué necesitamos de tu lado',you:['Un decisor con presupuesto.','Feedback en 48 horas.','Acceso a repos y entornos.','Prioridades claras y por escrito.']}},
+en:{lang:'en',title:'dør | Nearshore software teams in Uruguay and Argentina',desc:'Add senior developers to your team with dør Talent, or have dør Studio build your product. Nearshore from Uruguay and Argentina, in your time zone, in English.',
+h0:'dør means door',p0:'In Danish. Ours opens onto South America: software teams working in your time zone, in your language, inside your company. Not one more outsourcing agency.',hint0:'use the arrows or click',hint0m:'scroll down to cross',skip:'Skip to booking',aPrev:'Previous door',aNext:'Next door',eb1:'choose your door',h1:'What do you need?',pick:'Choose a door to continue',next:'next',ebEnd:'last door',hEnd:'A 30-minute call',pEnd:'No forty-page proposal. Tell us the problem and we tell you whether we can solve it.',cta:'Book a call',ctaShort:'Book',calFallback:'Calendar not loading? Open it in a new tab',calCard:{title:'Book with Felipe',cta:'See available times',facts:[{k:'length',v:'30 minutes'},{k:'language',v:'English or Spanish'},{k:'format',v:'Video call'}]},foot:'Uruguayan company · Montevideo · GMT-3',call:'call',railAfter:'after',railTeam:'team',railRules:'rules',railCompare:'compare',
+doors:[{k:'equipo',title:'dør Talent',sub:'I need to add people who already know.',mark:'outsourcing'},{k:'producto',title:'dør Studio',sub:'I need someone to build it.',mark:'software-engineering'},{k:'hablar',title:'Not sure yet',sub:'I need to talk to someone first.',mark:null}],
+names:{equipo:'dør talent',producto:'dør studio',hablar:'let us talk'},step:'step',
+compare:{eb:'talent or studio',h:'Which one fits?',pickA:'Continue with Talent',pickB:'Continue with Studio',rows:[{axis:'When it fits',a:'You know what to build and you are short on people.',b:'You know the problem, you have no team to solve it.'},{axis:'Time to start',a:'Profiles proposed in under 3 weeks.',b:'Discovery first: the team arrives with the plan.'},{axis:'If scope grows',a:'You add people to the same team.',b:'We adjust plan and team with you.'},{axis:'Who picks the people',a:'You do. You interview and decide.',b:'We build the team and introduce it.'}]},
+steps:{equipo:[{title:'Discovery call and requirement gathering',note:'One call. What you need, when, and with whom.'},{title:'Internal candidates, or we find the ideal fit in under 3 weeks',note:'We look inside first. If it is not there, we go find it.'},{title:'You choose the people',note:'You run the interviews. We never impose profiles.'},{title:'Your team scaled in under a month',note:'Working with your people, your process, your time zone.'}],producto:[{title:'Discovery',note:'We understand the problem before writing code.'},{title:'We introduce the team',note:'Names and faces. You know who builds.'},{title:'A clear, precise plan',note:'Scope, timing and owners, in writing.'},{title:'We put your project in motion',note:'We start, and stay with you as it grows.'}],hablar:[]},
+after:{eb:'after kickoff',h:'We do not disappear after kickoff',items:['A dør lead follows the project. Not a ticket.','The team scales when you need it, held to the same selection bar.','If something is not working, we say so before it becomes a problem.']},
+team:{eb:'who is on the other side',h:'Senior people, looked after',cols:[{t:'Senior teams',b:'Benefits, bonuses and career growth. People stay, and your project feels it.'},{t:'Why Uruguay and Argentina',b:'Two markets with strong technical training and a work culture close to your own team.'},{t:'English and hours',b:'The whole team works in English. We set the overlap with you, not the other way around.'}]},
+rules:{eb:'the rules of the game',hNo:'What we do not do',no:['No body shopping.','No selling loose hours.','No rotating people without notice.'],hYou:'What we need from your side',you:['A decision-maker with budget.','Feedback within 48 hours.','Access to repos and environments.','Clear priorities, in writing.']}}};
+class Component extends DCLogic{
+state={lang:null,i:0,path:null};
+rootRef=React.createRef();trackRef=React.createRef();barRef=React.createRef();navRef=React.createRef();sweepRef=React.createRef();shutterRef=React.createRef();gateRef=React.createRef();irisRef=React.createRef();hingeRef=React.createRef();
+componentDidMount(){this._k=e=>{if(e.key==='ArrowRight'){e.preventDefault();this.go(this.state.i+1)}if(e.key==='ArrowLeft'){e.preventDefault();this.go(this.state.i-1)}};window.addEventListener('keydown',this._k);this._r=()=>{this.layout();this.shift()};window.addEventListener('resize',this._r);try{this._ro=new ResizeObserver(()=>this._r());this._ro.observe(document.documentElement)}catch(e){}requestAnimationFrame(()=>{this._r();requestAnimationFrame(()=>this._r())});
+this._sc=()=>{if(!this.mobile||this._raf)return;this._raf=requestAnimationFrame(()=>{this._raf=0;const de=document.scrollingElement||document.documentElement;const top=Math.max(de.scrollTop,document.body.scrollTop||0);const i=Math.max(0,Math.min(this.total-1,Math.round(top/window.innerHeight)));if(i!==this.state.i){this._fromScroll=true;this.setState({i:i})}})};window.addEventListener('scroll',this._sc,{passive:true});
+this._w=e=>{if(this.mobile)return;e.preventDefault();if(this._lock)return;const d=Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX;this._acc=(this._acc||0)+d;if(Math.abs(this._acc)>42){const s=this._acc>0?1:-1;this._acc=0;this.go(this.state.i+s)}};window.addEventListener('wheel',this._w,{passive:false});
+this.fromUrl();this._lastI=this.state.i;this.layout();this.shift();this.meta()}
+componentDidUpdate(){this.layout();this.shift();this.meta();this.toUrl()}
+componentWillUnmount(){window.removeEventListener('keydown',this._k);window.removeEventListener('resize',this._r);window.removeEventListener('wheel',this._w);window.removeEventListener('scroll',this._sc);if(this._ro)this._ro.disconnect();if(this._io)this._io.disconnect();clearTimeout(this._t1);clearTimeout(this._t2);clearTimeout(this._ms)}
+get mobile(){return window.innerWidth<=760}
+kb(fn){return e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();fn()}}}
+get reduced(){return window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches}
+get lang(){return this.state.lang||this.props.startLang||'es'}
+get t(){return T[this.lang]}
+get stepList(){return this.state.path?this.t.steps[this.state.path]:[]}
+get hasCompare(){return this.state.path==='hablar'}
+get total(){return 2+this.stepList.length+(this.hasCompare?1:0)+4}
+keyAt(i){const n=this.stepList.length,c=this.hasCompare?1:0,base=2+n+c;
+if(i===0)return'inicio';if(i===1)return'puertas';
+if(c&&i===2)return'comparar';
+if(n&&i>=2&&i<2+n)return(this.state.path==='equipo'?'talent':'studio')+'-0'+(i-1);
+if(i===base)return'despues';if(i===base+1)return'equipo';if(i===base+2)return'reglas';return'llamada'}
+fromUrl(){let lang=null,key='';try{const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='es')lang=q;key=(location.hash||'').replace('#','')}catch(e){}
+if(key.slice(-3)==='-en'){lang='en';key=key.slice(0,-3)}else if(key.slice(-3)==='-es'){lang='es';key=key.slice(0,-3)}
+const st={};if(lang)st.lang=lang;
+const m=key.match(/^(talent|studio)-0(\d)$/);
+if(m){st.path=m[1]==='talent'?'equipo':'producto';st.i=1+Number(m[2])}
+else if(key==='comparar'){st.path='hablar';st.i=2}
+else if(key==='puertas')st.i=1;
+else if(key==='despues'||key==='equipo'||key==='reglas'||key==='llamada'){st.path=st.path||this.state.path||'equipo';const n=T[lang||this.lang].steps[st.path].length,base=2+n;st.i=key==='despues'?base:key==='equipo'?base+1:key==='reglas'?base+2:base+3}
+if(Object.keys(st).length)this.setState(st)}
+toUrl(){try{const h='#'+this.keyAt(this.state.i)+(this.lang==='en'?'-en':'');if(location.hash!==h)history.replaceState(null,'',h)}catch(e){}}
+meta(){try{document.title=this.t.title;document.documentElement.lang=this.lang;const d=document.querySelector('meta[name="description"]');if(d)d.setAttribute('content',this.t.desc)}catch(e){}}
+layout(){const root=this.rootRef.current,tr=this.trackRef.current,bar=this.barRef.current,nav=this.navRef.current;if(!root||!tr)return;const m=this.mobile;const sig=(m?'m':'d')+tr.children.length;if(sig===this._sig)return;const flip=this._sig&&this._sig[0]!==sig[0];this._sig=sig;
+document.documentElement.style.overflow=m?'auto':'hidden';document.body.style.overflow=m?'auto':'hidden';document.documentElement.style.height=m?'auto':'';document.body.style.height=m?'auto':'';document.body.style.minHeight=m?'0':'';
+root.style.position=m?'static':'fixed';root.style.overflow=m?'visible':'hidden';root.style.minHeight=m?'100vh':'';
+tr.style.position=m?'static':'absolute';tr.style.flexDirection=m?'column':'row';if(m)tr.style.transform='none';
+Array.prototype.forEach.call(tr.children,c=>{if(m){c.style.flex='0 0 auto';c.style.width='100%';c.style.height='auto';c.style.minHeight='100vh';c.style.padding='88px 6vw 56px';c.style.scrollSnapAlign='start';c.style.scrollSnapStop='always'}else{c.style.flex='0 0 100vw';c.style.width='';c.style.height='100%';c.style.minHeight='';c.style.padding='clamp(88px,13vh,132px) 6vw clamp(48px,8vh,80px)';c.style.scrollSnapAlign='';c.style.scrollSnapStop=''}});
+document.documentElement.style.scrollSnapType=m?'y mandatory':'';document.documentElement.style.scrollPaddingTop=m?'0px':'';
+Array.prototype.forEach.call(root.querySelectorAll('[data-door]'),el=>{el.style.minHeight=m?'0':'250px';el.style.padding=m?'16px 18px 20px':'26px 26px 30px'});
+Array.prototype.forEach.call(root.querySelectorAll('[data-markbox]'),el=>{el.style.height=m?'34px':'60px'});
+const mn=root.querySelector('[data-mnav]');if(mn)mn.style.display=m?'flex':'none';
+Array.prototype.forEach.call(root.querySelectorAll('[data-ccell]'),el=>{el.style.padding=m?'8px 0':'12px 0';el.style.gap=m?'3px':'6px';const t=el.children[1];if(t)t.style.fontSize=m?'var(--dor-text-sm)':'var(--dor-text-md)'});
+Array.prototype.forEach.call(root.querySelectorAll('[data-lang]'),el=>{el.style.minWidth=m?'44px':'';el.style.minHeight=m?'44px':'';el.style.display=m?'inline-flex':'';el.style.alignItems=m?'center':'';el.style.justifyContent=m?'center':'';el.style.paddingBottom=m?'0':'4px';el.style.fontSize=m?'13px':'11px'});
+const ct=root.querySelector('[data-cta]');if(ct){ct.style.display='flex';ct.style.alignItems='center';const bt=ct.querySelector('button');if(bt){bt.style.minHeight=m?'44px':'';bt.style.padding=m?'0 18px':''}}
+const sk=root.querySelector('[data-skip]');if(sk){sk.style.minHeight=m?'44px':'';sk.style.display=m?'flex':'block';sk.style.alignItems='center'}
+const cg=root.querySelector('[data-callgrid]');if(cg)cg.style.gap=m?'22px':'52px';
+const cc=root.querySelector('[data-callcard]');if(cc){cc.style.padding=m?'20px 20px 18px':'34px 34px 30px';cc.style.gap=m?'14px':'20px'}
+if(bar){bar.style.position=m?'fixed':'absolute';bar.style.background=m?'var(--dor-color-negro)':'transparent';bar.style.borderBottom=m?'1px solid rgba(255,255,255,.14)':'none';bar.style.height=m?'64px':'80px';bar.style.padding=m?'0 5vw':'0 4vw';bar.style.gap=m?'12px':'24px'}
+if(nav)nav.style.display=m?'none':'block';
+const rail=root.querySelector('[data-rail]');if(rail)rail.style.display=m?'none':'flex';
+this.observe(m,tr);
+Array.prototype.forEach.call(root.querySelectorAll('[data-cols]'),el=>{const v=el.getAttribute('data-cols');el.style.gridTemplateColumns=m?'minmax(0,1fr)':(v.indexOf('fr')>=0?v:'repeat('+v+',minmax(0,1fr))')});
+Array.prototype.forEach.call(root.querySelectorAll('[data-narrow]'),el=>{el.style.maxWidth=m?'100%':(el.getAttribute('data-narrow')||'60%')});
+Array.prototype.forEach.call(root.querySelectorAll('[data-num]'),el=>{el.style.fontSize=m?'62vw':'38vw';el.style.opacity=m?'.5':'1'});
+if(flip){if(!m)this.place(this.state.i,null);this._lastI=this.state.i;setTimeout(()=>this.forceUpdate(),0)}}
+observe(m,tr){if(this._io){this._io.disconnect();this._io=null}if(!m)return;try{this._io=new IntersectionObserver(es=>{let best=null;es.forEach(e=>{if(e.isIntersecting&&(!best||e.intersectionRatio>best.intersectionRatio))best=e});if(!best)return;const i=Array.prototype.indexOf.call(tr.children,best.target);if(i>=0&&i!==this.state.i){this._fromScroll=true;this.setState({i:i})}},{threshold:[.55]});Array.prototype.forEach.call(tr.children,c=>this._io.observe(c))}catch(e){}}
+prog(){const r=this.rootRef.current;if(!r)return;const el=r.querySelector('[data-prog]');if(el)el.style.width=(this.total<2?100:(this.state.i/(this.total-1))*100)+'%'}
+place(i,from){const tr=this.trackRef.current;if(!tr)return;const to='translateX(-'+(i*100)+'vw)';try{tr.getAnimations().forEach(a=>a.cancel())}catch(e){}tr.style.transform=to;if(from!=null&&!this.reduced){try{tr.animate([{transform:'translateX(-'+(from*100)+'vw)'},{transform:to}],{duration:300,easing:'cubic-bezier(.35,.85,.25,1)'})}catch(e){}}}
+shift(){const tr=this.trackRef.current;if(!tr)return;this.prog();const dir=this.state.i-this._lastI;this._lastI=this.state.i;if(this._fromScroll){this._fromScroll=false;return}
+if(this.mobile){const i=this.state.i;clearTimeout(this._ms);this._ms=setTimeout(()=>{const el=tr.children[i];if(!el)return;const top=Math.max(0,el.offsetTop-64),bh=this.reduced?'auto':'smooth';const de=document.scrollingElement||document.documentElement;const sc=de.scrollHeight>de.clientHeight+4?de:document.body;try{sc.scrollTo({top:top,behavior:bh})}catch(e){sc.scrollTop=top}},60);return}
+const put=(from)=>this.place(this.state.i,from);
+if(!dir){put(null);return}
+const tm=this.sweep(dir)||{d:0,l:120,snap:true};this._lock=true;clearTimeout(this._t1);clearTimeout(this._t2);
+const fromI=this.state.i-dir;this._t1=setTimeout(()=>{put(tm.snap?null:fromI)},tm.d);
+this._t2=setTimeout(()=>{this._lock=false},tm.l)}
+sweep(dir){if(this.mobile||this.reduced)return null;const last=this.total-1,from=this.state.i-dir;const c=(this.state.i===last||from===last)?'var(--dor-color-negro)':'var(--dor-color-naranja)';const mode=this.props.transicion||'porton';
+const all=[this.shutterRef.current,this.gateRef.current,this.irisRef.current,this.hingeRef.current];
+all.forEach(el=>{if(el)el.style.display='none'});
+const run=(el,name,dur)=>{if(!el)return;el.style.display='block';el.style.animation='none';void el.offsetWidth;el.style.animation=name+' '+dur+' cubic-bezier(.45,0,.55,1)'};
+if(mode==='porton'){const el=this.gateRef.current;if(el){el.style.display='block';Array.prototype.forEach.call(el.children,(lf,k)=>{lf.style.background=c;lf.style.animation='none';void lf.offsetWidth;lf.style.animation=(k?'dorGateR':'dorGateL')+' 1s cubic-bezier(.45,0,.55,1)'})}return{d:430,l:1060,snap:true}}
+if(mode==='persiana'){const el=this.shutterRef.current;if(el){el.style.display='block';Array.prototype.forEach.call(el.children,(hf,k)=>{hf.style.background=c;hf.style.animation='none';void hf.offsetWidth;hf.style.animation=(k?'dorShutBot':'dorShutTop')+' .82s cubic-bezier(.5,0,.5,1)'})}return{d:370,l:880,snap:true}}
+if(mode==='iris'){const el=this.irisRef.current;if(el)el.style.background=c;run(el,'dorIris','.8s');return{d:350,l:860,snap:true}}
+if(mode==='bisagra'){const el=this.hingeRef.current;if(el){el.style.display='block';const dr=el.querySelector('[data-door]'),sh=el.querySelector('[data-shade]'),fw=dir>0;if(dr){dr.style.background=c;dr.style.animation='none';void dr.offsetWidth;dr.style.animation=(fw?'dorHingeFwd':'dorHingeBack')+' .95s cubic-bezier(.4,0,.6,1)'}if(sh){sh.style.background='linear-gradient('+(fw?'90deg':'270deg')+',rgba(0,0,0,.9),rgba(0,0,0,.12))';sh.style.animation='none';void sh.offsetWidth;sh.style.animation='dorHingeShade .95s cubic-bezier(.4,0,.6,1)'}}return{d:490,l:1030,snap:true}}
+const el=this.sweepRef.current;if(el){el.style.background=c;el.style.display='block';el.style.animation='none';void el.offsetWidth;el.style.animation=(dir<0?'dorSweepBack':'dorSweepFwd')+' .7s cubic-bezier(.45,0,.55,1)'}return{d:240,l:720}}
+rootClick(e){if(this.mobile)return;if(e.target.closest('button,input,a,iframe,img,[data-noadvance]'))return;this.go(this.state.i+1)}
+go(n){const m=Math.max(0,Math.min(this.total-1,n));if(m>1&&!this.state.path)return;this.setState({i:m})}
+pick(k){this.setState({path:k,i:2})}
+renderVals(){
+const t=this.t,i=this.state.i,n=this.stepList.length,c=this.hasCompare?1:0,last=this.total-1,base=2+n+c;
+const steps=this.stepList.map((s,k)=>({n:'0'+(k+1),num:'0'+(k+1),eyebrow:t.names[this.state.path]+' / '+t.step,title:s.title,note:s.note}));
+const railMode=this.props.railMode||'numeros';
+let rail=[{idx:0,label:'00'},{idx:1,label:'01'}];
+if(c)rail.push({idx:2,label:t.railCompare});
+rail=rail.concat(steps.map((s,k)=>({idx:2+k,label:railMode==='nombres'?s.n+' '+s.title.split(' ').slice(0,2).join(' '):'0'+(k+2)})));
+rail=rail.concat([{idx:base,label:t.railAfter},{idx:base+1,label:t.railTeam},{idx:base+2,label:t.railRules},{idx:base+3,label:t.call}]);
+const cells=[];t.compare.rows.forEach(r=>{cells.push({tag:'',text:r.axis});cells.push({tag:'dør Talent',text:r.a});cells.push({tag:'dør Studio',text:r.b})});
+return{
+t:t,steps:steps,
+rootRef:this.rootRef,trackRef:this.trackRef,rootClick:e=>this.rootClick(e),barRef:this.barRef,navRef:this.navRef,sweepRef:this.sweepRef,shutterRef:this.shutterRef,gateRef:this.gateRef,irisRef:this.irisRef,hingeRef:this.hingeRef,
+n18:18,n20:20,nLogo:this.mobile?46:68,n52:this.mobile?38:52,
+doors:t.doors.map(d=>({title:d.title,sub:d.sub,mark:d.mark,markColor:this.state.path===d.k?'blanco':'naranja',go:()=>this.pick(d.k),key:this.kb(()=>this.pick(d.k))})),
+hintIcon:this.mobile?'arrow-down':'arrow-right',hint:this.mobile?t.hint0m:t.hint0,ctaLabel:this.mobile?t.ctaShort:t.cta,counter:('0'+(i+1)).slice(-2)+' / '+('0'+this.total).slice(-2),
+needPick:!this.state.path,
+embedList:this.props.agenda==='embebido'?[{}]:[],
+linkList:this.props.agenda==='embebido'?[]:[{title:t.calCard.title,cta:t.calCard.cta}],
+callFacts:t.calCard.facts,
+compareList:c?[{eb:t.compare.eb,h:t.compare.h,pickA:t.compare.pickA,pickB:t.compare.pickB}]:[],
+compareCells:c?cells:[],
+pickTalent:()=>this.pick('equipo'),pickStudio:()=>this.pick('producto'),
+keyTalent:this.kb(()=>this.pick('equipo')),keyStudio:this.kb(()=>this.pick('producto')),
+keyHome:this.kb(()=>this.go(0)),keyPrev:this.kb(()=>this.go(i-1)),keyNext:this.kb(()=>this.go(i+1)),keySkip:this.kb(()=>this.go(last)),
+keyEs:this.kb(()=>this.setState({lang:'es'})),keyEn:this.kb(()=>this.setState({lang:'en'})),
+afterItems:t.after.items.map((x,k)=>({n:'0'+(k+1),text:x})),
+teamCols:t.team.cols.map((x,k)=>({n:'0'+(k+1),t:x.t,b:x.b})),
+rulesNo:t.rules.no.map(x=>({text:x})),
+rulesYou:t.rules.you.map((x,k)=>({n:'0'+(k+1),text:x})),
+rail:rail.map(r=>({label:r.label,active:r.idx===i,aria:r.idx===i?'true':'false',go:()=>this.go(r.idx),key:this.kb(()=>this.go(r.idx))})),
+prev:()=>this.go(i-1),next:()=>this.go(i+1),home:()=>this.go(0),
+goCall:()=>this.go(last),
+book:()=>{try{window.open(CAL,'_blank','noopener')}catch(e){}},
+showPrev:i>0,showNext:i<last,
+onOrange:i===last,
+isEs:this.lang==='es',isEn:this.lang==='en',
+setEs:()=>this.setState({lang:'es'}),setEn:()=>this.setState({lang:'en'})};
+}}
+</script>
+</body>
+</html>

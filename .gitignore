@@ -416,3 +416,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Local design/preview scaffolding for the Landing Umbral migration — not for deploy.
+# The dev preview vendors ~3MB of the @dor/design-system bundle + dc-runtime; keep it local.
+.design-src/preview/
+.design-src/support.js
