@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "routes": [
+    { "route": "/casos", "rewrite": "/casos.html" },
+    { "route": "/partner-nearshoring", "rewrite": "/partner-nearshoring.html" },
+    { "route": "/quienes-somos", "rewrite": "/quienes-somos.html" },
+    { "route": "/privacidad", "rewrite": "/privacidad.html" },
+    { "route": "/casos/nearshoring", "rewrite": "/casos/nearshoring.html" },
+    { "route": "/casos/organismo-publico", "rewrite": "/casos/organismo-publico.html" },
+    { "route": "/casos/ia-documentos", "rewrite": "/casos/ia-documentos.html" },
+    { "route": "/casos/automatizacion-erp", "rewrite": "/casos/automatizacion-erp.html" }
+  ],
+  "responseOverrides": {
+    "404": { "rewrite": "/404.html", "statusCode": 404 }
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "X-Frame-Options": "SAMEORIGIN"
+  },
+  "mimeTypes": {
+    ".webmanifest": "application/manifest+json"
+  }
+}

@@ -1,18 +1,36 @@
 /* ==========================================================================
    dør · Analytics + cookie consent (GA4 G-ZQZ9PJ51JH)
-   Consent-gated GA4, UTM capture, bilingual cookie banner (built in JS with
-   inline styles), conversion events via delegation. Shared by all pages.
+   Consent-gated GA4 with a full event taxonomy for corporate decision-making:
+   acquisition, conversion funnel, engagement, service/case interest, language,
+   and consent rate. Bilingual cookie banner (JS-built, inline styles). Shared
+   by every page. Events fire only after the visitor accepts (true gating).
+
+   Event taxonomy (mark schedule_call_click, email_click and generate_lead as
+   Key Events in GA4 → Admin → Events):
+   - page_landed        acquisition: page_type, lang, utm_*, referrer
+   - case_view          interest: which case detail is read (case)
+   - language_switch    audience: ES↔EN toggles (to)
+   - section_view       funnel depth: key sections seen (section)
+   - scroll_depth       engagement: 25/50/75/90% (percent)
+   - cta_click          funnel: primary CTA clicks (cta_label, cta_location)
+   - nav_click          navigation: menu usage (destination)
+   - case_card_click    interest: a case card opened (case, from)
+   - service_click      interest: a service card opened (service)
+   - schedule_call_click  CONVERSION: booking link (cta_location)  [Key Event]
+   - email_click        CONVERSION: mailto (email)                 [Key Event]
+   - cookie_consent     compliance: accept rate (choice)
    ========================================================================== */
 (function(){
   var GA_ID='G-ZQZ9PJ51JH';
   var KEY='dor-cookie-consent';
   var ORANGE='#F26C3B', ORANGE_D='#DD5A2A';
   var COPY={
-    es:{text:'Usamos cookies para medir el tráfico y mejorar la experiencia. Al aceptar, consentís su uso. ',
-        more:'Más info',accept:'Aceptar',reject:'Rechazar'},
-    en:{text:'We use cookies to measure traffic and improve your experience. By accepting, you consent to their use. ',
-        more:'Learn more',accept:'Accept',reject:'Reject'}
+    es:{text:'Usamos cookies de Google Analytics para medir el tráfico y mejorar el sitio. Solo se activan si las aceptás; podés rechazarlas y seguir navegando.',
+        policy:'Política de privacidad',accept:'Aceptar',reject:'Rechazar'},
+    en:{text:'We use Google Analytics cookies to measure traffic and improve the site. They only activate if you accept; you can reject them and keep browsing.',
+        policy:'Privacy policy',accept:'Accept',reject:'Reject'}
   };
+
   function lang(){
     try{ var p=new URLSearchParams(location.search).get('lang');
       if(p==='en'||p==='es')return p; }catch(e){}
@@ -28,6 +46,37 @@
   function utm(){ var p=new URLSearchParams(location.search);
     return {source:p.get('utm_source')||'',medium:p.get('utm_medium')||'',
       campaign:p.get('utm_campaign')||'',content:p.get('utm_content')||'',term:p.get('utm_term')||''}; }
+
+  /* ---- page/section context ---- */
+  function pageType(){
+    var b=document.body, k=b&&b.getAttribute('data-title-key');
+    if(k==='partner')return 'partner';
+    if(k==='about')return 'about';
+    if(k==='cases')return 'cases_index';
+    var p=location.pathname||'';
+    if(p.indexOf('/casos/')>-1)return 'case_detail';
+    if(p==='/'||p===''||/index\.html?$/.test(p))return 'home';
+    return 'other';
+  }
+  function slugOf(href){
+    if(!href)return ''; try{ href=href.split('#')[0].split('?')[0]; }catch(e){}
+    var m=href.replace(/\/$/,'').split('/').pop()||'';
+    return m.replace(/\.html?$/,'');
+  }
+  function nearestLoc(el){
+    var loc=el.getAttribute&&el.getAttribute('data-track-loc'); if(loc)return loc;
+    var s=el.closest&&el.closest('section[id],[id]');
+    return (s&&s.id)||pageType();
+  }
+
+  /* ---- central tracker (no-op until consent loads gtag) ---- */
+  function track(name, params){
+    if(!window.gtag)return;
+    params=params||{}; params.page_type=pageType(); params.page_lang=curLang();
+    window.gtag('event', name, params);
+  }
+  window.dorTrack=track; // used by site.js (language_switch)
+
   function loadGA(){
     if(window.__dorGA)return; window.__dorGA=true; var u=utm();
     var s=document.createElement('script');
@@ -36,69 +85,114 @@
     gtag('js',new Date());
     gtag('config',GA_ID,{anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false,
       campaign_source:u.source,campaign_medium:u.medium,campaign_name:u.campaign,campaign_content:u.content,campaign_term:u.term});
-    gtag('event','page_landed',{event_category:'acquisition',utm_source:u.source,utm_medium:u.medium,
+    track('page_landed',{event_category:'acquisition',utm_source:u.source,utm_medium:u.medium,
       utm_campaign:u.campaign,utm_content:u.content,referrer:document.referrer||'direct',landing_page:location.pathname});
+    if(pageType()==='case_detail')track('case_view',{event_category:'interest',case:slugOf(location.pathname)});
+    initEngagement();
   }
+
+  /* ---- click funnel (delegated; track() guards consent) ---- */
   document.addEventListener('click',function(e){
-    if(!window.gtag)return; var a=e.target.closest&&e.target.closest('a');if(!a)return;
-    var href=a.getAttribute('href')||'';var u=utm();
+    var t=e.target; if(!t||!t.closest)return;
+    var a=t.closest('a,button'); if(!a)return;
+    var href=a.getAttribute&&a.getAttribute('href')||'';
+    var u=utm();
     if(href.indexOf('fantastical.app')>-1){
-      gtag('event','schedule_call_click',{event_category:'conversion',
-        event_label:(location.pathname||'inicio'),utm_source:u.source,utm_campaign:u.campaign});
-    } else if(href.indexOf('mailto:')===0){
-      gtag('event','email_click',{event_category:'conversion',event_label:href.replace('mailto:',''),utm_source:u.source});
+      track('schedule_call_click',{event_category:'conversion',cta_location:nearestLoc(a),
+        utm_source:u.source,utm_campaign:u.campaign});
+      return;
     }
+    if(href.indexOf('mailto:')===0){
+      track('email_click',{event_category:'conversion',email:href.replace('mailto:','')});
+      return;
+    }
+    var caso=t.closest('.caso');
+    if(caso){ track('case_card_click',{event_category:'interest',case:slugOf(caso.getAttribute('href')),from:pageType()}); return; }
+    var card=t.closest('.card,.card--link');
+    if(card){ var h=card.querySelector('h3'); track('service_click',{event_category:'interest',service:(h&&h.textContent||'').trim()}); return; }
+    var navlink=t.closest('.nav a,.mnav a,.foot-col a');
+    if(navlink){ track('nav_click',{event_category:'navigation',destination:navlink.getAttribute('href')||''}); return; }
+    var btn=t.closest('.btn,.textlink,[data-cta]');
+    if(btn){ track('cta_click',{event_category:'funnel',cta_label:(btn.textContent||'').trim().slice(0,60),cta_location:nearestLoc(btn)}); }
   },true);
 
-  var choice=null;try{choice=localStorage.getItem(KEY);}catch(e){}
-  if(choice==='accepted'){loadGA();return;}
-  if(choice==='rejected'){return;}
+  /* ---- engagement: section views + scroll depth (armed after consent) ---- */
+  var engArmed=false;
+  function initEngagement(){
+    if(engArmed)return; engArmed=true;
+    try{
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(en){ if(en.isIntersecting){
+          var id=en.target.id||en.target.getAttribute('data-sect')||'section';
+          track('section_view',{event_category:'engagement',section:id});
+          io.unobserve(en.target);
+        }});
+      },{threshold:0.5});
+      ['how','what','why','casos','contacto'].forEach(function(id){
+        var el=document.getElementById(id); if(el)io.observe(el);
+      });
+      // also observe well-known blocks on subpages
+      document.querySelectorAll('.case-result,.agenda,.founders,.stack-groups').forEach(function(el){
+        if(!el.id){ io.observe(el); }
+      });
+    }catch(e){}
 
-  var mobile=window.innerWidth<=760;
-  var el=document.createElement('div');
-  el.id='dor-cc';el.setAttribute('role','dialog');el.setAttribute('aria-live','polite');el.setAttribute('aria-label','Cookies');
-  el.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:2147483000;'+
-    'background:rgba(0,0,0,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;'+
-    'padding:'+(mobile?'18px 20px':'20px 6vw')+';box-shadow:0 -4px 24px rgba(0,0,0,.4);'+
-    'border-top:1px solid rgba(255,255,255,.16);box-sizing:border-box;'+
-    'font-family:"Aeonik",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;'+
-    'transform:translateY(110%);transition:transform .4s ease';
-  var inStyle='max-width:1200px;margin:0 auto;display:flex;gap:'+(mobile?'14px':'18px')+';'+
-    (mobile?'flex-direction:column;align-items:flex-start':'flex-wrap:wrap;align-items:center;justify-content:space-between');
-  var pStyle='margin:0;flex:1;min-width:260px;font-size:14px;line-height:1.55;color:rgba(255,255,255,.9)';
-  var aStyle='color:'+ORANGE+';text-decoration:underline;text-underline-offset:2px;white-space:nowrap';
-  var btnsStyle='display:flex;gap:12px;flex-shrink:0'+(mobile?';width:100%':'');
-  var btnBase='cursor:pointer;font-family:\'Neue Machina\',\'Aeonik\',sans-serif;font-weight:700;text-transform:uppercase;'+
-    'font-size:12px;letter-spacing:.06em;padding:12px 22px;border-radius:8px;border:2px solid transparent;'+
-    'transition:background .2s ease,color .2s ease,border-color .2s ease'+(mobile?';flex:1':'');
-  var rejStyle=btnBase+';background:transparent;color:#fff;border-color:rgba(255,255,255,.3)';
-  var accStyle=btnBase+';background:'+ORANGE+';color:#fff';
-  el.innerHTML='<div style="'+inStyle+'"><p data-cc-text style="'+pStyle+'"></p>'+
-    '<div style="'+btnsStyle+'">'+
-    '<button type="button" data-cc="reject" style="'+rejStyle+'"></button>'+
-    '<button type="button" data-cc="accept" style="'+accStyle+'"></button></div></div>';
-  var pEl=el.querySelector('[data-cc-text]');
-  var acc=el.querySelector('[data-cc="accept"]'), rej=el.querySelector('[data-cc="reject"]');
-  var shownLang=null;
-  function applyCopy(l){
-    if(l===shownLang)return; shownLang=l; var c=COPY[l]||COPY.es;
-    pEl.innerHTML=c.text+'<a href="mailto:hey@wearedor.com" style="'+aStyle+'">'+c.more+'</a>';
-    acc.textContent=c.accept; rej.textContent=c.reject;
+    var marks=[25,50,75,90], hit={}, raf=0;
+    function onScroll(){
+      if(raf)return; raf=requestAnimationFrame(function(){ raf=0;
+        var de=document.documentElement, h=de.scrollHeight-de.clientHeight;
+        if(h<=0)return; var pct=Math.min(100,Math.round((de.scrollTop||document.body.scrollTop)/h*100));
+        marks.forEach(function(m){ if(pct>=m&&!hit[m]){ hit[m]=1; track('scroll_depth',{event_category:'engagement',percent:m}); } });
+      });
+    }
+    window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
   }
-  function sync(){ applyCopy(curLang()); }
-  sync();
-  var syncTimer=setInterval(sync,400);
-  acc.addEventListener('mouseenter',function(){acc.style.background=ORANGE_D;});
-  acc.addEventListener('mouseleave',function(){acc.style.background=ORANGE;});
-  rej.addEventListener('mouseenter',function(){rej.style.background='rgba(255,255,255,.1)';rej.style.borderColor='rgba(255,255,255,.5)';});
-  rej.addEventListener('mouseleave',function(){rej.style.background='transparent';rej.style.borderColor='rgba(255,255,255,.3)';});
-  acc.addEventListener('click',function(){try{localStorage.setItem(KEY,'accepted');}catch(e){}hide();loadGA();});
-  rej.addEventListener('click',function(){try{localStorage.setItem(KEY,'rejected');}catch(e){}hide();});
 
-  var shown=false;
-  function reveal(){ if(shown)return; shown=true; void el.offsetWidth; el.style.transform='translateY(0)'; }
-  function hide(){ el.style.transform='translateY(110%)'; clearInterval(syncTimer);
-    setTimeout(function(){ if(el.parentNode)el.parentNode.removeChild(el); },400); }
-  function start(){ if(document.body && !el.isConnected){ document.body.appendChild(el); requestAnimationFrame(reveal); } }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+  /* ---- consent banner (class-based; styled by site.css tokens) ---- */
+  var banner=null, syncTimer=0;
+  function setChoice(v){ try{localStorage.setItem(KEY,v);}catch(e){} }
+  function buildBanner(){
+    var b=document.createElement('div');
+    b.className='cookie-banner'; b.id='dor-cc';
+    b.setAttribute('role','dialog'); b.setAttribute('aria-live','polite'); b.setAttribute('aria-label','Cookies');
+    b.innerHTML='<div class="wrap"><p data-cc-text></p>'+
+      '<div class="cookie-banner__btns">'+
+      '<button type="button" class="btn btn--ghost" data-cc="reject"></button>'+
+      '<button type="button" class="btn" data-cc="accept"></button>'+
+      '</div></div>';
+    var pEl=b.querySelector('[data-cc-text]');
+    var acc=b.querySelector('[data-cc="accept"]'), rej=b.querySelector('[data-cc="reject"]');
+    var shownLang=null;
+    function applyCopy(l){
+      if(l===shownLang)return; shownLang=l; var c=COPY[l]||COPY.es;
+      pEl.innerHTML=c.text+' <a class="policy-link" href="/privacidad.html">'+c.policy+'</a>.';
+      acc.textContent=c.accept; rej.textContent=c.reject;
+    }
+    applyCopy(curLang());
+    clearInterval(syncTimer); syncTimer=setInterval(function(){applyCopy(curLang());},400);
+    acc.addEventListener('click',function(){ setChoice('accepted'); hide(); loadGA(); track('cookie_consent',{event_category:'compliance',choice:'accepted'}); });
+    rej.addEventListener('click',function(){ setChoice('rejected'); window['ga-disable-'+GA_ID]=true; track('cookie_consent',{event_category:'compliance',choice:'rejected'}); hide(); });
+    return b;
+  }
+  function show(){
+    if(!banner){ banner=buildBanner(); }
+    if(document.body && !banner.isConnected){ document.body.appendChild(banner); }
+    requestAnimationFrame(function(){ if(banner) banner.classList.add('is-visible'); });
+  }
+  function hide(){
+    if(!banner)return; banner.classList.remove('is-visible'); clearInterval(syncTimer);
+    var b=banner; banner=null;
+    setTimeout(function(){ if(b&&b.parentNode)b.parentNode.removeChild(b); },450);
+  }
+  // Withdraw / change consent from anywhere (e.g. the footer "Configurar cookies" link)
+  window.dorOpenCookieSettings=show;
+  document.addEventListener('click',function(e){
+    var t=e.target&&e.target.closest&&e.target.closest('[data-cookie-settings]');
+    if(t){ e.preventDefault(); show(); }
+  },false);
+
+  var choice=null;try{choice=localStorage.getItem(KEY);}catch(e){}
+  if(choice==='accepted'){ loadGA(); }
+  else if(choice==='rejected'){ window['ga-disable-'+GA_ID]=true; }
+  else { if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',show); else show(); }
 })();

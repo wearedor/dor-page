@@ -134,9 +134,9 @@
     'cs2.cat':      { es: 'Sector público', en: 'Public sector' },
     'cs2.title':    { es: 'Sacamos del papel los trámites de un organismo del Estado', en: 'We took a government body’s procedures off paper' },
     'cs2.teaser':   { es: 'Transformamos un proceso manual y lento en un flujo digital automatizado, integrado con los sistemas del Estado.', en: 'We turned a slow, manual process into an automated digital flow, integrated with government systems.' },
-    'cs3.cat':      { es: 'IA · Comercio exterior', en: 'AI · Foreign trade' },
-    'cs3.title':    { es: 'IA que lee la documentación y arma la declaración aduanera', en: 'AI that reads the paperwork and drafts the customs declaration' },
-    'cs3.teaser':   { es: 'Un asistente sobre los datos y documentos del negocio, y extracción automática de declaraciones con deducción de código arancelario.', en: 'An assistant over the business’s data and documents, plus automatic declaration extraction with tariff-code deduction.' },
+    'cs3.cat':      { es: 'IA', en: 'AI' },
+    'cs3.title':    { es: 'IA que responde sobre tus datos y tus documentos', en: 'AI that answers across your data and your documents' },
+    'cs3.teaser':   { es: 'Un asistente que cruza los datos del sistema con los documentos del negocio, y extrae automáticamente la información clave de cada uno.', en: 'An assistant that cross-references system data with the business’s documents, and automatically extracts the key information from each one.' },
     'cs4.cat':      { es: 'Automatización', en: 'Automation' },
     'cs4.title':    { es: 'Automatizamos la conciliación a tres vías sobre un ERP', en: 'We automated three-way matching on an ERP' },
     'cs4.teaser':   { es: 'Nuestro motor propio de matching —que aprende de las correcciones— sacó del día a día un proceso manual y propenso a errores.', en: 'Our own matching engine —which learns from corrections— removed a manual, error-prone process from the day-to-day.' },
@@ -178,17 +178,17 @@
     'cd2.result.p': { es: 'El proceso pasó de manual y en papel a un flujo digital único y trazable. El proyecto está en marcha: lo que ya dejamos andando reduce los tiempos de gestión y hace visible el estado de cada trámite en un solo lugar.', en: 'The process went from manual and paper-based to a single, traceable digital flow. The project is under way: what’s already live cuts processing times and makes the status of every procedure visible in one place.' },
 
     /* casos — detail #3 (comercio exterior / aduanas) */
-    'cd3.rubro':    { es: 'Comercio exterior · Aduanas', en: 'Foreign trade · Customs' },
+    'cd3.rubro':    { es: 'Operación intensiva en documentos', en: 'Document-heavy operation' },
     'cd3.model':    { es: 'IA · Desarrollo a medida', en: 'AI · Custom development' },
-    'cd3.intro':    { es: 'Una agencia de comercio exterior necesitaba responder preguntas sobre su operación y armar declaraciones a partir de documentos, sin depender de la carga manual de sus expertos.', en: 'A foreign-trade agency needed to answer questions about its operation and draft declarations from documents, without depending on its experts’ manual data entry.' },
-    'cd3.problem.p':{ es: 'La información vivía en dos mundos: los datos estructurados del sistema y una montaña de documentos no estructurados (normativa, manuales, memos, documentos de cada operación). Responder una pregunta o armar una declaración exigía cruzar ambos a mano, con riesgo de error en la clasificación arancelaria.', en: 'Information lived in two worlds: structured system data and a mountain of unstructured documents (regulations, manuals, memos, the paperwork of each operation). Answering a question or drafting a declaration meant cross-referencing both by hand, risking tariff-classification errors.' },
+    'cd3.intro':    { es: 'Una empresa cuya operación dependía de cruzar a mano los datos de su sistema con un gran volumen de documentos. Queríamos que eso lo hiciera el software.', en: 'A company whose operation depended on manually cross-referencing its system data with a large volume of documents. We wanted the software to do that.' },
+    'cd3.problem.p':{ es: 'La información vivía en dos mundos: los datos estructurados del sistema y una montaña de documentos no estructurados. Responder una pregunta o completar un proceso exigía cruzar ambos a mano — lento y propenso a errores.', en: 'Information lived in two worlds: structured system data and a mountain of unstructured documents. Answering a question or completing a process meant cross-referencing both by hand — slow and error-prone.' },
     'cd3.d1.h':     { es: 'Un asistente sobre datos + documentos', en: 'An assistant over data + documents' },
-    'cd3.d1.p':     { es: 'Un chat que responde combinando los datos del sistema y los documentos no estructurados, eligiendo el nivel de modelo según la pregunta y generando gráficos o Excel cuando hace falta.', en: 'A chat that answers by combining system data and unstructured documents, picking the model tier per question and generating charts or Excel when needed.' },
-    'cd3.d2.h':     { es: 'Declaraciones asistidas por IA', en: 'AI-assisted declarations' },
-    'cd3.d2.p':     { es: 'Extracción de los campos de una operación hacia el formulario, con nivel de confianza y trazabilidad por campo, incluyendo la deducción del código arancelario por ítem.', en: 'Extraction of an operation’s fields into the form, with confidence and traceability per field, including tariff-code deduction per item.' },
+    'cd3.d1.p':     { es: 'Un chat que responde combinando los datos del sistema y los documentos, eligiendo el nivel de modelo según la pregunta y generando gráficos o Excel cuando hace falta.', en: 'A chat that answers by combining system data and documents, picking the model tier per question and generating charts or Excel when needed.' },
+    'cd3.d2.h':     { es: 'Extracción automática de documentos', en: 'Automatic document extraction' },
+    'cd3.d2.p':     { es: 'Extracción de los campos clave de cada documento hacia el sistema, con nivel de confianza y trazabilidad por campo.', en: 'Extraction of each document’s key fields into the system, with confidence and traceability per field.' },
     'cd3.d3.h':     { es: 'Sobre nuestro motor propio', en: 'On our own engine' },
     'cd3.d3.p':     { es: 'Apoyado en nuestro motor de correspondencia —propiedad intelectual de dør, reutilizable— que aprende de las correcciones, más recuperación híbrida sobre la base documental.', en: 'Built on our matching engine —dør’s reusable intellectual property— which learns from corrections, plus hybrid retrieval over the document base.' },
-    'cd3.result.p': { es: 'Pensada para sacar la carga manual del medio y reducir los errores de clasificación arancelaria, con trazabilidad en cada dato. El motor que la sostiene ya es parte de nuestras herramientas: lo reutilizamos, no lo empezamos de cero.', en: 'Designed to take the manual load out of the loop and cut tariff-classification errors, with traceability on every field. The engine behind it is already part of our toolkit: we reuse it, we don’t start from scratch.' },
+    'cd3.result.p': { es: 'Pensada para sacar la carga manual del medio y reducir los errores, con trazabilidad en cada dato. El motor que la sostiene ya es parte de nuestras herramientas: lo reutilizamos, no lo empezamos de cero.', en: 'Designed to take the manual load out of the loop and cut errors, with traceability on every field. The engine behind it is already part of our toolkit: we reuse it, we don’t start from scratch.' },
 
     /* casos — detail #4 (automatización ERP) */
     'cd4.rubro':    { es: 'Distribución · ERP empresarial', en: 'Distribution · Enterprise ERP' },
@@ -222,6 +222,14 @@
     'foot.explore': { es: 'Explorar', en: 'Explore' },
     'foot.contact': { es: 'Contacto', en: 'Contact' },
     'foot.loc':     { es: 'Montevideo, Uruguay · GMT-3', en: 'Montevideo, Uruguay · GMT-3' },
+    'foot.privacy': { es: 'Privacidad', en: 'Privacy' },
+    'foot.cookies': { es: 'Configurar cookies', en: 'Cookie settings' },
+
+    'nf.eyebrow':   { es: 'Error 404', en: 'Error 404' },
+    'nf.h':         { es: 'Esta puerta no lleva a ningún lado.', en: 'This door leads nowhere.' },
+    'nf.p':         { es: 'La página que buscás no existe o cambió de lugar. Cruzá de nuevo y seguimos.', en: 'The page you’re looking for doesn’t exist or moved. Step back through and let’s continue.' },
+    'nf.home':      { es: 'Volver al inicio', en: 'Back to home' },
+    'nf.cases':     { es: 'Ver casos', en: 'See cases' },
     'foot.rights':  { es: '© ' + new Date().getFullYear() + ' dør. Todos los derechos reservados.', en: '© ' + new Date().getFullYear() + ' dør. All rights reserved.' },
 
     /* ---- /partner-nearshoring ---- */
@@ -348,6 +356,10 @@
       var e = DICT[el.getAttribute('data-i18n-aria')];
       if (e && e[lang] != null) el.setAttribute('aria-label', e[lang]);
     });
+    // language blocks (used by long-form pages like /privacidad)
+    document.querySelectorAll('[data-lb]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-lb') !== lang;
+    });
     var tEs = document.body.getAttribute('data-title-es');
     var tEn = document.body.getAttribute('data-title-en');
     var titleKey = document.body.getAttribute('data-title-key');
@@ -374,6 +386,7 @@
     url.searchParams.set('lang', lang);
     history.replaceState(null, '', url);
     applyLang(lang);
+    if (window.dorTrack) window.dorTrack('language_switch', { to: lang, event_category: 'audience' });
   }
 
   function initHeader() {
