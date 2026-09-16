@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wearedor.com/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://wearedor.com/?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wearedor.com/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wearedor.com/"/>
+    <loc>https://www.wearedor.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.wearedor.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.wearedor.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.wearedor.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://wearedor.com/partner-nearshoring</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://wearedor.com/partner-nearshoring?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wearedor.com/partner-nearshoring?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wearedor.com/partner-nearshoring"/>
+    <loc>https://www.wearedor.com/partner-nearshoring</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.wearedor.com/partner-nearshoring?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.wearedor.com/partner-nearshoring?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.wearedor.com/partner-nearshoring"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://wearedor.com/quienes-somos</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://wearedor.com/quienes-somos?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wearedor.com/quienes-somos?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wearedor.com/quienes-somos"/>
+    <loc>https://www.wearedor.com/quienes-somos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.wearedor.com/quienes-somos?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.wearedor.com/quienes-somos?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.wearedor.com/quienes-somos"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://wearedor.com/casos</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://wearedor.com/casos?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wearedor.com/casos?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wearedor.com/casos"/>
+    <loc>https://www.wearedor.com/casos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.wearedor.com/casos?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.wearedor.com/casos?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.wearedor.com/casos"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wearedor.com/casos/nearshoring</loc>
+    <loc>https://www.wearedor.com/casos/nearshoring</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://wearedor.com/casos/organismo-publico</loc>
+    <loc>https://www.wearedor.com/casos/organismo-publico</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://wearedor.com/casos/ia-documentos</loc>
+    <loc>https://www.wearedor.com/casos/ia-documentos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://wearedor.com/casos/automatizacion-erp</loc>
+    <loc>https://www.wearedor.com/casos/automatizacion-erp</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://wearedor.com/privacidad</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://wearedor.com/privacidad?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://wearedor.com/privacidad?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://wearedor.com/privacidad"/>
+    <loc>https://www.wearedor.com/privacidad</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.wearedor.com/privacidad?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.wearedor.com/privacidad?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.wearedor.com/privacidad"/>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
