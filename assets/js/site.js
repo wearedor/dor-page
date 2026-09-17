@@ -234,10 +234,10 @@
 
     /* ---- /partner-nearshoring ---- */
     'pt.kicker':    { es: 'Modelo partner · Nearshoring', en: 'Partner model · Nearshoring' },
-    'pt.h1a':       { es: 'Sumá un equipo senior a tu empresa, ', en: 'Add a senior team to your company, ' },
-    'pt.h1accent':  { es: 'no un proveedor.', en: 'not a vendor.' },
-    'pt.sub':       { es: 'Staff augmentation nearshore: desarrolladores senior de Uruguay y Argentina que se integran a tu equipo — en tu huso horario, en inglés y con rotación mínima. Un partner, no una agencia de outsourcing.',
-                      en: 'Nearshore staff augmentation: senior developers from Uruguay and Argentina who join your team — in your time zone, in English and with minimal turnover. A partner, not an outsourcing agency.' },
+    'pt.h1a':       { es: 'No somos un proveedor. Somos tu ', en: 'We’re not a vendor. We’re your ' },
+    'pt.h1accent':  { es: 'socio en Sudamérica.', en: 'nearshore partner.' },
+    'pt.sub':       { es: 'Sumá desarrolladores senior de Uruguay y Argentina a tu equipo — en tu huso horario, en inglés y con rotación mínima. Se integran a tu operación; no te venden horas.',
+                      en: 'Add senior developers from Uruguay and Argentina to your team — in your time zone, in English and with minimal turnover. They embed in your operation; they don’t sell you hours.' },
     'pt.cta':       { es: 'Agendá una llamada', en: 'Book a call' },
 
     'pt.steps.eyebrow': { es: 'Cómo arrancamos', en: 'How we start' },
