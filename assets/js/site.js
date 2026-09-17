@@ -30,8 +30,8 @@
     'proof.link':   { es: 'Conocé quiénes somos', en: 'Get to know us' },
 
     'whoami.eyebrow': { es: 'Quiénes somos', en: 'Who we are' },
-    'whoami.h2a':   { es: 'Somos un equipo, ', en: 'We’re a team, ' },
-    'whoami.h2b':   { es: 'no un proveedor.', en: 'not a vendor.' },
+    'whoami.h2a':   { es: 'No somos un proveedor. Somos un ', en: 'We’re not a vendor. We’re a ' },
+    'whoami.h2b':   { es: 'equipo.', en: 'team.' },
     'whoami.p1':    { es: 'dør es una compañía uruguaya de software. Trabajás directo con la gente que construye — senior, en tu huso horario, cercana. Sin account managers ni capas que filtren la comunicación.',
                       en: 'dør is a Uruguayan software company. You work directly with the people who build — senior, in your time zone, close. No account managers or layers filtering communication.' },
     'whoami.p2':    { es: 'Entendemos tu operación, construimos lo que necesita y respondemos por el resultado. Un socio, no un recurso más.',
@@ -208,7 +208,7 @@
     'agenda.p':     { es: 'Sin propuesta de cuarenta páginas. Contanos el problema y te decimos si podemos resolverlo.',
                       en: 'No forty-page proposal. Tell us the problem and we tell you whether we can solve it.' },
     'agenda.name':  { es: 'Felipe Stanham', en: 'Felipe Stanham' },
-    'agenda.role':  { es: 'Solutions Architect', en: 'Solutions Architect' },
+    'agenda.role':  { es: 'Director de Soluciones', en: 'Director of Solutions' },
     'agenda.f1k':   { es: 'Duración', en: 'Length' },
     'agenda.f1v':   { es: '30 minutos', en: '30 minutes' },
     'agenda.f2k':   { es: 'Idioma', en: 'Language' },
@@ -327,9 +327,9 @@
     'qs.team.eyebrow': { es: 'Fundadores', en: 'Founders' },
     'qs.team.h':    { es: 'Trabajás directo con nosotros', en: 'You work directly with us' },
     'qs.team.p':    { es: 'Sin account managers ni capas intermedias. Los fundadores están en el día a día de tu proyecto.', en: 'No account managers or middle layers. The founders are in the day-to-day of your project.' },
-    'qs.m1.r':      { es: 'Director of Solutions', en: 'Director of Solutions' },
-    'qs.m2.r':      { es: 'Technical Director', en: 'Technical Director' },
-    'qs.m3.r':      { es: 'Director of Operations', en: 'Director of Operations' },
+    'qs.m1.r':      { es: 'Director de Soluciones', en: 'Director of Solutions' },
+    'qs.m2.r':      { es: 'Director de Tecnología', en: 'Director of Technology' },
+    'qs.m3.r':      { es: 'Director de Operaciones', en: 'Director of Operations' },
 
     'qs.final.h':   { es: '¿Trabajamos juntos?', en: 'Shall we work together?' },
     'qs.final.p':   { es: 'Contanos qué querés construir o qué equipo necesitás. La primera llamada es sin costo.', en: 'Tell us what you want to build or what team you need. The first call is free.' }
